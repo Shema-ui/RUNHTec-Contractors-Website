@@ -18,8 +18,8 @@ nav.querySelectorAll('a').forEach(link =>
 document.getElementById('year').textContent = new Date().getFullYear();
 
 // Quote form: sends by WhatsApp or email (no server needed)
-const WHATSAPP = { Rwanda: '250788307673', Uganda: '256703955349' };
-const EMAIL = 'info@runhteccontractors.com';
+const WHATSAPP = { Rwanda: '250788307673', Uganda: '256754625168' };
+const EMAIL = 'contact@runhteccontractors.com';
 
 const form = document.getElementById('quote-form');
 const errorBox = document.getElementById('form-error');
