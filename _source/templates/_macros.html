@@ -3,7 +3,7 @@
 {# Page banner used at the top of inner pages #}
 {% macro banner(root, kicker, heading, lead, image=None, crumbs=[]) -%}
 <section class="page-banner{% if image %} has-image{% endif %}">
-  {% if image %}<img class="banner-bg" src="{{ root }}images/{{ image }}" alt="">{% endif %}
+  {% if image %}<img class="banner-bg" src="{{ image if image.startswith('http') else root ~ 'images/' ~ image }}" alt="">{% endif %}
   <div class="container banner-inner">
     <nav class="breadcrumb" aria-label="Breadcrumb">
       <a href="{{ root }}">Home</a>

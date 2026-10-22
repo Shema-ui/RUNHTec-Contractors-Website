@@ -1,13 +1,56 @@
 {
   "categories": [
-    { "id": "power", "name": "Power & Energy", "text": "Electrical systems, standby power and renewable energy." },
-    { "id": "cooling", "name": "Cooling & Refrigeration", "text": "Climate control, chillers and temperature-controlled storage." },
-    { "id": "security", "name": "Security & Networks", "text": "Surveillance and data connectivity for modern buildings." },
-    { "id": "construction", "name": "Construction & Water", "text": "Building works and water infrastructure." },
-    { "id": "maintenance", "name": "Maintenance", "text": "Preventive and corrective support for installed systems." }
+    {
+      "id": "construction",
+      "name": "Construction & Water",
+      "text": "Building works and water infrastructure."
+    },
+    {
+      "id": "power",
+      "name": "Power & Energy",
+      "text": "Electrical systems, standby power and renewable energy."
+    },
+    {
+      "id": "cooling",
+      "name": "Cooling & Refrigeration",
+      "text": "Climate control, chillers and temperature-controlled storage."
+    },
+    {
+      "id": "security",
+      "name": "Security & Networks",
+      "text": "Surveillance and data connectivity for modern buildings."
+    },
+    {
+      "id": "maintenance",
+      "name": "Maintenance",
+      "text": "Preventive and corrective support for installed systems."
+    }
   ],
-
   "services": [
+    {
+      "slug": "construction-civil-works",
+      "category": "construction",
+      "icon": "building",
+      "name": "Construction & Civil Works",
+      "short": "Construction and supporting civil works for residential and commercial projects.",
+      "image": "residential-build.jpg",
+      "image_alt": "Residential building constructed by RUNHTec",
+      "intro": "Construction and supporting civil works for residential and commercial projects. Where a project requires several disciplines, RUNHTec can coordinate the technical services under one project approach.",
+      "scope": [
+        "Residential construction",
+        "Commercial construction",
+        "Supporting civil works",
+        "Coordination of electrical and mechanical services within the build"
+      ],
+      "applications": [
+        "Residential properties",
+        "Commercial buildings"
+      ],
+      "gallery": [
+        "residential-build.jpg",
+        "building-evening.jpg"
+      ]
+    },
     {
       "slug": "electrical-installations",
       "category": "power",
@@ -25,8 +68,16 @@
         "Power systems for commercial and industrial facilities",
         "Technical maintenance of electrical systems"
       ],
-      "applications": ["Residential power systems", "Commercial buildings", "Industrial installations", "Energy upgrades"],
-      "gallery": ["electrical-panel.jpg", "control-contactors.jpg"]
+      "applications": [
+        "Residential power systems",
+        "Commercial buildings",
+        "Industrial installations",
+        "Energy upgrades"
+      ],
+      "gallery": [
+        "electrical-panel.jpg",
+        "control-contactors.jpg"
+      ]
     },
     {
       "slug": "standby-generators-backup-power",
@@ -44,7 +95,12 @@
         "Hybrid backup using solar and battery storage",
         "Servicing and maintenance of backup power systems"
       ],
-      "applications": ["Hospitals and healthcare", "Commercial buildings", "Hotels", "Residential properties"],
+      "applications": [
+        "Hospitals and healthcare",
+        "Commercial buildings",
+        "Hotels",
+        "Residential properties"
+      ],
       "gallery": []
     },
     {
@@ -63,8 +119,17 @@
         "Inverters and system integration",
         "Maintenance and technical support"
       ],
-      "applications": ["Backup power", "Residential energy", "Commercial buildings", "Energy upgrades"],
-      "gallery": ["solar-technician.jpg", "inverter-battery.jpg", "outdoor-solar.jpg"]
+      "applications": [
+        "Backup power",
+        "Residential energy",
+        "Commercial buildings",
+        "Energy upgrades"
+      ],
+      "gallery": [
+        "solar-technician.jpg",
+        "inverter-battery.jpg",
+        "outdoor-solar.jpg"
+      ]
     },
     {
       "slug": "hvac-air-conditioning-chillers",
@@ -82,8 +147,15 @@
         "Mechanical climate-control solutions",
         "Servicing and maintenance"
       ],
-      "applications": ["Offices", "Hotels", "Hospitals", "Retail and commercial buildings"],
-      "gallery": ["hvac-cassette.jpg"]
+      "applications": [
+        "Offices",
+        "Hotels",
+        "Hospitals",
+        "Retail and commercial buildings"
+      ],
+      "gallery": [
+        "hvac-cassette.jpg"
+      ]
     },
     {
       "slug": "cold-rooms-refrigeration",
@@ -100,7 +172,12 @@
         "Temperature-controlled storage",
         "Servicing and maintenance"
       ],
-      "applications": ["Food processing", "Hotels and hospitality", "Healthcare", "Retail"],
+      "applications": [
+        "Food processing",
+        "Hotels and hospitality",
+        "Healthcare",
+        "Retail"
+      ],
       "gallery": []
     },
     {
@@ -118,8 +195,15 @@
         "Related security infrastructure",
         "Technical support"
       ],
-      "applications": ["Homes", "Offices", "Commercial premises", "Facilities requiring monitored security"],
-      "gallery": ["cctv-pole.jpg"]
+      "applications": [
+        "Homes",
+        "Offices",
+        "Commercial premises",
+        "Facilities requiring monitored security"
+      ],
+      "gallery": [
+        "cctv-pole.jpg"
+      ]
     },
     {
       "slug": "networking-internet",
@@ -137,26 +221,13 @@
         "Connectivity installation",
         "Troubleshooting"
       ],
-      "applications": ["Offices", "Hotels", "Commercial buildings", "Residential properties"],
-      "gallery": []
-    },
-    {
-      "slug": "construction-civil-works",
-      "category": "construction",
-      "icon": "building",
-      "name": "Construction & Civil Works",
-      "short": "Construction and supporting civil works for residential and commercial projects.",
-      "image": "residential-build.jpg",
-      "image_alt": "Residential building constructed by RUNHTec",
-      "intro": "Construction and supporting civil works for residential and commercial projects. Where a project requires several disciplines, RUNHTec can coordinate the technical services under one project approach.",
-      "scope": [
-        "Residential construction",
-        "Commercial construction",
-        "Supporting civil works",
-        "Coordination of electrical and mechanical services within the build"
+      "applications": [
+        "Offices",
+        "Hotels",
+        "Commercial buildings",
+        "Residential properties"
       ],
-      "applications": ["Residential properties", "Commercial buildings"],
-      "gallery": ["residential-build.jpg", "building-evening.jpg"]
+      "gallery": []
     },
     {
       "slug": "borehole-drilling-water",
@@ -172,8 +243,13 @@
         "Water-infrastructure solutions",
         "Integration with the property's water supply"
       ],
-      "applications": ["Residential properties", "Commercial and institutional sites"],
-      "gallery": ["borehole-drilling.jpg"]
+      "applications": [
+        "Residential properties",
+        "Commercial and institutional sites"
+      ],
+      "gallery": [
+        "borehole-drilling.jpg"
+      ]
     },
     {
       "slug": "maintenance-contracts",

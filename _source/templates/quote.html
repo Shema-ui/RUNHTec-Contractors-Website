@@ -82,8 +82,8 @@
       <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
 
       <div class="form-status" role="status" aria-live="polite"></div>
-      <button type="submit" class="btn btn-primary btn-lg">{% if site.form_endpoint %}Send request{% else %}{{ icon("whatsapp") }}Send request via WhatsApp{% endif %}</button>
-      <p class="form-hint">{% if site.form_endpoint %}Your request is sent to our team, who will get back to you.{% else %}Your request opens in WhatsApp, ready to send to our office in the country you select.{% endif %}</p>
+      <button type="submit" class="btn btn-primary btn-lg">{% if site.form_endpoint %}{{ icon("whatsapp") }}Send request{% else %}{{ icon("whatsapp") }}Send request via WhatsApp{% endif %}</button>
+      <p class="form-hint">{% if site.form_endpoint %}Your request is emailed to our team and opens in WhatsApp, addressed to the office in the country you select.{% else %}Your request opens in WhatsApp, ready to send to our office in the country you select.{% endif %}</p>
     </form>
 
     <aside class="side-card">

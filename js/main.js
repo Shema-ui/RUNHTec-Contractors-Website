@@ -161,8 +161,14 @@
       new FormData(form).forEach(function (v, k) { if (k !== "_honey" && k !== "consent") data[k] = String(v); });
       var btn = form.querySelector('button[type="submit"]');
 
+      var office = officeFor(data.country);
+      var waUrl = "https://wa.me/" + office.whatsapp + "?text=" + encodeURIComponent(summary(data, kind));
+
       if (cfg.formEndpoint) {
-        /* Send to the form service, which emails RUNHTec */
+        /* Both: open WhatsApp now (must happen on the click, or browsers block it),
+           and email the same request to RUNHTec through the form service. */
+        var waWin = window.open(waUrl, "_blank");
+        if (waWin) waWin.opener = null;
         btn.disabled = true;
         var payload = Object.assign({ _subject: (kind === "quote" ? "Website " + (data.request_type || "quote") + " request: " : "Website message: ") + (data.service || data.name), form: kind }, data);
         fetch(cfg.formEndpoint, {
@@ -173,15 +179,13 @@
           if (!res.ok) throw new Error("HTTP " + res.status);
           form.reset();
           if (kind === "quote") form.classList.remove("is-site-visit");
-          showStatus(form, "success", "Thank you, " + data.name.split(" ")[0] + ". Your " + (kind === "quote" ? "request" : "message") + " has been sent. Our team will contact you.");
+          showStatus(form, "success", "Thank you, " + data.name.split(" ")[0] + ". Your " + (kind === "quote" ? "request" : "message") + " has been emailed to our team" + (waWin ? ", and WhatsApp has opened so you can send it there too." : ". Our team will contact you."));
         }).catch(function () {
-          var o = officeFor(data.country);
-          showStatus(form, "error", "Sorry, your message could not be sent. Please try again, or call or WhatsApp us on " + o.phone_display + ".");
+          showStatus(form, "error", "Sorry, the email could not be sent. " + (waWin ? "Please send the WhatsApp message that opened, or " : "Please ") + "call us on " + office.phone_display + ".");
         }).finally(function () { btn.disabled = false; });
       } else {
         /* No form service set up: open WhatsApp with the message ready to send */
-        var office = officeFor(data.country);
-        var url = "https://wa.me/" + office.whatsapp + "?text=" + encodeURIComponent(summary(data, kind));
+        var url = waUrl;
         var win = window.open(url, "_blank");
         if (win) { win.opener = null; } else { window.location.href = url; }
         showStatus(form, "success", "WhatsApp has opened with your " + (kind === "quote" ? "request" : "message") + " to our " + office.country + " office. Tap send in WhatsApp to deliver it.");
