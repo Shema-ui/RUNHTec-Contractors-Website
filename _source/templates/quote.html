@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% from "_macros.html" import banner %}
+{% from "_icons.html" import icon %}
+{% block cta %}{% endblock %}
+{% block content %}
+{{ banner(root, "Request a quote", "Tell us about your project.", "Share a few details and our team will get back to you to discuss your requirements, confirm the scope or arrange a site visit.", None, [("Request a quote", None)]) }}
+
+<section class="section">
+  <div class="container form-layout">
+    <form class="rt-form" id="quote-form" data-form="quote" novalidate>
+      <fieldset class="field-group">
+        <legend>What do you need?</legend>
+        <div class="choice-row">
+          <label class="choice"><input type="radio" name="request_type" value="Quotation" checked><span>{{ icon("clipboard") }}A quotation</span></label>
+          <label class="choice"><input type="radio" name="request_type" value="Site visit"><span>{{ icon("calendar") }}A site visit</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="field-group">
+        <legend>Your details</legend>
+        <div class="field-row">
+          <div class="field"><label for="q-name">Full name <span class="req">*</span></label><input id="q-name" name="name" type="text" autocomplete="name" required></div>
+          <div class="field"><label for="q-company">Company / organisation</label><input id="q-company" name="company" type="text" autocomplete="organization"></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="q-phone">Phone / WhatsApp <span class="req">*</span></label><input id="q-phone" name="phone" type="tel" autocomplete="tel" required placeholder="+250 7XX XXX XXX" pattern="[+0-9 ()-]{9,20}"></div>
+          <div class="field"><label for="q-email">Email</label><input id="q-email" name="email" type="email" autocomplete="email"></div>
+        </div>
+      </fieldset>
+
+      <fieldset class="field-group">
+        <legend>Project details</legend>
+        <div class="field-row">
+          <div class="field">
+            <label for="q-service">Service <span class="req">*</span></label>
+            <select id="q-service" name="service" required>
+              <option value="">Choose a service</option>
+              {% for c in categories %}
+              <optgroup label="{{ c.name }}">
+                {% for s in c["items"] %}<option value="{{ s.name }}" data-slug="{{ s.slug }}">{{ s.name }}</option>{% endfor %}
+              </optgroup>
+              {% endfor %}
+              <option value="Several services / not sure">Several services / not sure</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="q-property">Property type</label>
+            <select id="q-property" name="property_type">
+              <option value="">Select</option>
+              {% for i in site.industries %}<option>{{ i.name }}</option>{% endfor %}
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="q-country">Country <span class="req">*</span></label>
+            <select id="q-country" name="country" required>
+              {% for o in site.offices %}<option>{{ o.country }}</option>{% endfor %}
+            </select>
+          </div>
+          <div class="field"><label for="q-location">Project location <span class="req">*</span></label><input id="q-location" name="location" type="text" required placeholder="City / district / area"></div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="q-urgency">Timeline</label>
+            <select id="q-urgency" name="timeline">
+              <option>Planning / no fixed date</option>
+              <option>Within a month</option>
+              <option>Within a week</option>
+              <option>Urgent: system down</option>
+            </select>
+          </div>
+          <div class="field site-visit-only"><label for="q-date">Preferred site-visit date</label><input id="q-date" name="preferred_date" type="date"></div>
+        </div>
+        <div class="field"><label for="q-message">Describe what you need <span class="req">*</span></label><textarea id="q-message" name="message" rows="6" required minlength="10" placeholder="Building type, size, the system you need, current problem, anything else useful..."></textarea></div>
+      </fieldset>
+
+      <div class="field consent">
+        <label class="check"><input type="checkbox" name="consent" value="yes" required><span>I agree that RUNHTec may use these details to respond to my request, as described in the <a href="{{ root }}privacy-policy/">privacy policy</a>. <span class="req">*</span></span></label>
+      </div>
+      <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <div class="form-status" role="status" aria-live="polite"></div>
+      <button type="submit" class="btn btn-primary btn-lg">{% if site.form_endpoint %}Send request{% else %}{{ icon("whatsapp") }}Send request via WhatsApp{% endif %}</button>
+      <p class="form-hint">{% if site.form_endpoint %}Your request is sent to our team, who will get back to you.{% else %}Your request opens in WhatsApp, ready to send to our office in the country you select.{% endif %}</p>
+    </form>
+
+    <aside class="side-card">
+      <h2>Prefer to talk?</h2>
+      <p>Call or message the office nearest your project.</p>
+      {% for o in site.offices %}
+      <div class="side-office">
+        <strong>{{ o.country }} · {{ o.role }}</strong>
+        <a href="tel:{{ o.phone }}">{{ icon("phone") }}{{ o.phone_display }}</a>
+        <a href="https://wa.me/{{ o.whatsapp }}" target="_blank" rel="noopener">{{ icon("whatsapp") }}WhatsApp</a>
+      </div>
+      {% endfor %}
+      <div class="side-office">
+        <strong>Email</strong>
+        <a href="mailto:{{ site.email }}">{{ icon("mail") }}{{ site.email }}</a>
+      </div>
+      <ol class="mini-process small">
+        <li><strong>We review</strong> your request.</li>
+        <li><strong>We contact you</strong> to confirm details.</li>
+        <li><strong>Site assessment</strong> where needed.</li>
+        <li><strong>Quotation</strong> with proposed scope.</li>
+      </ol>
+    </aside>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% from "_macros.html" import banner, service_card %}
+{% from "_icons.html" import icon %}
+{% block content %}
+{{ banner(root, "Our services", "Engineering and technical services, organised by discipline.", "Choose a category to see what we deliver. Every service can be quoted on its own or coordinated as part of a larger project.", "electrical-panel.jpg", [("Services", None)]) }}
+
+<nav class="cat-nav" aria-label="Service categories">
+  <div class="container">
+    <ul>
+      {% for c in categories %}<li><a href="#{{ c.id }}">{{ c.name }}</a></li>{% endfor %}
+    </ul>
+  </div>
+</nav>
+
+{% for c in categories %}
+<section class="section cat-section{% if loop.index is even %} section-tint{% endif %}" id="{{ c.id }}">
+  <div class="container cat-layout">
+    <div class="cat-head">
+      <p class="kicker">{{ "%02d"|format(loop.index) }} · Category</p>
+      <h2>{{ c.name }}</h2>
+      <p>{{ c.text }}</p>
+    </div>
+    <div class="card-grid card-grid-2">
+      {% for s in c["items"] %}{{ service_card(root, s) }}{% endfor %}
+    </div>
+  </div>
+</section>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,171 @@
+{% from "_icons.html" import icon %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if section == "home" %}{{ site.name }} | {{ title }}{% else %}{{ title }} | {{ site.name }}{% endif %}</title>
+  <meta name="description" content="{{ description }}">
+  <link rel="canonical" href="{{ canonical }}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:title" content="{{ title }} | {{ site.short_name }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:url" content="{{ canonical }}">
+  <meta property="og:image" content="{{ site.base_url }}/images/hero-building.jpg">
+  <meta name="theme-color" content="#881946">
+  <link rel="icon" type="image/png" href="{{ root }}images/favicon.png">
+  <link rel="apple-touch-icon" href="{{ root }}images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ root }}css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "{{ site.name }}",
+    "url": "{{ site.base_url }}/",
+    "logo": "{{ site.base_url }}/images/logo.png",
+    "email": "{{ site.email }}",
+    "slogan": "{{ site.tagline }}",
+    "areaServed": ["Rwanda", "Uganda"],
+    "location": [
+      {% for o in site.offices %}
+      {
+        "@type": "LocalBusiness",
+        "name": "{{ site.name }} — {{ o.role }} ({{ o.country }})",
+        "telephone": "{{ o.phone }}",
+        "image": "{{ site.base_url }}/images/hero-building.jpg",
+        "address": { "@type": "PostalAddress", "streetAddress": "{{ o.address.split(',')[0] }}", "addressLocality": "{{ o.city }}", "addressCountry": "{{ o.country_code }}" }
+      }{% if not loop.last %},{% endif %}
+
+      {% endfor %}
+    ]
+  }
+  </script>
+  {% block head %}{% endblock %}
+</head>
+<body class="page-{{ section or 'other' }}">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span class="topbar-areas">Serving clients across Rwanda &amp; Uganda</span>
+      <ul class="topbar-contacts">
+        {% for o in site.offices %}
+        <li><a href="tel:{{ o.phone }}">{{ icon("phone") }}<span>{{ o.country }} {{ o.phone_display }}</span></a></li>
+        {% endfor %}
+        <li><a href="mailto:{{ site.email }}">{{ icon("mail") }}<span>{{ site.email }}</span></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="{{ root }}" class="brand" aria-label="{{ site.name }}, home">
+        <img src="{{ root }}images/logo.png" alt="{{ site.name }}" width="150" height="88">
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="site-nav">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li class="has-mega">
+            <a href="{{ root }}services/" class="nav-link{% if section == 'services' %} is-active{% endif %}" aria-haspopup="true">Services</a>
+            <button class="submenu-toggle" type="button" aria-expanded="false" aria-label="Show services">{{ icon("chevron") }}</button>
+            <div class="mega">
+              <div class="mega-inner">
+                {% for c in categories %}
+                <div class="mega-col">
+                  <p class="mega-title">{{ c.name }}</p>
+                  <ul>
+                    {% for s in c["items"] %}
+                    <li><a href="{{ root }}{{ s.page }}">{{ icon(s.icon) }}<span>{{ s.name }}</span></a></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </li>
+          <li><a href="{{ root }}industries/" class="nav-link{% if section == 'industries' %} is-active{% endif %}">Industries</a></li>
+          <li><a href="{{ root }}projects/" class="nav-link{% if section == 'projects' %} is-active{% endif %}">Projects</a></li>
+          <li><a href="{{ root }}maintenance-contracts/" class="nav-link{% if section == 'maintenance' %} is-active{% endif %}">Maintenance</a></li>
+          <li><a href="{{ root }}about/" class="nav-link{% if section == 'about' %} is-active{% endif %}">About</a></li>
+          <li><a href="{{ root }}contact/" class="nav-link{% if section == 'contact' %} is-active{% endif %}">Contact</a></li>
+        </ul>
+        <a href="{{ root }}request-a-quote/" class="btn btn-primary nav-cta">Request a Quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    {% block content %}{% endblock %}
+  </main>
+
+  {% block cta %}
+  <section class="cta-band">
+    <div class="container cta-inner">
+      <div>
+        <h2>Planning a project or need a site visit?</h2>
+        <p>Tell us what you need. We'll arrange a consultation or site assessment in Rwanda or Uganda.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="{{ root }}request-a-quote/" class="btn btn-light">Request a Quote</a>
+        <a href="https://wa.me/{{ site.offices[0].whatsapp }}" class="btn btn-outline-light" target="_blank" rel="noopener">{{ icon("whatsapp") }}WhatsApp us</a>
+      </div>
+    </div>
+  </section>
+  {% endblock %}
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="{{ root }}images/logo.png" alt="{{ site.name }}" width="140" height="82" loading="lazy">
+        <p>{{ site.tagline }}.</p>
+        <p class="footer-small">Engineering and technical services for residential, commercial and institutional clients in Rwanda and Uganda.</p>
+      </div>
+      <div>
+        <h3 class="footer-title">Services</h3>
+        <ul class="footer-links">
+          {% for c in categories %}
+          <li><a href="{{ root }}services/#{{ c.id }}">{{ c.name }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-title">Company</h3>
+        <ul class="footer-links">
+          <li><a href="{{ root }}about/">About us</a></li>
+          <li><a href="{{ root }}industries/">Industries</a></li>
+          <li><a href="{{ root }}projects/">Projects</a></li>
+          <li><a href="{{ root }}request-a-quote/">Request a quote</a></li>
+          <li><a href="{{ root }}contact/">Contact</a></li>
+          <li><a href="{{ root }}privacy-policy/">Privacy policy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-title">Offices</h3>
+        {% for o in site.offices %}
+        <p class="footer-office"><strong>{{ o.country }} · {{ o.role }}</strong>{{ o.address }}<br><a href="tel:{{ o.phone }}">{{ o.phone_display }}</a></p>
+        {% endfor %}
+        <p class="footer-office"><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; {{ year }} {{ site.name }}. All rights reserved.</p>
+      <a href="{{ root }}privacy-policy/">Privacy policy</a>
+    </div>
+  </footer>
+
+  <div class="mobile-bar" aria-label="Quick contact">
+    <a href="tel:{{ site.offices[0].phone }}">{{ icon("phone") }}Call</a>
+    <a href="https://wa.me/{{ site.offices[0].whatsapp }}" target="_blank" rel="noopener">{{ icon("whatsapp") }}WhatsApp</a>
+    <a href="{{ root }}request-a-quote/" class="mobile-bar-quote">{{ icon("clipboard") }}Quote</a>
+  </div>
+
+  <script>window.RUNHTEC = {{ {"offices": site.offices, "email": site.email, "formEndpoint": site.form_endpoint} | tojson }};</script>
+  <script src="{{ root }}js/main.js" defer></script>
+</body>
+</html>

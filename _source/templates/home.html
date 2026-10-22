@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+{% from "_macros.html" import service_card, section_head %}
+{% from "_icons.html" import icon %}
+{% set core = ["electrical-installations", "hvac-air-conditioning-chillers", "standby-generators-backup-power", "solar-pv-hybrid-systems", "cold-rooms-refrigeration", "maintenance-contracts"] %}
+
+{% block content %}
+<section class="hero">
+  <img class="hero-bg" src="{{ root }}images/hero-building.jpg" alt="" fetchpriority="high">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="kicker light">Engineering &amp; technical services · Rwanda | Uganda</p>
+      <h1>Engineering power into every structure.</h1>
+      <p class="lead">Electrical systems, HVAC and chillers, standby power, solar energy, cold rooms and maintenance contracts, planned, installed and supported by one coordinated team.</p>
+      <div class="hero-actions">
+        <a href="{{ root }}request-a-quote/" class="btn btn-primary btn-lg">Request a Quote</a>
+        <a href="{{ root }}request-a-quote/?type=site-visit" class="btn btn-outline-light btn-lg">{{ icon("calendar") }}Book a Site Visit</a>
+      </div>
+    </div>
+    <aside class="hero-card" aria-label="Talk to an engineer">
+      <p class="hero-card-title">Talk to our team</p>
+      {% for o in site.offices %}
+      <div class="hero-office">
+        <span class="hero-office-label">{{ o.country }} · {{ o.role }}</span>
+        <a href="tel:{{ o.phone }}" class="hero-office-phone">{{ o.phone_display }}</a>
+        <a href="https://wa.me/{{ o.whatsapp }}" target="_blank" rel="noopener" class="hero-office-wa">{{ icon("whatsapp") }}WhatsApp</a>
+      </div>
+      {% endfor %}
+    </aside>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="split-head">
+      {{ section_head("Core services", "Technical systems that keep buildings running.", "From power and cooling to energy and maintenance, our core services cover the systems homes, businesses and institutions depend on every day.") }}
+      <a href="{{ root }}services/" class="link-arrow">All services {{ icon("arrow") }}</a>
+    </div>
+    <div class="card-grid">
+      {% for slug in core %}
+        {% for s in services if s.slug == slug %}{{ service_card(root, s) }}{% endfor %}
+      {% endfor %}
+    </div>
+
+    <div class="also">
+      <p class="also-title">Also delivered by RUNHTec</p>
+      <div class="also-grid">
+        {% for c in categories if c.id in ["security", "construction"] %}
+        <div class="also-group">
+          <p class="also-cat">{{ c.name }}</p>
+          <ul>
+            {% for s in c["items"] %}
+            <li><a href="{{ root }}{{ s.page }}">{{ icon(s.icon) }}{{ s.name }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-tint">
+  <div class="container feature">
+    <figure class="feature-media">
+      <img src="{{ root }}images/solar-technician.jpg" alt="RUNHTec technician installing a hybrid solar inverter" loading="lazy" width="810" height="839">
+    </figure>
+    <div class="feature-copy">
+      {{ section_head("Why RUNHTec", "One partner from first site visit to long-term support.") }}
+      <p>RUNHTec Contractors Ltd provides integrated technical solutions for residential, commercial and industrial applications. We aim to deliver practical engineering that is coordinated, maintainable and appropriate to each client's operating environment.</p>
+      <ul class="check-list">
+        <li>{{ icon("check") }}<span><strong>Full project lifecycle</strong> from requirements and site assessment to installation, testing, commissioning and maintenance.</span></li>
+        <li>{{ icon("check") }}<span><strong>Coordinated disciplines.</strong> Where a project needs several services, we manage them under one project approach.</span></li>
+        <li>{{ icon("check") }}<span><strong>Safety and quality</strong> through safe working practices, appropriate materials, technical checks and clear communication.</span></li>
+        <li>{{ icon("check") }}<span><strong>Regional presence</strong> with a head office in Kigali and a branch in Kampala.</span></li>
+      </ul>
+      <a href="{{ root }}about/" class="btn btn-secondary">About RUNHTec</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="split-head">
+      {{ section_head("Industries", "Who we work with.") }}
+      <a href="{{ root }}industries/" class="link-arrow">Industries we serve {{ icon("arrow") }}</a>
+    </div>
+    <ul class="industry-pills">
+      {% for i in site.industries %}<li>{{ i.name }}</li>{% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="container">
+    {{ section_head("How we work", "A practical sequence from first requirement to handover and support.") }}
+    <ol class="process">
+      {% for p in site.process %}
+      <li><span class="process-num">{{ "%02d"|format(loop.index) }}</span><h3>{{ p.title }}</h3><p>{{ p.text }}</p></li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container maint-band">
+    <div class="maint-copy">
+      <p class="kicker">Maintenance contracts</p>
+      <h2>Keep critical systems reliable after handover.</h2>
+      <p>Planned preventive maintenance and responsive corrective support for electrical, HVAC, generator, solar and refrigeration systems.</p>
+      <a href="{{ root }}maintenance-contracts/" class="btn btn-primary">Explore maintenance contracts</a>
+    </div>
+    <img src="{{ root }}images/control-contactors.jpg" alt="Contactors inside an electrical control panel" loading="lazy" width="810" height="316">
+  </div>
+</section>
+
+<section class="section section-tint">
+  <div class="container">
+    <div class="split-head">
+      {{ section_head("Selected works", "Recent field activity.") }}
+      <a href="{{ root }}projects/" class="link-arrow">View projects {{ icon("arrow") }}</a>
+    </div>
+    <div class="mini-gallery">
+      {% for g in site.gallery[:4] %}
+      <figure><img src="{{ root }}images/{{ g.img }}" alt="{{ g.caption }}" loading="lazy"><figcaption>{{ g.caption }}</figcaption></figure>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="offices">
+  {% for o in site.offices %}
+  <div class="office office-{{ o.id }}">
+    <p class="kicker light">{{ o.role }}</p>
+    <h2>{{ o.country }}</h2>
+    <p class="office-address">{{ icon("pin") }}{{ o.address }}</p>
+    <div class="office-actions">
+      <a href="tel:{{ o.phone }}" class="btn btn-light">{{ icon("phone") }}{{ o.phone_display }}</a>
+      <a href="https://wa.me/{{ o.whatsapp }}" target="_blank" rel="noopener" class="btn btn-outline-light">{{ icon("whatsapp") }}WhatsApp</a>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+{% endblock %}

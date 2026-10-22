@@ -1,0 +1,79 @@
+{
+  "name": "RUNHTec Contractors Ltd",
+  "short_name": "RUNHTec",
+  "tagline": "Engineering Power Into Every Structure",
+  "base_url": "https://runhteccontractors.com",
+  "pages_root": "/RUNHTec-Contractors-Website/",
+  "_pages_root_help": "Folder the site lives in. Change to \"/\" once runhteccontractors.com is connected.",
+  "email": "contact@runhteccontractors.com",
+
+  "form_endpoint": "",
+  "_form_endpoint_help": "Leave empty to send form requests through WhatsApp. To receive them by email instead, paste a form-service address here (e.g. https://formsubmit.co/ajax/you@example.com) and rebuild.",
+
+  "offices": [
+    {
+      "id": "rwanda",
+      "country": "Rwanda",
+      "role": "Head Office",
+      "address": "Gikondo Sector, Kigali, Rwanda",
+      "city": "Kigali",
+      "country_code": "RW",
+      "phone_display": "+250 793 229 790",
+      "phone": "+250793229790",
+      "whatsapp": "250793229790"
+    },
+    {
+      "id": "uganda",
+      "country": "Uganda",
+      "role": "Branch Office",
+      "address": "Industrial Area, Kampala, Uganda",
+      "city": "Kampala",
+      "country_code": "UG",
+      "phone_display": "+256 754 625 168",
+      "phone": "+256754625168",
+      "whatsapp": "256754625168"
+    }
+  ],
+
+  "industries": [
+    { "name": "Residential properties", "text": "Electrical, solar, backup power, security, connectivity and home-energy solutions for property owners.", "services": ["Electrical", "Solar PV", "Generators", "CCTV"] },
+    { "name": "Commercial buildings", "text": "Building electrical, HVAC, backup power, security and connectivity systems.", "services": ["Electrical", "HVAC", "Generators", "Networking"] },
+    { "name": "Hospitals & healthcare", "text": "Electrical infrastructure, energy continuity and controlled environments.", "services": ["Electrical", "Generators", "HVAC", "Cold rooms"] },
+    { "name": "Hotels & hospitality", "text": "HVAC, electrical, energy and facility-support systems.", "services": ["HVAC", "Electrical", "Solar PV", "Cold rooms"] },
+    { "name": "Offices", "text": "Power, air conditioning, backup power, CCTV and network infrastructure for workplaces.", "services": ["Electrical", "HVAC", "CCTV", "Networking"] },
+    { "name": "Manufacturing facilities", "text": "Industrial electrical, mechanical, ventilation and technical infrastructure.", "services": ["Electrical", "HVAC", "Generators", "Maintenance"] },
+    { "name": "Retail businesses", "text": "Electrical, lighting, HVAC, refrigeration, CCTV and connectivity systems.", "services": ["Electrical", "HVAC", "Cold rooms", "CCTV"] }
+  ],
+
+  "process": [
+    { "title": "Consultation", "text": "Understand your needs, scope and expected outcome." },
+    { "title": "Site assessment", "text": "Review existing conditions, measurements, access, safety and technical constraints." },
+    { "title": "Planning & design", "text": "Develop the appropriate technical solution, materials and work plan." },
+    { "title": "Installation", "text": "Execute works with coordinated site activities and responsible workmanship." },
+    { "title": "Testing & commissioning", "text": "Check system operation and resolve issues before handover." },
+    { "title": "Handover", "text": "Provide completion information and client orientation where required." },
+    { "title": "Maintenance", "text": "Provide ongoing technical support and maintenance arrangements." }
+  ],
+
+  "values": [
+    { "name": "Quality", "text": "Work executed with attention to technical requirements and finish." },
+    { "name": "Reliability", "text": "Dependable communication, execution and technical support." },
+    { "name": "Safety", "text": "Safety-conscious planning and responsible site practices." },
+    { "name": "Integrity", "text": "Professional conduct and clear communication with clients." },
+    { "name": "Innovation", "text": "Practical use of modern technologies and energy solutions." },
+    { "name": "Sustainability", "text": "Solutions that consider energy efficiency and long-term operation." }
+  ],
+
+  "gallery": [
+    { "img": "residential-build.jpg", "caption": "Residential construction works", "category": "Construction" },
+    { "img": "solar-technician.jpg", "caption": "Solar and hybrid-energy installation", "category": "Solar" },
+    { "img": "electrical-panel.jpg", "caption": "Electrical distribution and control panel", "category": "Electrical" },
+    { "img": "hvac-cassette.jpg", "caption": "HVAC installation works", "category": "HVAC" },
+    { "img": "borehole-drilling.jpg", "caption": "Borehole drilling and water works", "category": "Borehole" },
+    { "img": "outdoor-solar.jpg", "caption": "Outdoor solar installation", "category": "Solar" },
+    { "img": "cctv-pole.jpg", "caption": "CCTV surveillance installation", "category": "CCTV" },
+    { "img": "inverter-battery.jpg", "caption": "Hybrid inverter and battery storage", "category": "Solar" },
+    { "img": "control-contactors.jpg", "caption": "Electrical control infrastructure", "category": "Electrical" },
+    { "img": "building-evening.jpg", "caption": "Completed residential building", "category": "Construction" }
+  ]
+}

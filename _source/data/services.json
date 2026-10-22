@@ -1,0 +1,193 @@
+{
+  "categories": [
+    { "id": "power", "name": "Power & Energy", "text": "Electrical systems, standby power and renewable energy." },
+    { "id": "cooling", "name": "Cooling & Refrigeration", "text": "Climate control, chillers and temperature-controlled storage." },
+    { "id": "security", "name": "Security & Networks", "text": "Surveillance and data connectivity for modern buildings." },
+    { "id": "construction", "name": "Construction & Water", "text": "Building works and water infrastructure." },
+    { "id": "maintenance", "name": "Maintenance", "text": "Preventive and corrective support for installed systems." }
+  ],
+
+  "services": [
+    {
+      "slug": "electrical-installations",
+      "category": "power",
+      "icon": "bolt",
+      "name": "Electrical Installations",
+      "short": "Electrical installations, distribution, lighting, power systems and technical works for buildings and industry.",
+      "image": "electrical-panel.jpg",
+      "image_alt": "Electrical distribution and control panel installed by RUNHTec",
+      "intro": "RUNHTec undertakes electrical installation and technical works for building and industrial environments, from distribution and protection to wiring, lighting and associated support.",
+      "scope": [
+        "Electrical installation works for new and existing buildings",
+        "Distribution panels and control panels",
+        "Electrical protection and wiring",
+        "Lighting installations",
+        "Power systems for commercial and industrial facilities",
+        "Technical maintenance of electrical systems"
+      ],
+      "applications": ["Residential power systems", "Commercial buildings", "Industrial installations", "Energy upgrades"],
+      "gallery": ["electrical-panel.jpg", "control-contactors.jpg"]
+    },
+    {
+      "slug": "standby-generators-backup-power",
+      "category": "power",
+      "icon": "generator",
+      "name": "Standby Generators & Backup Power",
+      "short": "Standby generator and backup power systems that keep essential operations running.",
+      "image": null,
+      "image_alt": "",
+      "intro": "Power interruptions disrupt homes, businesses and critical facilities. RUNHTec provides standby generator and backup power solutions, coordinated with the building's electrical distribution and, where suitable, with solar and battery systems.",
+      "scope": [
+        "Standby generator systems",
+        "Backup power for essential loads",
+        "Integration with the building's electrical distribution",
+        "Hybrid backup using solar and battery storage",
+        "Servicing and maintenance of backup power systems"
+      ],
+      "applications": ["Hospitals and healthcare", "Commercial buildings", "Hotels", "Residential properties"],
+      "gallery": []
+    },
+    {
+      "slug": "solar-pv-hybrid-systems",
+      "category": "power",
+      "icon": "sun",
+      "name": "Solar PV & Hybrid Solar Systems",
+      "short": "Solar PV, hybrid inverters, battery storage and energy solutions designed around your requirements.",
+      "image": "inverter-battery.jpg",
+      "image_alt": "Hybrid solar inverter and battery storage installation",
+      "intro": "Our solar and hybrid solutions can include solar PV, hybrid inverters, battery storage, system integration and maintenance, designed around each client's energy requirements.",
+      "scope": [
+        "Solar PV installations",
+        "Hybrid solar systems",
+        "Battery storage",
+        "Inverters and system integration",
+        "Maintenance and technical support"
+      ],
+      "applications": ["Backup power", "Residential energy", "Commercial buildings", "Energy upgrades"],
+      "gallery": ["solar-technician.jpg", "inverter-battery.jpg", "outdoor-solar.jpg"]
+    },
+    {
+      "slug": "hvac-air-conditioning-chillers",
+      "category": "cooling",
+      "icon": "fan",
+      "name": "HVAC, Air Conditioning & Chillers",
+      "short": "Air-conditioning, ventilation, chillers and mechanical climate-control solutions.",
+      "image": "hvac-cassette.jpg",
+      "image_alt": "Ceiling cassette air-conditioning unit being installed",
+      "intro": "RUNHTec provides air-conditioning, ventilation and mechanical climate-control installations for buildings and facilities, supporting comfort, safety and reliable operation.",
+      "scope": [
+        "Air-conditioning installations",
+        "Ventilation systems",
+        "Chiller systems",
+        "Mechanical climate-control solutions",
+        "Servicing and maintenance"
+      ],
+      "applications": ["Offices", "Hotels", "Hospitals", "Retail and commercial buildings"],
+      "gallery": ["hvac-cassette.jpg"]
+    },
+    {
+      "slug": "cold-rooms-refrigeration",
+      "category": "cooling",
+      "icon": "snow",
+      "name": "Cold Rooms & Refrigeration",
+      "short": "Cold-storage and refrigeration solutions for temperature-controlled applications.",
+      "image": null,
+      "image_alt": "",
+      "intro": "Refrigeration and temperature-controlled environments for commercial and industrial uses where stored products depend on consistent conditions.",
+      "scope": [
+        "Cold rooms",
+        "Refrigeration systems",
+        "Temperature-controlled storage",
+        "Servicing and maintenance"
+      ],
+      "applications": ["Food processing", "Hotels and hospitality", "Healthcare", "Retail"],
+      "gallery": []
+    },
+    {
+      "slug": "cctv-security-systems",
+      "category": "security",
+      "icon": "camera",
+      "name": "CCTV & Security Systems",
+      "short": "CCTV, surveillance and related security infrastructure, installed and configured.",
+      "image": "cctv-pole.jpg",
+      "image_alt": "Solar-powered CCTV camera mounted on a pole",
+      "intro": "RUNHTec provides CCTV and surveillance installation, configuration and technical support. Systems are planned with attention to cable routing, equipment placement, power availability and future maintenance.",
+      "scope": [
+        "CCTV and surveillance installation",
+        "System configuration",
+        "Related security infrastructure",
+        "Technical support"
+      ],
+      "applications": ["Homes", "Offices", "Commercial premises", "Facilities requiring monitored security"],
+      "gallery": ["cctv-pole.jpg"]
+    },
+    {
+      "slug": "networking-internet",
+      "category": "security",
+      "icon": "network",
+      "name": "Internet & Network Solutions",
+      "short": "Structured cabling, Wi-Fi, router and network configuration and connectivity installation.",
+      "image": null,
+      "image_alt": "",
+      "intro": "Networking services covering structured cabling, Wi-Fi infrastructure, router and network configuration, connectivity installation and troubleshooting, treated as part of the wider building environment.",
+      "scope": [
+        "Structured cabling",
+        "Wi-Fi infrastructure",
+        "Router and network configuration",
+        "Connectivity installation",
+        "Troubleshooting"
+      ],
+      "applications": ["Offices", "Hotels", "Commercial buildings", "Residential properties"],
+      "gallery": []
+    },
+    {
+      "slug": "construction-civil-works",
+      "category": "construction",
+      "icon": "building",
+      "name": "Construction & Civil Works",
+      "short": "Construction and supporting civil works for residential and commercial projects.",
+      "image": "residential-build.jpg",
+      "image_alt": "Residential building constructed by RUNHTec",
+      "intro": "Construction and supporting civil works for residential and commercial projects. Where a project requires several disciplines, RUNHTec can coordinate the technical services under one project approach.",
+      "scope": [
+        "Residential construction",
+        "Commercial construction",
+        "Supporting civil works",
+        "Coordination of electrical and mechanical services within the build"
+      ],
+      "applications": ["Residential properties", "Commercial buildings"],
+      "gallery": ["residential-build.jpg", "building-evening.jpg"]
+    },
+    {
+      "slug": "borehole-drilling-water",
+      "category": "construction",
+      "icon": "drop",
+      "name": "Borehole Drilling & Water",
+      "short": "Borehole drilling and water-infrastructure solutions for applicable projects.",
+      "image": "borehole-drilling.jpg",
+      "image_alt": "Borehole drilling rig and RUNHTec crew on site",
+      "intro": "Borehole drilling and water-infrastructure solutions for applicable projects, giving properties and facilities a dependable water source.",
+      "scope": [
+        "Borehole drilling",
+        "Water-infrastructure solutions",
+        "Integration with the property's water supply"
+      ],
+      "applications": ["Residential properties", "Commercial and institutional sites"],
+      "gallery": ["borehole-drilling.jpg"]
+    },
+    {
+      "slug": "maintenance-contracts",
+      "category": "maintenance",
+      "icon": "wrench",
+      "name": "Maintenance Contracts",
+      "short": "Preventive and corrective maintenance contracts for the systems that keep your facility running.",
+      "image": "control-contactors.jpg",
+      "image_alt": "Electrical contactors inside a maintained control panel",
+      "intro": "Installed systems perform best when they are looked after. RUNHTec offers technical support and maintenance arrangements appropriate to each installed system.",
+      "scope": [],
+      "applications": [],
+      "gallery": [],
+      "page": "maintenance-contracts/"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{% from "_icons.html" import icon %}
+
+{# Page banner used at the top of inner pages #}
+{% macro banner(root, kicker, heading, lead, image=None, crumbs=[]) -%}
+<section class="page-banner{% if image %} has-image{% endif %}">
+  {% if image %}<img class="banner-bg" src="{{ root }}images/{{ image }}" alt="">{% endif %}
+  <div class="container banner-inner">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="{{ root }}">Home</a>
+      {% for label, href in crumbs %}<span aria-hidden="true">/</span>{% if href %}<a href="{{ root }}{{ href }}">{{ label }}</a>{% else %}<span aria-current="page">{{ label }}</span>{% endif %}{% endfor %}
+    </nav>
+    <p class="kicker">{{ kicker }}</p>
+    <h1>{{ heading }}</h1>
+    {% if lead %}<p class="lead">{{ lead }}</p>{% endif %}
+  </div>
+</section>
+{%- endmacro %}
+
+{# Service card #}
+{% macro service_card(root, s) -%}
+<a class="service-card" href="{{ root }}{{ s.page }}">
+  <span class="service-icon">{{ icon(s.icon) }}</span>
+  <h3>{{ s.name }}</h3>
+  <p>{{ s.short }}</p>
+  <span class="link-arrow">Learn more {{ icon("arrow") }}</span>
+</a>
+{%- endmacro %}
+
+{# Clearly marked placeholder for information RUNHTec still has to provide #}
+{% macro placeholder(text) -%}
+<div class="placeholder" role="note"><strong>Information to be provided:</strong> {{ text }}</div>
+{%- endmacro %}
+
+{# Section heading #}
+{% macro section_head(kicker, heading, lead=None, center=False) -%}
+<div class="section-head{% if center %} center{% endif %}">
+  <p class="kicker">{{ kicker }}</p>
+  <h2>{{ heading }}</h2>
+  {% if lead %}<p class="section-lead">{{ lead }}</p>{% endif %}
+</div>
+{%- endmacro %}

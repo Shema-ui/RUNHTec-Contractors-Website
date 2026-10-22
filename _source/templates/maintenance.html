@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% from "_macros.html" import banner, section_head, placeholder %}
+{% from "_icons.html" import icon %}
+{% block content %}
+{{ banner(root, "Maintenance", "Maintenance contracts that protect your systems and your operations.", "Preventive and corrective maintenance for the technical systems your facility depends on.", "control-contactors.jpg", [("Maintenance contracts", None)]) }}
+
+<section class="section">
+  <div class="container">
+    {{ section_head("Two types of support", "Prevent problems. Fix them fast when they happen.") }}
+    <div class="duo">
+      <div class="duo-card">
+        <span class="service-icon">{{ icon("calendar") }}</span>
+        <h3>Preventive maintenance</h3>
+        <p>Scheduled inspections, servicing and checks that keep systems performing well and help reduce unexpected breakdowns.</p>
+      </div>
+      <div class="duo-card">
+        <span class="service-icon">{{ icon("wrench") }}</span>
+        <h3>Corrective maintenance</h3>
+        <p>Diagnosis and repair when a system develops a fault, so normal operation is restored and the cause is addressed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-tint">
+  <div class="container two-col">
+    <div class="prose">
+      {{ section_head("Systems we can cover", "One contract for several systems.") }}
+      <ul class="check-list">
+        {% for slug in ["electrical-installations", "hvac-air-conditioning-chillers", "standby-generators-backup-power", "solar-pv-hybrid-systems", "cold-rooms-refrigeration", "cctv-security-systems", "networking-internet"] %}
+          {% for s in services if s.slug == slug %}<li>{{ icon("check") }}<span><a href="{{ root }}{{ s.page }}">{{ s.name }}</a></span></li>{% endfor %}
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="prose">
+      {{ section_head("Who it suits", "Facilities where downtime is costly.") }}
+      <ul class="tag-list">
+        {% for i in site.industries %}<li>{{ i.name }}</li>{% endfor %}
+      </ul>
+      <div class="note-box">
+        <strong>Complimentary maintenance with installations.</strong>
+        RUNHTec has offered six months of complimentary maintenance with its installations. Exact terms are confirmed in each project quotation.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container prose narrow">
+    {{ section_head("What a contract includes", "Tailored to your systems and site.") }}
+    <p>Each maintenance arrangement is agreed with the client and depends on the systems installed, how critical they are and how they are used. We'll recommend a suitable scope after reviewing your site.</p>
+    {{ placeholder("Standard contract options: visit frequency (e.g. monthly or quarterly), response times for faults, what is included and excluded, and how pricing works.") }}
+    <p class="center-actions">
+      <a href="{{ root }}request-a-quote/?service=maintenance-contracts" class="btn btn-primary">Request a maintenance quote</a>
+      <a href="{{ root }}request-a-quote/?service=maintenance-contracts&amp;type=site-visit" class="btn btn-secondary">{{ icon("calendar") }}Book a site assessment</a>
+    </p>
+  </div>
+</section>
+{% endblock %}

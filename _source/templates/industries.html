@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% from "_macros.html" import banner, section_head %}
+{% from "_icons.html" import icon %}
+{% block content %}
+{{ banner(root, "Industries", "Technical services adapted to each operating environment.", "Different facilities have different priorities. We plan every system around how the building is actually used.", "building-evening.jpg", [("Industries", None)]) }}
+
+<section class="section">
+  <div class="container">
+    <div class="industry-grid">
+      {% for i in site.industries %}
+      <article class="industry-card">
+        <span class="industry-num">{{ "%02d"|format(loop.index) }}</span>
+        <h2>{{ i.name }}</h2>
+        <p>{{ i.text }}</p>
+        <ul class="tag-list small">{% for t in i.services %}<li>{{ t }}</li>{% endfor %}</ul>
+      </article>
+      {% endfor %}
+      <article class="industry-card industry-card-cta">
+        <h2>Don't see your sector?</h2>
+        <p>Tell us about your facility and we'll recommend the right technical services.</p>
+        <a href="{{ root }}contact/" class="link-arrow">Contact us {{ icon("arrow") }}</a>
+      </article>
+    </div>
+  </div>
+</section>
+{% endblock %}

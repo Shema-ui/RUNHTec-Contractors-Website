@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% from "_macros.html" import banner, section_head, placeholder %}
+{% from "_icons.html" import icon %}
+{% block content %}
+{{ banner(root, "Projects", "Selected works from the field.", "A visual record of RUNHTec field activities and completed or ongoing technical works.", "outdoor-solar.jpg", [("Projects", None)]) }}
+
+<section class="section">
+  <div class="container">
+    <div class="filter-bar" role="group" aria-label="Filter projects">
+      <button type="button" class="filter is-active" data-filter="all">All</button>
+      {% for cat in site.gallery|map(attribute="category")|unique %}
+      <button type="button" class="filter" data-filter="{{ cat }}">{{ cat }}</button>
+      {% endfor %}
+    </div>
+    <div class="project-grid">
+      {% for g in site.gallery %}
+      <figure class="project" data-category="{{ g.category }}">
+        <img src="{{ root }}images/{{ g.img }}" alt="{{ g.caption }}" loading="lazy">
+        <figcaption><span class="project-cat">{{ g.category }}</span>{{ g.caption }}</figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-tint">
+  <div class="container prose narrow">
+    {{ section_head("Case studies", "Detailed project write-ups.") }}
+    {{ placeholder("For each project you want to feature: client type (e.g. hotel, hospital), location, scope of work, year, and any results. Client names only with their permission.") }}
+  </div>
+</section>
+{% endblock %}

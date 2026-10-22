@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% from "_macros.html" import banner, section_head, placeholder %}
+{% from "_icons.html" import icon %}
+{% block content %}
+{{ banner(root, "About us", "Practical engineering for the way buildings really work.", "RUNHTec Contractors Ltd is an engineering and technical services company working across Rwanda and Uganda.", "building-wide.jpg", [("About us", None)]) }}
+
+<section class="section">
+  <div class="container two-col">
+    <div class="prose">
+      {{ section_head("Company overview", "Integrated technical solutions under one project approach.") }}
+      <p>RUNHTec Contractors Ltd provides integrated technical solutions for residential, commercial and industrial applications. Our service offering brings together electrical, energy, mechanical, refrigeration, security, connectivity and construction-related technical systems.</p>
+      <p>We support clients through the full project lifecycle, from understanding requirements and site assessment to installation, testing, commissioning and maintenance.</p>
+      <h3>Our positioning</h3>
+      <p>We aim to deliver practical engineering solutions that are coordinated, maintainable and appropriate to each client's operating environment. Where projects require multiple disciplines, RUNHTec can coordinate complementary technical services under one project approach.</p>
+      {{ placeholder("Year founded, company registration details and leadership team (optional).") }}
+    </div>
+    <figure class="stack-photo">
+      <img src="{{ root }}images/electrical-panel.jpg" alt="Electrical distribution panel installed by RUNHTec" loading="lazy" width="810" height="839">
+    </figure>
+  </div>
+</section>
+
+<section class="section section-tint">
+  <div class="container">
+    <div class="vm-grid">
+      <div class="vm-card">
+        <p class="kicker">Vision</p>
+        <p class="vm-text">To grow as a trusted engineering and construction partner delivering dependable technical infrastructure and sustainable energy solutions.</p>
+      </div>
+      <div class="vm-card">
+        <p class="kicker">Mission</p>
+        <p class="vm-text">To provide quality engineering, construction and technical services through practical design, professional installation, responsible project execution and responsive support.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    {{ section_head("Core values", "What clients can expect from us.") }}
+    <ul class="values">
+      {% for v in site["values"] %}
+      <li><h3>{{ v.name }}</h3><p>{{ v.text }}</p></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section section-tint">
+  <div class="container two-col">
+    <div class="prose">
+      {{ section_head("Quality & safety", "Safety and quality defined for every project.") }}
+      <p>RUNHTec approaches each project with attention to safe working practices, appropriate materials, technical checks, site coordination and clear communication. Safety and quality requirements are defined for each project according to its scope, environment and applicable standards.</p>
+      <h3>Technical capability</h3>
+      <ul class="check-list compact">
+        {% for s in services %}<li>{{ icon("check") }}<span>{{ s.name }}</span></li>{% endfor %}
+      </ul>
+    </div>
+    <div class="prose">
+      {{ section_head("Regional presence", "Built for local conditions. Ready for regional projects.") }}
+      <p>Our multidisciplinary model lets us support clients with individual technical services or coordinated packages, depending on project requirements.</p>
+      {% for o in site.offices %}
+      <div class="office-row">
+        <span class="office-row-icon">{{ icon("pin") }}</span>
+        <div><strong>{{ o.country }} · {{ o.role }}</strong><br>{{ o.address }}<br><a href="tel:{{ o.phone }}">{{ o.phone_display }}</a></div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

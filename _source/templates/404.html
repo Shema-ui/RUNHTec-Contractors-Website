@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block cta %}{% endblock %}
+{% block content %}
+<section class="section notfound">
+  <div class="container prose narrow center">
+    <p class="kicker">Error 404</p>
+    <h1>We couldn't find that page.</h1>
+    <p>The page may have moved. Try one of these instead:</p>
+    <p class="center-actions">
+      <a href="{{ root }}" class="btn btn-primary">Home</a>
+      <a href="{{ root }}services/" class="btn btn-secondary">Services</a>
+      <a href="{{ root }}contact/" class="btn btn-secondary">Contact</a>
+    </p>
+  </div>
+</section>
+{% endblock %}

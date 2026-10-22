@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% from "_macros.html" import banner, placeholder %}
+{% block cta %}{% endblock %}
+{% block content %}
+{{ banner(root, "Legal", "Privacy policy", "How we handle the information you share with us through this website.", None, [("Privacy policy", None)]) }}
+
+<section class="section">
+  <div class="container prose narrow">
+    {{ placeholder("Effective date, company registration details, and a review of this policy by RUNHTec (and a legal adviser if needed) before the site goes live.") }}
+
+    <h2>Who we are</h2>
+    <p>This website is operated by {{ site.name }}, with a head office in {{ site.offices[0].address }} and a branch in {{ site.offices[1].address }}. You can contact us at <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
+
+    <h2>Information we collect</h2>
+    <p>We only collect information you choose to give us, for example when you fill in the quotation or contact form, call us, or message us on WhatsApp. This can include your name, company, phone number, email address, project location and details about the work you need.</p>
+    <p>This website does not use advertising or analytics cookies.</p>
+
+    <h2>How we use it</h2>
+    <ul>
+      <li>To respond to your enquiry, prepare quotations and arrange site visits.</li>
+      <li>To deliver, support and maintain the services you request.</li>
+      <li>To keep records of our communication with you.</li>
+    </ul>
+    <p>We do not sell your information or use it for unrelated marketing.</p>
+
+    <h2>How your request is sent</h2>
+    <p>Depending on how you contact us, your message may pass through third-party services such as WhatsApp, email providers or a form-delivery service. These services process data under their own privacy policies.</p>
+
+    <h2>How long we keep it</h2>
+    <p>We keep enquiry information only as long as needed to respond to you, carry out any resulting work, and meet legal or accounting obligations.</p>
+
+    <h2>Your rights</h2>
+    <p>You can ask us to access, correct or delete the information we hold about you by emailing <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
+
+    <h2>Changes</h2>
+    <p>We may update this policy from time to time. The latest version will always be on this page.</p>
+  </div>
+</section>
+{% endblock %}

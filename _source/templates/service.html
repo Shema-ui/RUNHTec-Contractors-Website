@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% from "_macros.html" import banner, service_card, section_head, placeholder %}
+{% from "_icons.html" import icon %}
+{% set s = service %}
+{% block content %}
+{{ banner(root, s.category_name, s.name, s.short, s.image, [("Services", "services/"), (s.name, None)]) }}
+
+<section class="section">
+  <div class="container service-layout">
+    <article class="prose">
+      <h2>Overview</h2>
+      <p class="lead-dark">{{ s.intro }}</p>
+
+      <h3>What we deliver</h3>
+      <ul class="check-list">
+        {% for item in s.scope %}<li>{{ icon("check") }}<span>{{ item }}</span></li>{% endfor %}
+      </ul>
+
+      {% if s.applications %}
+      <h3>Typical applications</h3>
+      <ul class="tag-list">
+        {% for a in s.applications %}<li>{{ a }}</li>{% endfor %}
+      </ul>
+      {% endif %}
+
+      <h3>How we deliver it</h3>
+      <ol class="mini-process">
+        {% for p in site.process %}<li><strong>{{ p.title }}</strong> {{ p.text }}</li>{% endfor %}
+      </ol>
+
+      {{ placeholder("Specific equipment types, capacities or brands RUNHTec installs and services for " ~ s.name ~ " (optional, adds credibility).") }}
+
+      {% if s.gallery %}
+      <h3>From the field</h3>
+      <div class="detail-gallery">
+        {% for g in s.gallery %}<img src="{{ root }}images/{{ g }}" alt="{{ s.name }}: RUNHTec field work" loading="lazy">{% endfor %}
+      </div>
+      {% elif not s.image %}
+      <div class="no-photo">
+        <span>{{ icon(s.icon, "icon icon-xl") }}</span>
+        <p>Project photos for this service will be added soon.</p>
+      </div>
+      {% endif %}
+    </article>
+
+    <aside class="side-card" aria-label="Request this service">
+      <span class="service-icon">{{ icon(s.icon) }}</span>
+      <h2>Need {{ s.name|lower }}?</h2>
+      <p>Send us your requirements and we'll arrange a consultation or site assessment.</p>
+      <a href="{{ root }}request-a-quote/?service={{ s.slug }}" class="btn btn-primary btn-block">Request a Quote</a>
+      <a href="{{ root }}request-a-quote/?service={{ s.slug }}&amp;type=site-visit" class="btn btn-secondary btn-block">{{ icon("calendar") }}Book a Site Visit</a>
+      <div class="side-contacts">
+        {% for o in site.offices %}
+        <a href="https://wa.me/{{ o.whatsapp }}?text={{ ('Hello RUNHTec, I would like to ask about ' ~ s.name ~ '.')|urlencode }}" target="_blank" rel="noopener">{{ icon("whatsapp") }}WhatsApp {{ o.country }}</a>
+        {% endfor %}
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="section section-tint">
+  <div class="container">
+    {{ section_head("Related services", "More from " ~ s.category_name ~ " and beyond.") }}
+    <div class="card-grid">
+      {% set related = services|selectattr("category", "equalto", s.category)|rejectattr("slug", "equalto", s.slug)|list %}
+      {% set extra = services|selectattr("slug", "equalto", "maintenance-contracts")|list if s.category != "maintenance" else [] %}
+      {% for r in (related + extra)[:3] %}{{ service_card(root, r) }}{% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

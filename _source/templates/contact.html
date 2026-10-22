@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% from "_macros.html" import banner %}
+{% from "_icons.html" import icon %}
+{% block cta %}{% endblock %}
+{% block content %}
+{{ banner(root, "Contact us", "Let's discuss your next engineering requirement.", "Reach our Rwanda head office or Uganda branch by phone, WhatsApp or email.", None, [("Contact", None)]) }}
+
+<section class="section">
+  <div class="container office-cards">
+    {% for o in site.offices %}
+    <article class="office-card">
+      <p class="kicker">{{ o.role }}</p>
+      <h2>{{ o.country }}</h2>
+      <p class="office-address">{{ icon("pin") }}{{ o.address }}</p>
+      <div class="office-card-actions">
+        <a href="tel:{{ o.phone }}" class="btn btn-primary">{{ icon("phone") }}{{ o.phone_display }}</a>
+        <a href="https://wa.me/{{ o.whatsapp }}" target="_blank" rel="noopener" class="btn btn-secondary">{{ icon("whatsapp") }}WhatsApp</a>
+      </div>
+      <a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query={{ o.address|urlencode }}" target="_blank" rel="noopener">Open in Google Maps {{ icon("arrow") }}</a>
+    </article>
+    {% endfor %}
+    <article class="office-card">
+      <p class="kicker">Email</p>
+      <h2>Write to us</h2>
+      <p class="office-address">{{ icon("mail") }}<a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+      <p class="muted">For quotations and site visits, the <a href="{{ root }}request-a-quote/">quote form</a> gets your request to the right team fastest.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section section-tint">
+  <div class="container form-layout">
+    <form class="rt-form" id="contact-form" data-form="contact" novalidate>
+      <h2>Send us a message</h2>
+      <div class="field-row">
+        <div class="field"><label for="c-name">Full name <span class="req">*</span></label><input id="c-name" name="name" type="text" autocomplete="name" required></div>
+        <div class="field"><label for="c-phone">Phone / WhatsApp <span class="req">*</span></label><input id="c-phone" name="phone" type="tel" autocomplete="tel" required pattern="[+0-9 ()-]{9,20}"></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label for="c-email">Email</label><input id="c-email" name="email" type="email" autocomplete="email"></div>
+        <div class="field">
+          <label for="c-country">Country <span class="req">*</span></label>
+          <select id="c-country" name="country" required>{% for o in site.offices %}<option>{{ o.country }}</option>{% endfor %}</select>
+        </div>
+      </div>
+      <div class="field"><label for="c-message">Message <span class="req">*</span></label><textarea id="c-message" name="message" rows="5" required minlength="10"></textarea></div>
+      <div class="field consent">
+        <label class="check"><input type="checkbox" name="consent" value="yes" required><span>I agree that RUNHTec may use these details to respond to me, as described in the <a href="{{ root }}privacy-policy/">privacy policy</a>. <span class="req">*</span></span></label>
+      </div>
+      <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="form-status" role="status" aria-live="polite"></div>
+      <button type="submit" class="btn btn-primary btn-lg">{% if site.form_endpoint %}Send message{% else %}{{ icon("whatsapp") }}Send via WhatsApp{% endif %}</button>
+      <p class="form-hint">{% if site.form_endpoint %}Our team will get back to you.{% else %}Your message opens in WhatsApp, ready to send to the office in the country you select.{% endif %}</p>
+    </form>
+    <figure class="stack-photo">
+      <img src="{{ root }}images/borehole-drilling.jpg" alt="RUNHTec crew on a project site" loading="lazy" width="933" height="810">
+    </figure>
+  </div>
+</section>
+{% endblock %}
