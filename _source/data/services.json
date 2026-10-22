@@ -85,8 +85,8 @@
       "icon": "generator",
       "name": "Standby Generators & Backup Power",
       "short": "Standby generator and backup power systems that keep essential operations running.",
-      "image": null,
-      "image_alt": "",
+      "image": "https://images.unsplash.com/photo-1780445392484-38a4852a1fd8?auto=format&fit=crop&w=1800&q=70",
+      "image_alt": "Standby generator installed beside wall-mounted power inverters",
       "intro": "Power interruptions disrupt homes, businesses and critical facilities. RUNHTec provides standby generator and backup power solutions, coordinated with the building's electrical distribution and, where suitable, with solar and battery systems.",
       "scope": [
         "Standby generator systems",
@@ -163,8 +163,8 @@
       "icon": "snow",
       "name": "Cold Rooms & Refrigeration",
       "short": "Cold-storage and refrigeration solutions for temperature-controlled applications.",
-      "image": null,
-      "image_alt": "",
+      "image": "https://images.unsplash.com/photo-1601599967100-f16100982063?auto=format&fit=crop&w=1800&q=70",
+      "image_alt": "Commercial stainless-steel refrigeration unit",
       "intro": "Refrigeration and temperature-controlled environments for commercial and industrial uses where stored products depend on consistent conditions.",
       "scope": [
         "Cold rooms",
@@ -211,8 +211,8 @@
       "icon": "network",
       "name": "Internet & Network Solutions",
       "short": "Structured cabling, Wi-Fi, router and network configuration and connectivity installation.",
-      "image": null,
-      "image_alt": "",
+      "image": "https://images.unsplash.com/photo-1698668975271-2ba9a323be6b?auto=format&fit=crop&w=1800&q=70",
+      "image_alt": "Network rack with structured cabling",
       "intro": "Networking services covering structured cabling, Wi-Fi infrastructure, router and network configuration, connectivity installation and troubleshooting, treated as part of the wider building environment.",
       "scope": [
         "Structured cabling",
