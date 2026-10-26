@@ -3,7 +3,7 @@
   "short_name": "RUNHTec",
   "tagline": "Engineering Power Into Every Structure",
   "base_url": "https://runhteccontractors.si",
-  "pages_root": "/RUNHTec-Contractors-Website/",
+  "pages_root": "/",
   "_pages_root_help": "Folder the site lives in. Change to \"/\" once runhteccontractors.com is connected.",
   "email": "contact@runhteccontractors.si",
   "form_endpoint": "",
