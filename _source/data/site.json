@@ -162,8 +162,18 @@
   ],
   "gallery": [
     {
-      "img": "house-after-night.jpg",
+      "img": "house-stage4-complete.jpg",
       "caption": "Design-build family home, completed",
+      "category": "Construction"
+    },
+    {
+      "img": "house-stage3-finishing.jpg",
+      "caption": "Design-build home during finishing",
+      "category": "Construction"
+    },
+    {
+      "img": "house-stage2-frame.jpg",
+      "caption": "Design-build home: concrete frame",
       "category": "Construction"
     },
     {
@@ -173,7 +183,7 @@
     },
     {
       "img": "roof-slab-reinforcement.jpg",
-      "caption": "Roof slab reinforcement",
+      "caption": "Roof slab reinforcement, design-build home",
       "category": "Construction"
     },
     {

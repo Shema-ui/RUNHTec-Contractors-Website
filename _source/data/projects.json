@@ -5,7 +5,7 @@
       "title": "Design-build family home",
       "headline": "From bare structure to a finished, solar-powered home",
       "category": "Design & build",
-      "cover": "house-after-night.jpg",
+      "cover": "house-stage4-complete.jpg",
       "summary": "One team took this multi-storey home from design through construction, MEP and hybrid solar to a finished, lit facade.",
       "services": [
         "construction-civil-works",
@@ -34,11 +34,11 @@
         ]
       ],
       "before": {
-        "img": "house-before-structure.jpg",
-        "label": "Structure stage"
+        "img": "house-stage2-frame.jpg",
+        "label": "Concrete frame"
       },
       "after": {
-        "img": "house-after-night.jpg",
+        "img": "house-stage4-complete.jpg",
         "label": "Completed"
       },
       "body": [
@@ -56,9 +56,32 @@
         ]
       ],
       "gallery": [
-        "house-before-structure.jpg",
-        "house-after-night.jpg",
-        "house-night-blue.jpg"
+        "house-stage1-slab.jpg",
+        "house-stage2-frame.jpg",
+        "house-stage3-finishing.jpg",
+        "house-stage4-complete.jpg"
+      ],
+      "stages": [
+        [
+          "house-stage1-slab.jpg",
+          "Structure",
+          "Roof slab reinforcement laid out over the ground-floor walls."
+        ],
+        [
+          "house-stage2-frame.jpg",
+          "Frame",
+          "Reinforced-concrete frame complete, with the crew at work on the upper floor."
+        ],
+        [
+          "house-stage3-finishing.jpg",
+          "Finishing",
+          "Facade rendered and lighting switched on, with external works still under way."
+        ],
+        [
+          "house-stage4-complete.jpg",
+          "Completed",
+          "Finished home, with feature lighting on the facade and boundary wall."
+        ]
       ]
     },
     {

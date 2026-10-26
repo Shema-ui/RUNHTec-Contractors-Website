@@ -15,6 +15,15 @@
       </div>
       {% endif %}
 
+      {% if st.stages %}
+      <h2>Stage by stage</h2>
+      <ol class="stages">
+        {% for img, label, text in st.stages %}
+        <li><img src="{{ root }}images/{{ img }}" alt="{{ st.title }}: {{ label|lower }} stage" loading="lazy"><span class="stage-num">{{ loop.index }}</span><strong>{{ label }}</strong><span>{{ text }}</span></li>
+        {% endfor %}
+      </ol>
+      {% endif %}
+
       {% for heading, text in st.body %}
       <h2>{{ heading }}</h2>
       <p>{{ text }}</p>
