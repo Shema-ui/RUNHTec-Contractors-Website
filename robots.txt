@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://runhteccontractors.com/sitemap.xml
+Sitemap: https://runhteccontractors.si/sitemap.xml

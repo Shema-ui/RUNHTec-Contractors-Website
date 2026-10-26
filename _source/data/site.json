@@ -2,7 +2,7 @@
   "name": "RUNHTec Contractors Ltd",
   "short_name": "RUNHTec",
   "tagline": "Engineering Power Into Every Structure",
-  "base_url": "https://runhteccontractors.com",
+  "base_url": "https://runhteccontractors.si",
   "pages_root": "/RUNHTec-Contractors-Website/",
   "_pages_root_help": "Folder the site lives in. Change to \"/\" once runhteccontractors.com is connected.",
   "email": "contact@runhteccontractors.si",
@@ -349,11 +349,6 @@
       "name": "Universal Events",
       "logo": "https://universalevents.rw/img/log_unv.png",
       "url": "https://universalevents.rw"
-    },
-    {
-      "name": "AOTA",
-      "logo": "",
-      "url": ""
     }
   ],
   "_maintenance_clients_help": "One entry per client shown on /clients/: {\"name\": \"...\", \"logo\": \"clients/file.png\" (or a full https:// link, or \"\" to show the name only), \"url\": \"https://...\" (optional)}. Put logo files in images/clients/."
