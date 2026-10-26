@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% from "_macros.html" import banner, section_head, placeholder %}
 {% from "_icons.html" import icon %}
+{% from "_client.html" import client_tile %}
 {% block content %}
 {{ banner(root, "Maintenance", "Maintenance contracts that protect your systems and your operations.", "Preventive and corrective maintenance for the technical systems your facility depends on.", "control-contactors.jpg", [("Maintenance contracts", None)]) }}
 
@@ -52,7 +53,7 @@
     {% if site.maintenance_clients %}
     <h3>Who we maintain for</h3>
     <ul class="logo-grid logo-grid-small">
-      {% for c in site.maintenance_clients[:8] %}<li><img src="{{ root }}images/{{ c.logo }}" alt="{{ c.name }}" loading="lazy"></li>{% endfor %}
+      {% for c in site.maintenance_clients[:8] %}<li>{{ client_tile(root, c) }}</li>{% endfor %}
     </ul>
     <p><a href="{{ root }}clients/" class="link-arrow">See all maintenance clients {{ icon("arrow") }}</a></p>
     {% endif %}

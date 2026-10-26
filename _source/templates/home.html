@@ -176,6 +176,7 @@
       <p class="kicker">Maintenance contracts</p>
       <h2>Keep critical systems reliable after handover.</h2>
       <p>Planned preventive maintenance and responsive corrective support for generators, electrical, HVAC, solar and refrigeration systems.</p>
+      {% if site.maintenance_clients %}<p class="maint-clients">Trusted by {% for c in site.maintenance_clients %}<strong>{{ c.name }}</strong>{% if not loop.last %}{{ " and " if loop.revindex == 2 else ", " }}{% endif %}{% endfor %}. <a href="{{ root }}clients/">See our maintenance clients</a></p>{% endif %}
       <a href="{{ root }}maintenance-contracts/" class="btn btn-primary">Explore maintenance contracts</a>
     </div>
     <img src="{{ root }}images/generator-engine-bay.jpg" alt="Generator engine during a RUNHTec service visit" loading="lazy" width="810" height="1080">

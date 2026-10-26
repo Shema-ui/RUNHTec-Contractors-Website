@@ -720,3 +720,11 @@ ul, ol { padding-left: 1.2em; }
 @media (prefers-reduced-motion: reduce) {
   .js-reveal .reveal { opacity: 1; transform: none; }
 }
+.client-tile { display: flex; align-items: center; justify-content: center; min-height: 72px; width: 100%; text-decoration: none; }
+.client-tile img { max-height: 64px; max-width: 100%; }
+.client-name { font-family: var(--font-head); font-size: 26px; font-weight: 700; letter-spacing: .06em; color: var(--ink); }
+.maint-clients { font-size: 15.5px; }
+.maint-clients a { color: #fff; }
+.logo-grid .client-name { font-family: var(--font-head); font-size: 26px; font-weight: 700; letter-spacing: .06em; color: var(--ink); }
+.logo-grid:not(.logo-grid-small) { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+.logo-grid:not(.logo-grid-small) li { min-height: 170px; }

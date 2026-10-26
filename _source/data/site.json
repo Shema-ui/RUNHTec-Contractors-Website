@@ -5,7 +5,7 @@
   "base_url": "https://runhteccontractors.com",
   "pages_root": "/RUNHTec-Contractors-Website/",
   "_pages_root_help": "Folder the site lives in. Change to \"/\" once runhteccontractors.com is connected.",
-  "email": "contact@runhteccontractors.com",
+  "email": "contact@runhteccontractors.si",
   "form_endpoint": "",
   "_form_endpoint_help": "Leave empty to send form requests through WhatsApp. To receive them by email instead, paste a form-service address here (e.g. https://formsubmit.co/ajax/you@example.com) and rebuild.",
   "offices": [
@@ -344,6 +344,17 @@
       "label": "Technical services under one team"
     }
   ],
-  "maintenance_clients": [],
-  "_maintenance_clients_help": "Add one entry per client who has agreed to be shown: {\"name\": \"Client name\", \"logo\": \"clients/logo-file.png\"} (put logo files in images/clients/)."
+  "maintenance_clients": [
+    {
+      "name": "Universal Events",
+      "logo": "https://universalevents.rw/img/log_unv.png",
+      "url": "https://universalevents.rw"
+    },
+    {
+      "name": "AOTA",
+      "logo": "",
+      "url": ""
+    }
+  ],
+  "_maintenance_clients_help": "One entry per client shown on /clients/: {\"name\": \"...\", \"logo\": \"clients/file.png\" (or a full https:// link, or \"\" to show the name only), \"url\": \"https://...\" (optional)}. Put logo files in images/clients/."
 }
