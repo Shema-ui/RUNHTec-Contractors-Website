@@ -36,7 +36,7 @@
 
       <h2>Photos</h2>
       <div class="story-gallery">
-        {% for g in st.gallery %}<a href="{{ root }}images/{{ g }}" target="_blank" rel="noopener"><img src="{{ root }}images/{{ g }}" alt="{{ st.title }}, photo {{ loop.index }}" loading="lazy"></a>{% endfor %}
+        {% for g in st.gallery %}<img src="{{ root }}images/{{ g }}" alt="{{ st.title }}, photo {{ loop.index }}" loading="lazy">{% endfor %}
       </div>
     </article>
 

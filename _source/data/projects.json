@@ -87,10 +87,10 @@
     {
       "slug": "poultry-cold-room",
       "title": "Poultry cold room",
-      "headline": "A cold room that stores 2,000 birds",
+      "headline": "A cold room that stores 2,000 chickens",
       "category": "Cold rooms",
       "cover": "cold-room-stock.jpg",
-      "summary": "A complete frozen-storage cold room that lets a poultry client keep 2,000 birds on site.",
+      "summary": "A complete frozen-storage cold room that lets a poultry client keep 2,000 chickens on site.",
       "services": [
         "cold-rooms-refrigeration",
         "electrical-installations"
@@ -105,7 +105,7 @@
       "facts": [
         [
           "Capacity",
-          "2,000 birds"
+          "2,000 chickens"
         ],
         [
           "Controller set point",
@@ -129,7 +129,7 @@
         ],
         [
           "The result",
-          "The client can now store 2,000 birds in the cold room, giving them more control over when they sell."
+          "The client can now store 2,000 chickens in the cold room, giving them more control over when they sell."
         ]
       ],
       "gallery": [

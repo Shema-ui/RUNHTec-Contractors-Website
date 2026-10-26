@@ -431,3 +431,94 @@
     loadPreset("home");
   }
 })();
+
+/* ===== Photo viewer: opens photos on the same page (no new tabs) ===== */
+(function () {
+  "use strict";
+  var groups = document.querySelectorAll(".story-gallery, .project-grid, .detail-gallery, .stages, .mini-gallery");
+  if (!groups.length) return;
+
+  var box = document.createElement("div");
+  box.className = "lightbox";
+  box.hidden = true;
+  box.setAttribute("role", "dialog");
+  box.setAttribute("aria-modal", "true");
+  box.setAttribute("aria-label", "Photo viewer");
+  box.innerHTML =
+    '<button type="button" class="lb-close" aria-label="Close">×</button>' +
+    '<button type="button" class="lb-prev" aria-label="Previous photo">‹</button>' +
+    '<figure class="lb-figure"><img class="lb-img" alt=""><figcaption class="lb-cap"></figcaption></figure>' +
+    '<button type="button" class="lb-next" aria-label="Next photo">›</button>';
+  document.body.appendChild(box);
+  var img = box.querySelector(".lb-img"), cap = box.querySelector(".lb-cap");
+  var list = [], idx = 0, lastFocus = null;
+
+  function captionFor(el) {
+    var fig = el.closest("figure");
+    var fc = fig && fig.querySelector("figcaption");
+    return fc ? fc.textContent.trim() : el.alt;
+  }
+  function show(i) {
+    idx = (i + list.length) % list.length;
+    var el = list[idx];
+    img.src = el.currentSrc || el.src;
+    img.alt = el.alt;
+    cap.textContent = captionFor(el) + "  ·  " + (idx + 1) + " / " + list.length;
+    box.querySelector(".lb-prev").hidden = box.querySelector(".lb-next").hidden = list.length < 2;
+  }
+  function open(group, el) {
+    list = Array.prototype.filter.call(group.querySelectorAll("img"), function (x) {
+      var f = x.closest("figure"); return !(f && f.hidden);
+    });
+    lastFocus = document.activeElement;
+    show(list.indexOf(el));
+    box.hidden = false;
+    document.body.style.overflow = "hidden";
+    box.querySelector(".lb-close").focus();
+  }
+  function close() {
+    box.hidden = true;
+    document.body.style.overflow = "";
+    img.removeAttribute("src");
+    if (lastFocus) lastFocus.focus();
+  }
+
+  groups.forEach(function (g) {
+    g.querySelectorAll("img").forEach(function (el) {
+      el.classList.add("lb-thumb");
+      el.setAttribute("tabindex", "0");
+      el.setAttribute("role", "button");
+      el.setAttribute("aria-label", "Enlarge photo: " + captionFor(el));
+      el.addEventListener("click", function () { open(g, el); });
+      el.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(g, el); }
+      });
+    });
+  });
+
+  box.querySelector(".lb-close").addEventListener("click", close);
+  box.querySelector(".lb-prev").addEventListener("click", function () { show(idx - 1); });
+  box.querySelector(".lb-next").addEventListener("click", function () { show(idx + 1); });
+  box.addEventListener("click", function (e) { if (e.target === box) close(); });
+  document.addEventListener("keydown", function (e) {
+    if (box.hidden) return;
+    if (e.key === "Escape") close();
+    else if (e.key === "ArrowLeft") show(idx - 1);
+    else if (e.key === "ArrowRight") show(idx + 1);
+    else if (e.key === "Tab") { /* keep focus inside the viewer */
+      var f = Array.prototype.filter.call(box.querySelectorAll("button"), function (b) { return !b.hidden; });
+      var i = f.indexOf(document.activeElement);
+      e.preventDefault();
+      f[(i + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();
+    }
+  });
+  /* swipe on phones */
+  var x0 = null;
+  box.addEventListener("touchstart", function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  box.addEventListener("touchend", function (e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 50) show(idx + (dx < 0 ? 1 : -1));
+    x0 = null;
+  });
+})();
