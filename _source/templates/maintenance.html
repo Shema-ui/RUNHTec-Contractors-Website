@@ -49,6 +49,13 @@
   <div class="container prose narrow">
     {{ section_head("What a contract includes", "Tailored to your systems and site.") }}
     <p>Each maintenance arrangement is agreed with the client and depends on the systems installed, how critical they are and how they are used. We'll recommend a suitable scope after reviewing your site.</p>
+    {% if site.maintenance_clients %}
+    <h3>Who we maintain for</h3>
+    <ul class="logo-grid logo-grid-small">
+      {% for c in site.maintenance_clients[:8] %}<li><img src="{{ root }}images/{{ c.logo }}" alt="{{ c.name }}" loading="lazy"></li>{% endfor %}
+    </ul>
+    <p><a href="{{ root }}clients/" class="link-arrow">See all maintenance clients {{ icon("arrow") }}</a></p>
+    {% endif %}
     {{ placeholder("Standard contract options: visit frequency (e.g. monthly or quarterly), response times for faults, what is included and excluded, and how pricing works.") }}
     <p class="center-actions">
       <a href="{{ root }}request-a-quote/?service=maintenance-contracts" class="btn btn-primary">Request a maintenance quote</a>

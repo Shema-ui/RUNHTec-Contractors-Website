@@ -21,9 +21,13 @@ OUT = SRC.parent
 site = json.loads((SRC / "data/site.json").read_text(encoding="utf-8"))
 svc = json.loads((SRC / "data/services.json").read_text(encoding="utf-8"))
 services = svc["services"]
+stories = json.loads((SRC / "data/projects.json").read_text(encoding="utf-8"))["stories"]
+articles = json.loads((SRC / "data/articles.json").read_text(encoding="utf-8"))["articles"]
 categories = svc["categories"]
 for c in categories:
     c["items"] = [s for s in services if s["category"] == c["id"]]
+for a in articles:
+    a["date_display"] = datetime.date.fromisoformat(a["date"]).strftime("%-d %B %Y")
 for s in services:
     s.setdefault("page", f"services/{s['slug']}/")
     s["category_name"] = next(c["name"] for c in categories if c["id"] == s["category"])
@@ -34,6 +38,7 @@ env = Environment(
     trim_blocks=True,
     lstrip_blocks=True,
 )
+env.tests["contains"] = lambda seq, item: item in (seq or [])
 
 # Every page on the site: (output path, template, title, description, nav section)
 pages = [
@@ -49,6 +54,10 @@ pages = [
      "Technical services for residential properties, commercial buildings, hospitals, hotels, offices, manufacturing and retail.", "industries"),
     ("projects/", "projects.html", "Projects",
      "Selected field works by RUNHTec Contractors: solar, electrical, HVAC, CCTV, construction and borehole projects.", "projects"),
+    ("power-planner/", "planner.html", "Backup Power & Solar Planner",
+     "Estimate the inverter, battery, solar panels and generator size your home or business needs, with standard sizing methods.", "planner"),
+    ("insights/", "insights.html", "Insights",
+     "Practical guides on backup power, solar, generators and cold rooms from the RUNHTec engineering team.", "insights"),
     ("request-a-quote/", "quote.html", "Request a Quote",
      "Request a quotation or book a site visit with RUNHTec Contractors in Rwanda or Uganda.", "quote"),
     ("contact/", "contact.html", "Contact Us",
@@ -56,6 +65,13 @@ pages = [
     ("privacy-policy/", "privacy.html", "Privacy Policy",
      "How RUNHTec Contractors Ltd handles information submitted through this website.", "privacy"),
 ]
+if site.get("maintenance_clients"):
+    pages.append(("clients/", "clients.html", "Maintenance Clients",
+                  "Organisations that trust RUNHTec with the ongoing maintenance of their technical systems.", "maintenance"))
+for st in stories:
+    pages.append((f"projects/{st['slug']}/", "story.html", st["title"], st["summary"], "projects", None, st))
+for a in articles:
+    pages.append((f"insights/{a['slug']}/", f"articles/{a['slug']}.html", a["title"], a["description"], "insights", None, None, a))
 for s in services:
     if s["slug"] == "maintenance-contracts":
         continue
@@ -67,10 +83,11 @@ def rel_root(path):
     return "../" * depth if depth else "./"
 
 
-def render(path, template, title, description, section, service=None):
+def render(path, template, title, description, section, service=None, story=None, article=None):
     root = rel_root(path)
     html = env.get_template(template).render(
         site=site, services=services, categories=categories, service=service,
+        stories=stories, articles=articles, story=story, article=article,
         title=title, description=description, section=section, root=root,
         path=path, canonical=f"{site['base_url']}/{path}",
         year=datetime.date.today().year,
@@ -82,10 +99,13 @@ def render(path, template, title, description, section, service=None):
 
 
 built = [render(*p) for p in pages]
+if not site.get("maintenance_clients"):
+    import shutil
+    shutil.rmtree(OUT / "clients", ignore_errors=True)
 
 # 404 page (GitHub Pages serves /404.html for missing pages; links use absolute site root)
 html = env.get_template("404.html").render(
-    site=site, services=services, categories=categories, title="Page not found",
+    site=site, services=services, categories=categories, stories=stories, articles=articles, title="Page not found",
     description="The page you are looking for could not be found.", section="",
     root=site.get("pages_root", "/"), path="404", canonical=site["base_url"] + "/404.html",
     year=datetime.date.today().year, service=None,

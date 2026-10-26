@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% from "_macros.html" import banner, article_card, service_card %}
+{% from "_icons.html" import icon %}
+{% block head %}
+<script type="application/ld+json">
+{{ {"@context": "https://schema.org", "@type": "Article", "headline": article.title, "description": article.description, "datePublished": article.date, "image": site.base_url ~ "/images/" ~ article.cover, "author": {"@type": "Organization", "name": site.name}, "publisher": {"@type": "Organization", "name": site.name, "logo": {"@type": "ImageObject", "url": site.base_url ~ "/images/logo.png"}}} | tojson }}
+</script>
+{% endblock %}
+{% block content %}
+{{ banner(root, article.category ~ " · " ~ article.read ~ " min read", article.title, article.description, article.cover, [("Insights", "insights/"), (article.title, None)]) }}
+
+<section class="section">
+  <div class="container article-layout">
+    <article class="prose article-body">
+      <p class="article-meta">By the RUNHTec engineering team · <time datetime="{{ article.date }}">{{ article.date_display }}</time></p>
+      {% block article %}{% endblock %}
+    </article>
+    <aside class="side-card">
+      {% for s in services if s.slug == article.related_service %}
+      <span class="service-icon">{{ icon(s.icon) }}</span>
+      <h2>Need help with {{ s.name|lower }}?</h2>
+      <p>Our engineers can assess your site and recommend the right system.</p>
+      <a href="{{ root }}request-a-quote/?service={{ s.slug }}&amp;type=site-visit" class="btn btn-primary btn-block">{{ icon("calendar") }}Book a site assessment</a>
+      <a href="{{ root }}power-planner/" class="btn btn-secondary btn-block">{{ icon("bolt") }}Try the Power Planner</a>
+      {% endfor %}
+    </aside>
+  </div>
+</section>
+
+<section class="section section-tint">
+  <div class="container">
+    <h2>More insights</h2>
+    <div class="article-grid">
+      {% for a in articles if a.slug != article.slug %}{{ article_card(root, a) }}{% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

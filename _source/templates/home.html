@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "_macros.html" import service_card, section_head %}
+{% from "_macros.html" import service_card, section_head, story_card, article_card, compare %}
 {% from "_icons.html" import icon %}
 {% set core = ["construction-civil-works", "electrical-installations", "hvac-air-conditioning-chillers", "standby-generators-backup-power", "solar-pv-hybrid-systems", "cold-rooms-refrigeration"] %}
 {% set also = ["cctv-security-systems", "networking-internet", "borehole-drilling-water", "maintenance-contracts"] %}
@@ -17,11 +17,11 @@
         <a href="{{ root }}request-a-quote/?type=site-visit" class="btn btn-outline-light btn-lg">{{ icon("calendar") }}Book a Site Visit</a>
       </div>
     </div>
-    <aside class="hero-card" aria-label="Talk to an engineer">
+    <aside class="hero-card" aria-label="Talk to our team">
       <p class="hero-card-title">Talk to our team</p>
       {% for o in site.offices %}
       <div class="hero-office">
-        <span class="hero-office-label">{{ o.country }} · {{ o.role }}</span>
+        <span class="hero-office-label">{{ o.city }}, {{ o.country }}</span>
         <a href="tel:{{ o.phone }}" class="hero-office-phone">{{ o.phone_display }}</a>
         <a href="https://wa.me/{{ o.whatsapp }}" target="_blank" rel="noopener" class="hero-office-wa">{{ icon("whatsapp") }}WhatsApp</a>
       </div>
@@ -30,18 +30,28 @@
   </div>
 </section>
 
+<section class="stats" aria-label="RUNHTec in numbers">
+  <div class="container stats-grid">
+    {% for s in site.stats %}
+    <div class="stat">
+      <span class="stat-num" data-count="{{ s.value }}">{{ s.value }}</span>
+      <span class="stat-label">{{ s.label }}</span>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
 <section class="section">
   <div class="container">
     <div class="split-head">
-      {{ section_head("Core services", "Technical systems that keep buildings running.", "From power and cooling to energy and maintenance, our core services cover the systems homes, businesses and institutions depend on every day.") }}
+      {{ section_head("Core services", "Technical systems that keep buildings running.", "From the structure itself to power, cooling and energy, our core services cover what homes, businesses and institutions depend on every day.") }}
       <a href="{{ root }}services/" class="link-arrow">All services {{ icon("arrow") }}</a>
     </div>
-    <div class="card-grid">
+    <div class="card-grid reveal-group">
       {% for slug in core %}
         {% for s in services if s.slug == slug %}{{ service_card(root, s) }}{% endfor %}
       {% endfor %}
     </div>
-
     <div class="also">
       <p class="also-title">Also delivered by RUNHTec</p>
       <div class="also-group">
@@ -55,34 +65,97 @@
   </div>
 </section>
 
-<section class="section section-tint">
-  <div class="container feature">
-    <figure class="feature-media">
-      <img src="{{ root }}images/solar-technician.jpg" alt="RUNHTec technician installing a hybrid solar inverter" loading="lazy" width="810" height="839">
-    </figure>
-    <div class="feature-copy">
-      {{ section_head("Why RUNHTec", "One partner from first site visit to long-term support.") }}
-      <p>RUNHTec Contractors Ltd provides integrated technical solutions for residential, commercial and industrial applications. We aim to deliver practical engineering that is coordinated, maintainable and appropriate to each client's operating environment.</p>
-      <ul class="check-list">
-        <li>{{ icon("check") }}<span><strong>Full project lifecycle</strong> from requirements and site assessment to installation, testing, commissioning and maintenance.</span></li>
-        <li>{{ icon("check") }}<span><strong>Coordinated disciplines.</strong> Where a project needs several services, we manage them under one project approach.</span></li>
-        <li>{{ icon("check") }}<span><strong>Safety and quality</strong> through safe working practices, appropriate materials, technical checks and clear communication.</span></li>
-        <li>{{ icon("check") }}<span><strong>Regional presence</strong> with a head office in Kigali and a branch in Kampala.</span></li>
-      </ul>
-      <a href="{{ root }}about/" class="btn btn-secondary">About RUNHTec</a>
+<section class="section section-tint" id="service-finder">
+  <div class="container finder-layout">
+    <div class="finder-intro">
+      {{ section_head("Service Finder", "Not sure what you need? Answer three questions.", "We'll point you to the right service and the fastest way to reach us.") }}
     </div>
+    <form class="finder" id="finder" novalidate>
+      <fieldset class="finder-q" data-step="1">
+        <legend><span class="finder-step">1 of 3</span>What do you need help with?</legend>
+        <div class="finder-options">
+          <label><input type="radio" name="topic" value="building"><span>{{ icon("building") }}Building or water works</span></label>
+          <label><input type="radio" name="topic" value="power"><span>{{ icon("bolt") }}Electricity &amp; wiring</span></label>
+          <label><input type="radio" name="topic" value="backup"><span>{{ icon("sun") }}Backup power or solar</span></label>
+          <label><input type="radio" name="topic" value="cooling"><span>{{ icon("snow") }}Cooling, AC or cold storage</span></label>
+          <label><input type="radio" name="topic" value="security"><span>{{ icon("camera") }}Security cameras or internet</span></label>
+        </div>
+      </fieldset>
+      <fieldset class="finder-q" data-step="2">
+        <legend><span class="finder-step">2 of 3</span>What kind of property is it?</legend>
+        <div class="finder-options">
+          <label><input type="radio" name="property" value="home"><span>Home</span></label>
+          <label><input type="radio" name="property" value="office"><span>Office or shop</span></label>
+          <label><input type="radio" name="property" value="hospitality"><span>Hotel, clinic or hospital</span></label>
+          <label><input type="radio" name="property" value="industrial"><span>Factory, farm or warehouse</span></label>
+        </div>
+      </fieldset>
+      <fieldset class="finder-q" data-step="3">
+        <legend><span class="finder-step">3 of 3</span>Where are you with it?</legend>
+        <div class="finder-options">
+          <label><input type="radio" name="stage" value="new"><span>Planning something new</span></label>
+          <label><input type="radio" name="stage" value="fault"><span>Something isn't working</span></label>
+          <label><input type="radio" name="stage" value="maintain"><span>I want regular maintenance</span></label>
+        </div>
+      </fieldset>
+      <div class="finder-result" id="finder-result" aria-live="polite">
+        <p class="finder-placeholder">Choose an answer for each question to see your recommendation.</p>
+      </div>
+    </form>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
     <div class="split-head">
-      {{ section_head("Industries", "Who we work with.") }}
-      <a href="{{ root }}industries/" class="link-arrow">Industries we serve {{ icon("arrow") }}</a>
+      {{ section_head("Project stories", "See the work, from start to finish.") }}
+      <a href="{{ root }}projects/" class="link-arrow">All projects {{ icon("arrow") }}</a>
     </div>
-    <ul class="industry-pills">
-      {% for i in site.industries %}<li>{{ i.name }}</li>{% endfor %}
-    </ul>
+    {% set lead = stories[0] %}
+    <div class="feature-story">
+      {{ compare(root, lead.before, lead.after, lead.title) }}
+      <div class="feature-story-copy">
+        <p class="kicker">{{ lead.category }}</p>
+        <h3 class="feature-story-title">{{ lead.headline }}</h3>
+        <p>{{ lead.summary }}</p>
+        <ul class="tag-list">{% for x in lead.scope[:4] %}<li>{{ x }}</li>{% endfor %}</ul>
+        <a href="{{ root }}projects/{{ lead.slug }}/" class="btn btn-secondary">Read the story</a>
+        <p class="drag-hint">{{ icon("arrow") }}Drag the slider to compare</p>
+      </div>
+    </div>
+    <div class="story-grid">
+      {% for st in stories[1:] %}{{ story_card(root, st) }}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="planner-band">
+  <div class="container planner-band-inner">
+    <div>
+      <p class="kicker light">Free tool</p>
+      <h2>How much backup power do you need?</h2>
+      <p>List your appliances and get an instant estimate of the inverter, battery, solar panels and generator size, plus the generator's fuel cost per hour.</p>
+    </div>
+    <a href="{{ root }}power-planner/" class="btn btn-light btn-lg">{{ icon("bolt") }}Open the Power Planner</a>
+  </div>
+</section>
+
+<section class="section section-tint">
+  <div class="container feature">
+    <figure class="feature-media">
+      <img src="{{ root }}images/foundation-crew.jpg" alt="RUNHTec crew working on a building foundation" loading="lazy" width="1080" height="810">
+    </figure>
+    <div class="feature-copy">
+      {{ section_head("Why RUNHTec", "One partner from first site visit to long-term support.") }}
+      <p>RUNHTec Contractors Ltd provides integrated technical solutions for residential, commercial and industrial clients. We deliver practical engineering that is coordinated, maintainable and suited to each client's operating environment.</p>
+      <ul class="check-list">
+        <li>{{ icon("check") }}<span><strong>Full project lifecycle</strong> from requirements and site assessment to installation, testing, commissioning and maintenance.</span></li>
+        <li>{{ icon("check") }}<span><strong>Coordinated disciplines.</strong> Where a project needs several services, we manage them under one project approach.</span></li>
+        <li>{{ icon("check") }}<span><strong>Safety and quality</strong> through safe working practices, appropriate materials, technical checks and clear communication.</span></li>
+        <li>{{ icon("check") }}<span><strong>Regional presence</strong> with branches in Kigali and Kampala.</span></li>
+      </ul>
+      <a href="{{ root }}about/" class="btn btn-secondary">About RUNHTec</a>
+    </div>
   </div>
 </section>
 
@@ -102,24 +175,34 @@
     <div class="maint-copy">
       <p class="kicker">Maintenance contracts</p>
       <h2>Keep critical systems reliable after handover.</h2>
-      <p>Planned preventive maintenance and responsive corrective support for electrical, HVAC, generator, solar and refrigeration systems.</p>
+      <p>Planned preventive maintenance and responsive corrective support for generators, electrical, HVAC, solar and refrigeration systems.</p>
       <a href="{{ root }}maintenance-contracts/" class="btn btn-primary">Explore maintenance contracts</a>
     </div>
-    <img src="{{ root }}images/control-contactors.jpg" alt="Contactors inside an electrical control panel" loading="lazy" width="810" height="316">
+    <img src="{{ root }}images/generator-engine-bay.jpg" alt="Generator engine during a RUNHTec service visit" loading="lazy" width="810" height="1080">
   </div>
 </section>
 
 <section class="section section-tint">
   <div class="container">
     <div class="split-head">
-      {{ section_head("Selected works", "Recent field activity.") }}
-      <a href="{{ root }}projects/" class="link-arrow">View projects {{ icon("arrow") }}</a>
+      {{ section_head("Insights", "Practical guides from our engineers.") }}
+      <a href="{{ root }}insights/" class="link-arrow">All articles {{ icon("arrow") }}</a>
     </div>
-    <div class="mini-gallery">
-      {% for g in site.gallery[:4] %}
-      <figure><img src="{{ root }}images/{{ g.img }}" alt="{{ g.caption }}" loading="lazy"><figcaption>{{ g.caption }}</figcaption></figure>
-      {% endfor %}
+    <div class="article-grid">
+      {% for a in articles %}{{ article_card(root, a) }}{% endfor %}
     </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="split-head">
+      {{ section_head("Industries", "Who we work with.") }}
+      <a href="{{ root }}industries/" class="link-arrow">Industries we serve {{ icon("arrow") }}</a>
+    </div>
+    <ul class="industry-pills">
+      {% for i in site.industries %}<li>{{ i.name }}</li>{% endfor %}
+    </ul>
   </div>
 </section>
 

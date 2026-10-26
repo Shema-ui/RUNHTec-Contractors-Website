@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% from "_macros.html" import banner, article_card %}
+{% block content %}
+{{ banner(root, "Insights", "Practical guides from our engineers.", "Clear, field-tested advice on backup power, solar energy, generators and cold rooms in Rwanda and Uganda.", None, [("Insights", None)]) }}
+<section class="section">
+  <div class="container">
+    <div class="article-grid">
+      {% for a in articles %}{{ article_card(root, a) }}{% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

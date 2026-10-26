@@ -1,0 +1,64 @@
+{% extends "article.html" %}
+{% block article %}
+<p class="article-lead">An undersized generator trips when the lifts and pumps start. An oversized one burns fuel running nearly empty and wears out faster. Getting the size right comes down to five steps.</p>
+
+<h2>1. Decide what must stay on</h2>
+<p>Few hotels back up every load. Start by splitting the building into two groups:</p>
+<ul>
+  <li><strong>Essential loads:</strong> lighting in corridors, stairs and public areas, lifts, water pumps, kitchen refrigeration and cold rooms, reception and IT, CCTV and security, fire systems.</li>
+  <li><strong>Non-essential loads:</strong> loads you can shed during an outage, such as air conditioning in empty rooms, laundry machines and electric water heaters.</li>
+</ul>
+<p>Backing up only the essential loads often cuts the generator size, and its fuel bill, considerably.</p>
+
+<h2>2. Add up the running load</h2>
+<p>List each essential load with its rated power in kilowatts (kW) from the nameplate. Not everything runs at full power at the same time, so engineers apply a <strong>diversity factor</strong>, typically between 0.6 and 0.8 for a hotel's essential loads.</p>
+<p class="formula">Running load (kW) = total rated load × diversity factor</p>
+
+<h2>3. Check motor starting</h2>
+<p>Lifts, pumps and compressors draw several times their running current when they start, around 5 to 7 times for a motor started directly on line. The generator must absorb that step without its voltage dropping so far that other equipment trips. Soft starters or variable-speed drives on large motors reduce the starting current and can allow a smaller generator.</p>
+
+<h2>4. Convert to kVA and add margin</h2>
+<p>Generators are rated in kVA at a power factor of 0.8:</p>
+<p class="formula">Generator kVA = running load (kW) ÷ 0.8</p>
+<p>Then add headroom. A diesel generator is happiest at about 70–80% of its rating. Running it below roughly 30% for long periods causes "wet stacking", where unburnt fuel builds up in the exhaust.</p>
+<p class="formula">Recommended rating = generator kVA ÷ 0.8</p>
+
+<h2>5. Correct for altitude and heat</h2>
+<p>Engines lose power in thin, warm air. Many manufacturers start derating above about 1,000 m, and Kigali sits at around 1,500 m. Always check the derating table in the generator's datasheet for your site's altitude and temperature.</p>
+
+<h2>Worked example: a 40-room hotel</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Essential load</th><th>Rated kW</th></tr></thead>
+  <tbody>
+    <tr><td>Lighting, public areas and corridors</td><td>8</td></tr>
+    <tr><td>Two lifts (7.5 kW each)</td><td>15</td></tr>
+    <tr><td>Two water pumps (3 kW each)</td><td>6</td></tr>
+    <tr><td>Kitchen refrigeration and cold room</td><td>10</td></tr>
+    <tr><td>Reception, IT, CCTV and security</td><td>4</td></tr>
+    <tr><td>Air conditioning, selected areas</td><td>20</td></tr>
+    <tr class="total"><td>Total rated load</td><td>63 kW</td></tr>
+  </tbody>
+</table>
+</div>
+<ul class="calc-steps">
+  <li>Running load: 63 kW × 0.75 diversity = <strong>47 kW</strong></li>
+  <li>In kVA: 47 ÷ 0.8 = <strong>59 kVA</strong></li>
+  <li>With headroom to run at about 80%: 59 ÷ 0.8 = <strong>74 kVA</strong></li>
+  <li>With an altitude allowance of about 5%: <strong>about 78 kVA</strong></li>
+</ul>
+<p>The nearest standard sizes are 80 kVA and 100 kVA. The final choice depends on how the lifts start and on the manufacturer's derating data.</p>
+<p class="note-inline"><strong>Example figures.</strong> These loads are for illustration only. Your hotel's real loads must be measured or taken from equipment nameplates.</p>
+
+<h2>What will it cost to run?</h2>
+<p>A typical diesel generator at a reasonable load uses roughly 0.25–0.3 litres of fuel per kWh it produces. At 47 kW that is about 13 litres per hour. With diesel at the RURA ceiling price of FRw 2,927 per litre (June 2026), each hour of outage costs around <strong>FRw 38,000</strong> in fuel alone, before servicing.</p>
+<p>That running cost is why many hotels now pair the generator with solar and batteries, so the generator only starts for long outages. Try the numbers for your building in our <a href="{{ root }}power-planner/">Power Planner</a>.</p>
+
+<h2>Don't forget</h2>
+<ul>
+  <li><strong>A changeover switch or ATS</strong> so the generator and grid can never feed the building at the same time.</li>
+  <li><strong>Fuel tank size</strong> for the longest outage you plan for.</li>
+  <li><strong>Ventilation, exhaust and noise:</strong> guests notice.</li>
+  <li><strong>Regular servicing:</strong> oil, filters, coolant and battery checks keep it ready to start. See our <a href="{{ root }}maintenance-contracts/">maintenance contracts</a>.</li>
+</ul>
+{% endblock %}

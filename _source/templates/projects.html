@@ -1,12 +1,22 @@
 {% extends "base.html" %}
-{% from "_macros.html" import banner, section_head, placeholder %}
+{% from "_macros.html" import banner, section_head, story_card %}
 {% from "_icons.html" import icon %}
 {% block content %}
-{{ banner(root, "Projects", "Selected works from the field.", "A visual record of RUNHTec field activities and completed or ongoing technical works.", "outdoor-solar.jpg", [("Projects", None)]) }}
+{{ banner(root, "Projects", "Our work, told project by project.", site.stats[1].value ~ " projects across construction, power, cooling and energy in Rwanda and Uganda. Here are a few of them in detail.", "site-on-site-banner.jpg", [("Projects", None)]) }}
 
 <section class="section">
   <div class="container">
-    <div class="filter-bar" role="group" aria-label="Filter projects">
+    {{ section_head("Project stories", "The brief, what we did, and the result.") }}
+    <div class="story-grid story-grid-2">
+      {% for st in stories %}{{ story_card(root, st, loop.first) }}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-tint">
+  <div class="container">
+    {{ section_head("From the field", "More of our work.") }}
+    <div class="filter-bar" role="group" aria-label="Filter photos">
       <button type="button" class="filter is-active" data-filter="all">All</button>
       {% for cat in site.gallery|map(attribute="category")|unique %}
       <button type="button" class="filter" data-filter="{{ cat }}">{{ cat }}</button>
@@ -20,13 +30,6 @@
       </figure>
       {% endfor %}
     </div>
-  </div>
-</section>
-
-<section class="section section-tint">
-  <div class="container prose narrow">
-    {{ section_head("Case studies", "Detailed project write-ups.") }}
-    {{ placeholder("For each project you want to feature: client type (e.g. hotel, hospital), location, scope of work, year, and any results. Client names only with their permission.") }}
   </div>
 </section>
 {% endblock %}

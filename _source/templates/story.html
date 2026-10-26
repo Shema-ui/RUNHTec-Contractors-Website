@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% from "_macros.html" import banner, section_head, compare, story_card, service_card %}
+{% from "_icons.html" import icon %}
+{% set st = story %}
+{% block content %}
+{{ banner(root, st.category, st.headline, st.summary, st.cover, [("Projects", "projects/"), (st.title, None)]) }}
+
+<section class="section">
+  <div class="container story-layout">
+    <article class="prose">
+      {% if st.before %}
+      <div class="story-compare">
+        {{ compare(root, st.before, st.after, st.title) }}
+        <p class="drag-hint">{{ icon("arrow") }}Drag the slider to compare before and after</p>
+      </div>
+      {% endif %}
+
+      {% for heading, text in st.body %}
+      <h2>{{ heading }}</h2>
+      <p>{{ text }}</p>
+      {% endfor %}
+
+      {% if st.video %}
+      <h2>See it lit</h2>
+      <video class="story-video" src="{{ root }}images/{{ st.video }}" autoplay muted loop playsinline preload="metadata" aria-label="Short video of the finished {{ st.title|lower }}"></video>
+      {% endif %}
+
+      <h2>Photos</h2>
+      <div class="story-gallery">
+        {% for g in st.gallery %}<a href="{{ root }}images/{{ g }}" target="_blank" rel="noopener"><img src="{{ root }}images/{{ g }}" alt="{{ st.title }}, photo {{ loop.index }}" loading="lazy"></a>{% endfor %}
+      </div>
+    </article>
+
+    <aside class="side-card" aria-label="Project summary">
+      <p class="kicker">Project summary</p>
+      <dl class="facts">
+        {% for k, v in st.facts %}<div><dt>{{ k }}</dt><dd>{{ v }}</dd></div>{% endfor %}
+      </dl>
+      <p class="side-label">Scope of work</p>
+      <ul class="check-list compact">
+        {% for x in st.scope %}<li>{{ icon("check") }}<span>{{ x }}</span></li>{% endfor %}
+      </ul>
+      <a href="{{ root }}request-a-quote/?service={{ st.services[0] }}" class="btn btn-primary btn-block">Start a similar project</a>
+      <a href="https://wa.me/{{ site.offices[0].whatsapp }}?text={{ ('Hello RUNHTec, I saw your ' ~ st.title ~ ' project and would like something similar.')|urlencode }}" target="_blank" rel="noopener" class="btn btn-secondary btn-block">{{ icon("whatsapp") }}Ask on WhatsApp</a>
+    </aside>
+  </div>
+</section>
+
+<section class="section section-tint">
+  <div class="container">
+    {{ section_head("Services in this project", "What went into it.") }}
+    <div class="card-grid">
+      {% for slug in st.services %}{% for s in services if s.slug == slug %}{{ service_card(root, s) }}{% endfor %}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    {{ section_head("More projects", "Keep exploring.") }}
+    <div class="story-grid">
+      {% for other in stories if other.slug != st.slug %}{{ story_card(root, other) }}{% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

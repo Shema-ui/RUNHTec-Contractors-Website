@@ -1,0 +1,34 @@
+{
+  "articles": [
+    {
+      "slug": "how-to-size-a-backup-generator-for-a-hotel",
+      "title": "How to size a backup generator for a hotel",
+      "description": "A step-by-step method for choosing the right generator size for a hotel or guesthouse, with a worked example and fuel estimate.",
+      "category": "Backup power",
+      "cover": "generator-filter.jpg",
+      "date": "2026-10-26",
+      "read": 6,
+      "related_service": "standby-generators-backup-power"
+    },
+    {
+      "slug": "solar-vs-generator-costs-in-rwanda",
+      "title": "Solar vs generator costs in Rwanda",
+      "description": "What a kilowatt-hour really costs from a diesel generator, the grid and a solar system, and when a hybrid makes sense.",
+      "category": "Energy",
+      "cover": "hybrid-inverter-battery-2.jpg",
+      "date": "2026-10-26",
+      "read": 6,
+      "related_service": "solar-pv-hybrid-systems"
+    },
+    {
+      "slug": "planning-a-cold-room-for-poultry",
+      "title": "Planning a cold room for poultry and frozen food",
+      "description": "Temperature, size, insulation, power and the details that keep frozen stock safe, based on how we build cold rooms.",
+      "category": "Cold rooms",
+      "cover": "cold-room-stock.jpg",
+      "date": "2026-10-26",
+      "read": 5,
+      "related_service": "cold-rooms-refrigeration"
+    }
+  ]
+}

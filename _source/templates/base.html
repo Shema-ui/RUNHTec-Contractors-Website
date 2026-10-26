@@ -89,9 +89,9 @@
               </div>
             </div>
           </li>
-          <li><a href="{{ root }}industries/" class="nav-link{% if section == 'industries' %} is-active{% endif %}">Industries</a></li>
           <li><a href="{{ root }}projects/" class="nav-link{% if section == 'projects' %} is-active{% endif %}">Projects</a></li>
-          <li><a href="{{ root }}maintenance-contracts/" class="nav-link{% if section == 'maintenance' %} is-active{% endif %}">Maintenance</a></li>
+          <li><a href="{{ root }}power-planner/" class="nav-link{% if section == 'planner' %} is-active{% endif %}">Power Planner</a></li>
+          <li><a href="{{ root }}insights/" class="nav-link{% if section == 'insights' %} is-active{% endif %}">Insights</a></li>
           <li><a href="{{ root }}about/" class="nav-link{% if section == 'about' %} is-active{% endif %}">About</a></li>
           <li><a href="{{ root }}contact/" class="nav-link{% if section == 'contact' %} is-active{% endif %}">Contact</a></li>
         </ul>
@@ -140,6 +140,9 @@
           <li><a href="{{ root }}about/">About us</a></li>
           <li><a href="{{ root }}industries/">Industries</a></li>
           <li><a href="{{ root }}projects/">Projects</a></li>
+          <li><a href="{{ root }}maintenance-contracts/">Maintenance contracts</a></li>
+          <li><a href="{{ root }}power-planner/">Power Planner</a></li>
+          <li><a href="{{ root }}insights/">Insights</a></li>
           <li><a href="{{ root }}request-a-quote/">Request a quote</a></li>
           <li><a href="{{ root }}contact/">Contact</a></li>
           <li><a href="{{ root }}privacy-policy/">Privacy policy</a></li>
@@ -165,7 +168,7 @@
     <a href="{{ root }}request-a-quote/" class="mobile-bar-quote">{{ icon("clipboard") }}Quote</a>
   </div>
 
-  <script>window.RUNHTEC = {{ {"offices": site.offices, "email": site.email, "formEndpoint": site.form_endpoint} | tojson }};</script>
+  <script>window.RUNHTEC = {{ {"offices": site.offices, "email": site.email, "formEndpoint": site.form_endpoint, "root": root, "services": services|map(attribute="slug")|list, "serviceNames": services|map(attribute="name")|list, "servicePages": services|map(attribute="page")|list} | tojson }};</script>
   <script src="{{ root }}js/main.js" defer></script>
 </body>
 </html>

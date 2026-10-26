@@ -1,0 +1,53 @@
+{% extends "article.html" %}
+{% block article %}
+<p class="article-lead">A generator is cheap to buy and expensive to run. Solar is the opposite. To compare them fairly, look at what each kilowatt-hour (kWh) really costs you over the life of the system.</p>
+
+<h2>What a kWh from a diesel generator costs</h2>
+<p>A diesel generator running at a sensible load uses roughly <strong>0.25–0.3 litres per kWh</strong>. At light loads it is less efficient, often 0.4 litres per kWh or more.</p>
+<p>The Rwanda Utilities Regulatory Authority (RURA) set the diesel pump price ceiling at <strong>FRw 2,927 per litre</strong> in June 2026. That gives:</p>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Generator loading</th><th>Fuel use</th><th>Fuel cost per kWh</th></tr></thead>
+  <tbody>
+    <tr><td>Well loaded (around 70–80%)</td><td>≈ 0.28 L/kWh</td><td>≈ FRw 820</td></tr>
+    <tr><td>Lightly loaded (around 25%)</td><td>≈ 0.40 L/kWh</td><td>≈ FRw 1,170</td></tr>
+  </tbody>
+</table>
+</div>
+<p>That is fuel only. Oil and filter changes, repairs and the cost of buying the generator come on top.</p>
+
+<h2>What a kWh from the grid costs</h2>
+<p>Under the tariffs approved in September 2025, non-residential customers pay about <strong>FRw 355–366 per kWh</strong>, and households using more than 50 kWh a month pay FRw 369 per kWh for that extra use. Even at its most efficient, generator fuel alone costs more than twice as much as grid power.</p>
+
+<h2>What a kWh from solar costs</h2>
+<p>Solar has no fuel cost. What you pay for is the equipment and installation up front, then occasional maintenance. Rwanda gets good sunshine, around 4.5–5 peak sun hours a day on average, so each kilowatt of panels (1 kWp) produces roughly:</p>
+<ul class="calc-steps">
+  <li><strong>about 4 kWh per day</strong> after real-world losses</li>
+  <li><strong>about 1,400–1,500 kWh per year</strong></li>
+  <li><strong>about 30,000 kWh over 20 years</strong>, a conservative panel life</li>
+</ul>
+<p>To find solar's cost per kWh, divide the installed price by the energy it will produce:</p>
+<p class="formula">Solar cost per kWh = (installed cost + lifetime maintenance) ÷ lifetime kWh produced</p>
+<p>Panels on their own usually work out far cheaper per kWh than generator fuel. Batteries add significant cost, so energy stored for the evening costs more than energy used directly while the sun shines. Because equipment prices change often, ask us for a current quotation for your building.</p>
+
+<h2>Side by side</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th></th><th>Diesel generator</th><th>Grid</th><th>Solar + battery</th></tr></thead>
+  <tbody>
+    <tr><td>Upfront cost</td><td>Low to medium</td><td>Connection only</td><td>Higher</td></tr>
+    <tr><td>Running cost per kWh</td><td>Highest (fuel)</td><td>Medium</td><td>Very low</td></tr>
+    <tr><td>Works during outages</td><td>Yes, while fuel lasts</td><td>No</td><td>Yes, within battery capacity</td></tr>
+    <tr><td>Noise and fumes</td><td>Yes</td><td>No</td><td>No</td></tr>
+    <tr><td>Maintenance</td><td>Regular servicing</td><td>None for you</td><td>Light</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>Why hybrid usually wins</h2>
+<p>For most homes, hotels and businesses the best answer isn't one or the other. A <strong>hybrid system</strong> lets solar power the building during the day, batteries cover the evening and short outages, and the grid or generator only steps in when needed. The generator runs far fewer hours, so the fuel bill drops and the generator lasts longer.</p>
+
+<h2>Work out your own numbers</h2>
+<p>Our <a href="{{ root }}power-planner/">Power Planner</a> estimates the battery, solar and generator size for your appliances, and the generator fuel cost per hour at today's diesel price. For a firm design and price, <a href="{{ root }}request-a-quote/?service=solar-pv-hybrid-systems">request a site assessment</a>.</p>
+<p class="note-inline"><strong>Prices change.</strong> Fuel prices are reviewed regularly by RURA, and electricity tariffs by RURA and REG. The figures above were correct when this article was written. Check the latest announcements before making a decision.</p>
+{% endblock %}

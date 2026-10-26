@@ -39,3 +39,40 @@
   {% if lead %}<p class="section-lead">{{ lead }}</p>{% endif %}
 </div>
 {%- endmacro %}
+
+{# Before/after comparison slider. Drag (or use arrow keys) to reveal the "after" image. #}
+{% macro compare(root, before, after, alt) -%}
+<div class="compare" style="--pos: 50%">
+  <img class="compare-after" src="{{ root }}images/{{ after.img }}" alt="{{ alt }}: {{ after.label|lower }}" loading="lazy">
+  <div class="compare-before"><img src="{{ root }}images/{{ before.img }}" alt="{{ alt }}: {{ before.label|lower }}" loading="lazy"></div>
+  <span class="compare-tag compare-tag-before">Before · {{ before.label }}</span>
+  <span class="compare-tag compare-tag-after">After · {{ after.label }}</span>
+  <span class="compare-handle" aria-hidden="true"><span></span></span>
+  <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Drag to compare before and after">
+</div>
+{%- endmacro %}
+
+{# Project story card #}
+{% macro story_card(root, st, big=False) -%}
+<a class="story-card{% if big %} story-card-big{% endif %}" href="{{ root }}projects/{{ st.slug }}/">
+  <span class="story-media"><img src="{{ root }}images/{{ st.cover }}" alt="{{ st.title }}" loading="lazy">{% if st.before %}<span class="story-flag">Before &amp; after</span>{% endif %}</span>
+  <span class="story-body">
+    <span class="story-cat">{{ st.category }}</span>
+    <span class="story-title">{{ st.headline }}</span>
+    <span class="story-sum">{{ st.summary }}</span>
+    <span class="link-arrow">Read the story {{ icon("arrow") }}</span>
+  </span>
+</a>
+{%- endmacro %}
+
+{# Article card #}
+{% macro article_card(root, a) -%}
+<a class="article-card" href="{{ root }}insights/{{ a.slug }}/">
+  <img src="{{ root }}images/{{ a.cover }}" alt="" loading="lazy">
+  <span class="article-card-body">
+    <span class="story-cat">{{ a.category }} · {{ a.read }} min read</span>
+    <span class="article-card-title">{{ a.title }}</span>
+    <span class="story-sum">{{ a.description }}</span>
+  </span>
+</a>
+{%- endmacro %}

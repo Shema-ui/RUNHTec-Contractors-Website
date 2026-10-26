@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% from "_macros.html" import banner %}
+{% block content %}
+{{ banner(root, "Maintenance clients", "Trusted to keep critical systems running.", "These organisations rely on RUNHTec for the ongoing maintenance of their technical systems.", None, [("Maintenance contracts", "maintenance-contracts/"), ("Clients", None)]) }}
+<section class="section">
+  <div class="container">
+    <ul class="logo-grid">
+      {% for c in site.maintenance_clients %}
+      <li><img src="{{ root }}images/{{ c.logo }}" alt="{{ c.name }}" loading="lazy"><span>{{ c.name }}</span></li>
+      {% endfor %}
+    </ul>
+    <p class="center-actions"><a href="{{ root }}request-a-quote/?service=maintenance-contracts" class="btn btn-primary">Ask about a maintenance contract</a></p>
+  </div>
+</section>
+{% endblock %}

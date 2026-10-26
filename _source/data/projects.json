@@ -1,0 +1,237 @@
+{
+  "stories": [
+    {
+      "slug": "design-build-family-home",
+      "title": "Design-build family home",
+      "headline": "From bare structure to a finished, solar-powered home",
+      "category": "Design & build",
+      "cover": "house-after-night.jpg",
+      "summary": "One team took this multi-storey home from design through construction, MEP and hybrid solar to a finished, lit facade.",
+      "services": [
+        "construction-civil-works",
+        "electrical-installations",
+        "solar-pv-hybrid-systems"
+      ],
+      "scope": [
+        "Architectural design",
+        "Construction and civil works",
+        "MEP: electrical, plumbing and mechanical services",
+        "Hybrid solar energy system",
+        "Interior and exterior lighting"
+      ],
+      "facts": [
+        [
+          "Delivery",
+          "Design to handover"
+        ],
+        [
+          "Disciplines",
+          "Design, construction, MEP, solar"
+        ],
+        [
+          "Contractor",
+          "RUNHTec, single point of responsibility"
+        ]
+      ],
+      "before": {
+        "img": "house-before-structure.jpg",
+        "label": "Structure stage"
+      },
+      "after": {
+        "img": "house-after-night.jpg",
+        "label": "Completed"
+      },
+      "body": [
+        [
+          "The brief",
+          "The client wanted one contractor to take responsibility for the whole home: the design, the building itself, every building service inside it, and a reliable energy supply."
+        ],
+        [
+          "What we did",
+          "RUNHTec produced the design, built the reinforced-concrete frame and blockwork, then installed the MEP services: electrical wiring and distribution, plumbing and mechanical works. A hybrid solar system with battery storage supplies the home, and the lighting design picks out the facade, the soffit and the boundary wall at night."
+        ],
+        [
+          "The result",
+          "A finished multi-storey home delivered by a single team, with one point of contact from the first drawing to handover. Handling design, structure and services in one team reduces the clashes that often happen when separate contractors work one after another."
+        ]
+      ],
+      "gallery": [
+        "house-before-structure.jpg",
+        "house-after-night.jpg",
+        "house-night-blue.jpg"
+      ]
+    },
+    {
+      "slug": "poultry-cold-room",
+      "title": "Poultry cold room",
+      "headline": "A cold room that stores 2,000 birds",
+      "category": "Cold rooms",
+      "cover": "cold-room-stock.jpg",
+      "summary": "A complete frozen-storage cold room that lets a poultry client keep 2,000 birds on site.",
+      "services": [
+        "cold-rooms-refrigeration",
+        "electrical-installations"
+      ],
+      "scope": [
+        "Insulated panel cold room and door",
+        "Outdoor condensing unit on a raised, sheltered plinth",
+        "Two-fan evaporator inside the room",
+        "Temperature control cabinet with automatic defrost",
+        "Electrical control panel with motor and phase protection"
+      ],
+      "facts": [
+        [
+          "Capacity",
+          "2,000 birds"
+        ],
+        [
+          "Controller set point",
+          "−18 °C"
+        ],
+        [
+          "Use",
+          "Frozen poultry storage"
+        ]
+      ],
+      "before": null,
+      "after": null,
+      "body": [
+        [
+          "The brief",
+          "A poultry client needed to freeze and hold its own stock on site instead of selling everything immediately or relying on outside storage."
+        ],
+        [
+          "What we did",
+          "We installed an insulated-panel cold room with a two-fan evaporator inside and a condensing unit outside, set on a raised concrete plinth under a shelter to protect it from rain and direct sun. A microcomputer control cabinet manages the temperature and automatic defrost cycles, with the set point at −18 °C, the standard for frozen poultry. The electrical control panel includes contactors, an overload relay and a phase-failure relay to protect the compressor."
+        ],
+        [
+          "The result",
+          "The client can now store 2,000 birds in the cold room, giving them more control over when they sell."
+        ]
+      ],
+      "gallery": [
+        "cold-room-stock.jpg",
+        "cold-room-panels.jpg",
+        "cold-room-door-control.jpg",
+        "cold-room-controller.jpg",
+        "cold-room-condensing-unit.jpg",
+        "cold-room-evaporator.jpg",
+        "cold-room-evaporator-2.jpg",
+        "cold-room-control-panel.jpg"
+      ]
+    },
+    {
+      "slug": "stair-led-lighting",
+      "title": "Stair LED lighting",
+      "headline": "Turning a plain staircase into a feature",
+      "category": "Electrical",
+      "cover": "stairs-after.jpg",
+      "summary": "Recessed LED strips in every step and a lit line along the wall, wired in before the finishes went on.",
+      "services": [
+        "electrical-installations"
+      ],
+      "scope": [
+        "Wiring routed before plastering and tiling",
+        "LED strips recessed into the step nosings",
+        "Diagonal LED wall line following the stair",
+        "Connection to the building's lighting circuits"
+      ],
+      "facts": [
+        [
+          "Type",
+          "Architectural lighting"
+        ],
+        [
+          "Light source",
+          "LED strip"
+        ],
+        [
+          "Stage",
+          "Coordinated with finishes"
+        ]
+      ],
+      "before": {
+        "img": "stairs-before.jpg",
+        "label": "Wiring stage"
+      },
+      "after": {
+        "img": "stairs-after.jpg",
+        "label": "Lights on"
+      },
+      "video": "stairs-lighting.mp4",
+      "body": [
+        [
+          "The brief",
+          "The client wanted the staircase to be safe to use at night and to look like a design feature, not just a way between floors."
+        ],
+        [
+          "What we did",
+          "We planned the lighting before the finishes. Cables were routed into the wall and step positions while the stair was still being built, so nothing would show afterwards. LED strips were then fitted into the step nosings, and a diagonal LED line was set into the wall to follow the slope of the stair."
+        ],
+        [
+          "The result",
+          "Each step is lit evenly from its edge, and the wall line gives soft background light. The stair is easier to see at night and now stands out as one of the home's features."
+        ]
+      ],
+      "gallery": [
+        "stairs-before.jpg",
+        "stairs-after-finishing.jpg",
+        "stairs-after.jpg"
+      ]
+    },
+    {
+      "slug": "generator-installation-maintenance",
+      "title": "Generator installation & servicing",
+      "headline": "Backup power installed, then kept ready",
+      "category": "Generators",
+      "cover": "generator-enclosure.jpg",
+      "summary": "A standby generator connected through an on-load changeover switch, then serviced, including oil and fuel filter changes.",
+      "services": [
+        "standby-generators-backup-power",
+        "maintenance-contracts"
+      ],
+      "scope": [
+        "Generator installation and connection",
+        "125 A on-load changeover switch between grid and generator",
+        "Routine servicing: oil filter, fuel filter and fuel–water separator replacement"
+      ],
+      "facts": [
+        [
+          "Changeover",
+          "125 A, 4-pole, on-load"
+        ],
+        [
+          "Work",
+          "Installation and servicing"
+        ],
+        [
+          "Service item",
+          "Filter replacement"
+        ]
+      ],
+      "before": null,
+      "after": null,
+      "body": [
+        [
+          "The brief",
+          "The client needed backup power that would actually start and carry the load when the grid failed, both on the day of installation and years later."
+        ],
+        [
+          "What we did",
+          "We installed the generator in its weatherproof, sound-insulated enclosure and connected it to the building through a 125 A, four-pole on-load changeover switch. The switch moves the supply safely between the grid and the generator and keeps the two sources from ever being connected together. During servicing we replace the oil filter, the fuel filter and the fuel–water separator. Clean oil protects the engine, and clean, water-free fuel protects the injection system."
+        ],
+        [
+          "The result",
+          "A safe, correctly connected backup supply, maintained so it is ready when an outage happens."
+        ]
+      ],
+      "gallery": [
+        "generator-enclosure.jpg",
+        "generator-engine-bay.jpg",
+        "generator-filter.jpg",
+        "generator-fuel-filters.jpg",
+        "changeover-switch.jpg"
+      ]
+    }
+  ]
+}

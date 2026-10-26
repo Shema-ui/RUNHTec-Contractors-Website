@@ -6,15 +6,13 @@
   "pages_root": "/RUNHTec-Contractors-Website/",
   "_pages_root_help": "Folder the site lives in. Change to \"/\" once runhteccontractors.com is connected.",
   "email": "contact@runhteccontractors.com",
-
   "form_endpoint": "",
   "_form_endpoint_help": "Leave empty to send form requests through WhatsApp. To receive them by email instead, paste a form-service address here (e.g. https://formsubmit.co/ajax/you@example.com) and rebuild.",
-
   "offices": [
     {
       "id": "rwanda",
       "country": "Rwanda",
-      "role": "Head Office",
+      "role": "Branch",
       "address": "Gikondo Sector, Kigali, Rwanda",
       "city": "Kigali",
       "country_code": "RW",
@@ -25,7 +23,7 @@
     {
       "id": "uganda",
       "country": "Uganda",
-      "role": "Branch Office",
+      "role": "Branch",
       "address": "Industrial Area, Kampala, Uganda",
       "city": "Kampala",
       "country_code": "UG",
@@ -34,46 +32,318 @@
       "whatsapp": "256754625168"
     }
   ],
-
   "industries": [
-    { "name": "Residential properties", "text": "Electrical, solar, backup power, security, connectivity and home-energy solutions for property owners.", "services": ["Electrical", "Solar PV", "Generators", "CCTV"] },
-    { "name": "Commercial buildings", "text": "Building electrical, HVAC, backup power, security and connectivity systems.", "services": ["Electrical", "HVAC", "Generators", "Networking"] },
-    { "name": "Hospitals & healthcare", "text": "Electrical infrastructure, energy continuity and controlled environments.", "services": ["Electrical", "Generators", "HVAC", "Cold rooms"] },
-    { "name": "Hotels & hospitality", "text": "HVAC, electrical, energy and facility-support systems.", "services": ["HVAC", "Electrical", "Solar PV", "Cold rooms"] },
-    { "name": "Offices", "text": "Power, air conditioning, backup power, CCTV and network infrastructure for workplaces.", "services": ["Electrical", "HVAC", "CCTV", "Networking"] },
-    { "name": "Manufacturing facilities", "text": "Industrial electrical, mechanical, ventilation and technical infrastructure.", "services": ["Electrical", "HVAC", "Generators", "Maintenance"] },
-    { "name": "Retail businesses", "text": "Electrical, lighting, HVAC, refrigeration, CCTV and connectivity systems.", "services": ["Electrical", "HVAC", "Cold rooms", "CCTV"] }
+    {
+      "name": "Residential properties",
+      "text": "Electrical, solar, backup power, security, connectivity and home-energy solutions for property owners.",
+      "services": [
+        "Electrical",
+        "Solar PV",
+        "Generators",
+        "CCTV"
+      ]
+    },
+    {
+      "name": "Commercial buildings",
+      "text": "Building electrical, HVAC, backup power, security and connectivity systems.",
+      "services": [
+        "Electrical",
+        "HVAC",
+        "Generators",
+        "Networking"
+      ]
+    },
+    {
+      "name": "Hospitals & healthcare",
+      "text": "Electrical infrastructure, energy continuity and controlled environments.",
+      "services": [
+        "Electrical",
+        "Generators",
+        "HVAC",
+        "Cold rooms"
+      ]
+    },
+    {
+      "name": "Hotels & hospitality",
+      "text": "HVAC, electrical, energy and facility-support systems.",
+      "services": [
+        "HVAC",
+        "Electrical",
+        "Solar PV",
+        "Cold rooms"
+      ]
+    },
+    {
+      "name": "Offices",
+      "text": "Power, air conditioning, backup power, CCTV and network infrastructure for workplaces.",
+      "services": [
+        "Electrical",
+        "HVAC",
+        "CCTV",
+        "Networking"
+      ]
+    },
+    {
+      "name": "Manufacturing facilities",
+      "text": "Industrial electrical, mechanical, ventilation and technical infrastructure.",
+      "services": [
+        "Electrical",
+        "HVAC",
+        "Generators",
+        "Maintenance"
+      ]
+    },
+    {
+      "name": "Retail businesses",
+      "text": "Electrical, lighting, HVAC, refrigeration, CCTV and connectivity systems.",
+      "services": [
+        "Electrical",
+        "HVAC",
+        "Cold rooms",
+        "CCTV"
+      ]
+    }
   ],
-
   "process": [
-    { "title": "Consultation", "text": "Understand your needs, scope and expected outcome." },
-    { "title": "Site assessment", "text": "Review existing conditions, measurements, access, safety and technical constraints." },
-    { "title": "Planning & design", "text": "Develop the appropriate technical solution, materials and work plan." },
-    { "title": "Installation", "text": "Execute works with coordinated site activities and responsible workmanship." },
-    { "title": "Testing & commissioning", "text": "Check system operation and resolve issues before handover." },
-    { "title": "Handover", "text": "Provide completion information and client orientation where required." },
-    { "title": "Maintenance", "text": "Provide ongoing technical support and maintenance arrangements." }
+    {
+      "title": "Consultation",
+      "text": "Understand your needs, scope and expected outcome."
+    },
+    {
+      "title": "Site assessment",
+      "text": "Review existing conditions, measurements, access, safety and technical constraints."
+    },
+    {
+      "title": "Planning & design",
+      "text": "Develop the appropriate technical solution, materials and work plan."
+    },
+    {
+      "title": "Installation",
+      "text": "Execute works with coordinated site activities and responsible workmanship."
+    },
+    {
+      "title": "Testing & commissioning",
+      "text": "Check system operation and resolve issues before handover."
+    },
+    {
+      "title": "Handover",
+      "text": "Provide completion information and client orientation where required."
+    },
+    {
+      "title": "Maintenance",
+      "text": "Provide ongoing technical support and maintenance arrangements."
+    }
   ],
-
   "values": [
-    { "name": "Quality", "text": "Work executed with attention to technical requirements and finish." },
-    { "name": "Reliability", "text": "Dependable communication, execution and technical support." },
-    { "name": "Safety", "text": "Safety-conscious planning and responsible site practices." },
-    { "name": "Integrity", "text": "Professional conduct and clear communication with clients." },
-    { "name": "Innovation", "text": "Practical use of modern technologies and energy solutions." },
-    { "name": "Sustainability", "text": "Solutions that consider energy efficiency and long-term operation." }
+    {
+      "name": "Quality",
+      "text": "Work executed with attention to technical requirements and finish."
+    },
+    {
+      "name": "Reliability",
+      "text": "Dependable communication, execution and technical support."
+    },
+    {
+      "name": "Safety",
+      "text": "Safety-conscious planning and responsible site practices."
+    },
+    {
+      "name": "Integrity",
+      "text": "Professional conduct and clear communication with clients."
+    },
+    {
+      "name": "Innovation",
+      "text": "Practical use of modern technologies and energy solutions."
+    },
+    {
+      "name": "Sustainability",
+      "text": "Solutions that consider energy efficiency and long-term operation."
+    }
   ],
-
   "gallery": [
-    { "img": "residential-build.jpg", "caption": "Residential construction works", "category": "Construction" },
-    { "img": "solar-technician.jpg", "caption": "Solar and hybrid-energy installation", "category": "Solar" },
-    { "img": "electrical-panel.jpg", "caption": "Electrical distribution and control panel", "category": "Electrical" },
-    { "img": "hvac-cassette.jpg", "caption": "HVAC installation works", "category": "HVAC" },
-    { "img": "borehole-drilling.jpg", "caption": "Borehole drilling and water works", "category": "Borehole" },
-    { "img": "outdoor-solar.jpg", "caption": "Outdoor solar installation", "category": "Solar" },
-    { "img": "cctv-pole.jpg", "caption": "CCTV surveillance installation", "category": "CCTV" },
-    { "img": "inverter-battery.jpg", "caption": "Hybrid inverter and battery storage", "category": "Solar" },
-    { "img": "control-contactors.jpg", "caption": "Electrical control infrastructure", "category": "Electrical" },
-    { "img": "building-evening.jpg", "caption": "Completed residential building", "category": "Construction" }
-  ]
+    {
+      "img": "house-after-night.jpg",
+      "caption": "Design-build family home, completed",
+      "category": "Construction"
+    },
+    {
+      "img": "foundation-crew.jpg",
+      "caption": "Foundation works with the RUNHTec crew",
+      "category": "Construction"
+    },
+    {
+      "img": "roof-slab-reinforcement.jpg",
+      "caption": "Roof slab reinforcement",
+      "category": "Construction"
+    },
+    {
+      "img": "civil-compaction.jpg",
+      "caption": "Ground compaction for external works",
+      "category": "Construction"
+    },
+    {
+      "img": "house-before-structure.jpg",
+      "caption": "Multi-storey structure under construction",
+      "category": "Construction"
+    },
+    {
+      "img": "blockwork-house.jpg",
+      "caption": "Blockwork for a residential build",
+      "category": "Construction"
+    },
+    {
+      "img": "site-on-site-banner.jpg",
+      "caption": "RUNHTec construction site",
+      "category": "Construction"
+    },
+    {
+      "img": "house-near-completion.jpg",
+      "caption": "Residential build nearing completion",
+      "category": "Construction"
+    },
+    {
+      "img": "hybrid-inverter-battery-2.jpg",
+      "caption": "Hybrid inverter and battery storage",
+      "category": "Solar"
+    },
+    {
+      "img": "solar-technician.jpg",
+      "caption": "Hybrid solar installation",
+      "category": "Solar"
+    },
+    {
+      "img": "outdoor-solar.jpg",
+      "caption": "Outdoor solar installation",
+      "category": "Solar"
+    },
+    {
+      "img": "solar-home-red-roof.jpg",
+      "caption": "Rooftop solar on a family home",
+      "category": "Solar"
+    },
+    {
+      "img": "rooftop-solar-view.jpg",
+      "caption": "Commercial rooftop solar array",
+      "category": "Solar"
+    },
+    {
+      "img": "solar-tile-roof-install.jpg",
+      "caption": "Solar installation on a tiled roof",
+      "category": "Solar"
+    },
+    {
+      "img": "solar-inverters-batteries.jpg",
+      "caption": "Three-inverter hybrid system with battery storage",
+      "category": "Solar"
+    },
+    {
+      "img": "cold-room-stock.jpg",
+      "caption": "Poultry cold room in use",
+      "category": "Cold rooms"
+    },
+    {
+      "img": "cold-room-condensing-unit.jpg",
+      "caption": "Cold room condensing unit",
+      "category": "Cold rooms"
+    },
+    {
+      "img": "cold-room-controller.jpg",
+      "caption": "Cold room temperature controller",
+      "category": "Cold rooms"
+    },
+    {
+      "img": "cold-room-evaporator.jpg",
+      "caption": "Cold room evaporator",
+      "category": "Cold rooms"
+    },
+    {
+      "img": "stairs-after.jpg",
+      "caption": "LED step and wall lighting",
+      "category": "Electrical"
+    },
+    {
+      "img": "gate-lighting.jpg",
+      "caption": "Gate and outdoor lighting",
+      "category": "Electrical"
+    },
+    {
+      "img": "electrical-panel.jpg",
+      "caption": "Electrical control panel",
+      "category": "Electrical"
+    },
+    {
+      "img": "drywall-distribution-boards.jpg",
+      "caption": "Distribution boards installed during fit-out",
+      "category": "Electrical"
+    },
+    {
+      "img": "changeover-switch.jpg",
+      "caption": "125 A on-load changeover switch",
+      "category": "Generators"
+    },
+    {
+      "img": "generator-filter.jpg",
+      "caption": "Generator service: filter replacement",
+      "category": "Generators"
+    },
+    {
+      "img": "generator-enclosure.jpg",
+      "caption": "Standby generator during servicing",
+      "category": "Generators"
+    },
+    {
+      "img": "generator-fuel-filters.jpg",
+      "caption": "Fuel filter and fuel–water separator",
+      "category": "Generators"
+    },
+    {
+      "img": "hvac-cassette-lighting.jpg",
+      "caption": "Ceiling cassette AC and downlights",
+      "category": "HVAC"
+    },
+    {
+      "img": "hvac-cassette.jpg",
+      "caption": "HVAC installation works",
+      "category": "HVAC"
+    },
+    {
+      "img": "hvac-cassette-install.jpg",
+      "caption": "Cassette AC unit being installed",
+      "category": "HVAC"
+    },
+    {
+      "img": "cctv-pole.jpg",
+      "caption": "CCTV surveillance installation",
+      "category": "CCTV"
+    },
+    {
+      "img": "borehole-drilling.jpg",
+      "caption": "Borehole drilling and water works",
+      "category": "Borehole"
+    }
+  ],
+  "stats": [
+    {
+      "value": 5,
+      "suffix": "",
+      "label": "Years in operation"
+    },
+    {
+      "value": 107,
+      "suffix": "",
+      "label": "Projects completed across all disciplines"
+    },
+    {
+      "value": 2,
+      "suffix": "",
+      "label": "Countries: Rwanda and Uganda"
+    },
+    {
+      "value": 10,
+      "suffix": "",
+      "label": "Technical services under one team"
+    }
+  ],
+  "maintenance_clients": [],
+  "_maintenance_clients_help": "Add one entry per client who has agreed to be shown: {\"name\": \"Client name\", \"logo\": \"clients/logo-file.png\"} (put logo files in images/clients/)."
 }

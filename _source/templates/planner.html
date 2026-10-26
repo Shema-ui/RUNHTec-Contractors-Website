@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% from "_macros.html" import banner %}
+{% from "_icons.html" import icon %}
+{% block content %}
+{{ banner(root, "Free tool", "Backup Power & Solar Planner", "List what must keep running during a power cut. The planner estimates the inverter, batteries, solar panels and generator you need, using standard sizing methods.", None, [("Power Planner", None)]) }}
+
+<section class="section planner-section">
+  <div class="container planner-layout">
+    <div class="planner-inputs">
+      <div class="planner-block">
+        <h2><span class="planner-num">1</span>Start from a typical building</h2>
+        <div class="preset-row" role="group" aria-label="Building type">
+          <button type="button" class="preset is-active" data-preset="home">Home</button>
+          <button type="button" class="preset" data-preset="office">Office or shop</button>
+          <button type="button" class="preset" data-preset="hotel">Small hotel</button>
+          <button type="button" class="preset" data-preset="clinic">Clinic</button>
+          <button type="button" class="preset" data-preset="empty">Start empty</button>
+        </div>
+      </div>
+
+      <div class="planner-block">
+        <h2><span class="planner-num">2</span>Your appliances</h2>
+        <p class="planner-help">Edit the numbers to match your building. Use the power rating on each appliance's label. For fridges and freezers, about 10 hours a day is typical, because the compressor switches on and off.</p>
+        <div class="table-wrap">
+          <table class="loads">
+            <thead><tr><th scope="col">Appliance</th><th scope="col">Watts each</th><th scope="col">Qty</th><th scope="col">Hours / day</th><th scope="col"><span class="visually-hidden">Remove</span></th></tr></thead>
+            <tbody id="loads-body"></tbody>
+          </table>
+        </div>
+        <div class="add-row">
+          <label for="add-item" class="visually-hidden">Add an appliance</label>
+          <select id="add-item"></select>
+          <button type="button" class="btn btn-secondary" id="add-btn">{{ icon("check") }}Add</button>
+        </div>
+      </div>
+
+      <div class="planner-block">
+        <h2><span class="planner-num">3</span>Your goals</h2>
+        <div class="field">
+          <label for="backup-hours">Backup needed during a power cut: <strong><output id="backup-out">4</output> hours</strong></label>
+          <input type="range" id="backup-hours" min="1" max="24" value="4" class="range">
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="country">Location</label>
+            <select id="country"><option value="RW">Rwanda</option><option value="UG">Uganda</option></select>
+          </div>
+          <div class="field">
+            <label for="diesel">Diesel price per litre (<span id="currency">FRw</span>)</label>
+            <input type="number" id="diesel" min="0" step="1" value="2927" inputmode="numeric">
+          </div>
+        </div>
+        <label class="check"><input type="checkbox" id="use-solar" checked><span>Add solar panels to cover my daily energy use</span></label>
+      </div>
+    </div>
+
+    <aside class="planner-results" aria-live="polite">
+      <p class="kicker">Your estimate</p>
+      <div class="result-top">
+        <div><span class="r-label">Peak load</span><span class="r-big" id="r-peak">–</span></div>
+        <div><span class="r-label">Daily energy</span><span class="r-big" id="r-daily">–</span></div>
+      </div>
+      <ul class="result-list">
+        <li><span class="r-icon">{{ icon("bolt") }}</span><div><span class="r-label">Hybrid inverter</span><span class="r-val" id="r-inverter">–</span><span class="r-note" id="r-inverter-note"></span></div></li>
+        <li><span class="r-icon">{{ icon("clipboard") }}</span><div><span class="r-label">Lithium battery storage</span><span class="r-val" id="r-battery">–</span><span class="r-note" id="r-battery-note"></span></div></li>
+        <li id="solar-row"><span class="r-icon">{{ icon("sun") }}</span><div><span class="r-label">Solar panels</span><span class="r-val" id="r-solar">–</span><span class="r-note" id="r-solar-note"></span></div></li>
+        <li class="r-alt"><span class="r-icon">{{ icon("generator") }}</span><div><span class="r-label">Or a diesel generator</span><span class="r-val" id="r-gen">–</span><span class="r-note" id="r-gen-note"></span></div></li>
+      </ul>
+      <a id="planner-quote" href="{{ root }}request-a-quote/" class="btn btn-primary btn-block">Send these results with a quote request</a>
+      <p class="r-disclaimer">An estimate for planning only. A RUNHTec engineer will confirm the final design after a site assessment.</p>
+    </aside>
+  </div>
+
+  <div class="container">
+    <details class="assumptions">
+      <summary>How the planner calculates</summary>
+      <ul>
+        <li><strong>Peak load</strong> assumes everything in the list can run at the same time. This is the safe, worst-case figure.</li>
+        <li><strong>Inverter:</strong> peak load plus 25% headroom, and enough surge capacity for your largest motor (pump, fridge, AC) to start, at about 3 times its running power. Rounded up to a standard size.</li>
+        <li><strong>Battery:</strong> energy each appliance uses during the outage (up to its daily hours), divided by 92% inverter efficiency and 90% usable depth of discharge for lithium (LiFePO₄). Shown in 5.12 kWh modules, a common 48 V size.</li>
+        <li><strong>Solar:</strong> daily energy divided by peak sun hours (4.5 for Rwanda, 5.0 for Uganda) and a 75% system efficiency for heat, dust, wiring and battery losses. Shown in 550 W panels.</li>
+        <li><strong>Generator:</strong> peak load plus 25% headroom at 0.8 power factor, checked against motor starting, then rounded up to a standard kVA size. Fuel use follows a standard diesel fuel curve (0.08 L/h per rated kW plus 0.25 L per kWh produced) at the average outage load.</li>
+      </ul>
+    </details>
+  </div>
+</section>
+{% endblock %}
