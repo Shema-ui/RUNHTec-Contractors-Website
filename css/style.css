@@ -433,7 +433,7 @@ ul, ol { padding-left: 1.2em; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1080px) {
   :root { --header-h: 68px; }
   .topbar-areas { display: none; }
   .topbar-inner { justify-content: center; }
@@ -734,3 +734,6 @@ ul, ol { padding-left: 1.2em; }
 .stages strong { color: var(--ink); font-family: var(--font-head); font-size: 18px; }
 .stage-num { position: absolute; top: 8px; left: 8px; width: 28px; height: 28px; border-radius: 50%; background: var(--brand); color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 14px; }
 @media (max-width: 640px) { .stages { grid-template-columns: 1fr 1fr; } }
+
+.nav-link, .nav-cta { white-space: nowrap; }
+@media (max-width: 1280px) and (min-width: 1081px) { .site-nav { gap: 14px; } .nav-link { padding: 10px 8px; font-size: 16px; } .nav-cta { padding: 10px 16px; } }

@@ -28,17 +28,11 @@
         {% for p in site.process %}<li><strong>{{ p.title }}</strong> {{ p.text }}</li>{% endfor %}
       </ol>
 
-      {{ placeholder("Specific equipment types, capacities or brands RUNHTec installs and services for " ~ s.name ~ " (optional, adds credibility).") }}
 
       {% if s.gallery %}
       <h3>From the field</h3>
       <div class="detail-gallery">
         {% for g in s.gallery %}<img src="{{ root }}images/{{ g }}" alt="{{ s.name }}: RUNHTec field work" loading="lazy">{% endfor %}
-      </div>
-      {% elif not s.image %}
-      <div class="no-photo">
-        <span>{{ icon(s.icon, "icon icon-xl") }}</span>
-        <p>Project photos for this service will be added soon.</p>
       </div>
       {% endif %}
     </article>
