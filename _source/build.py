@@ -40,6 +40,40 @@ env = Environment(
 )
 env.tests["contains"] = lambda seq, item: item in (seq or [])
 
+
+def build_ld():
+    base = site["base_url"]
+    org_id = base + "/#organization"
+    graph = [{
+        "@type": "Organization", "@id": org_id, "name": site["name"],
+        "alternateName": site.get("alternate_names", []), "url": base + "/",
+        "logo": base + "/images/logo.png", "image": base + "/images/hero-building.jpg",
+        "email": site["email"], "slogan": site["tagline"],
+        "description": "Engineering and technical services company in Rwanda and Uganda: construction, electrical, "
+                       "standby generators, solar, HVAC, cold rooms, CCTV, networking, boreholes and maintenance contracts.",
+        "areaServed": [{"@type": "Country", "name": "Rwanda"}, {"@type": "Country", "name": "Uganda"}],
+        "sameAs": site.get("social_profiles", []),
+        "contactPoint": [{"@type": "ContactPoint", "contactType": "customer service", "telephone": o["phone"],
+                          "areaServed": o["country_code"]} for o in site["offices"]],
+        "knowsAbout": [s["name"] for s in services],
+    }, {
+        "@type": "WebSite", "@id": base + "/#website", "url": base + "/", "name": site["name"],
+        "alternateName": site.get("alternate_names", []), "publisher": {"@id": org_id},
+    }]
+    for o in site["offices"]:
+        graph.append({
+            "@type": "LocalBusiness", "@id": f"{base}/#branch-{o['id']}",
+            "name": f"{site['name']} – {o['city']} branch", "parentOrganization": {"@id": org_id},
+            "url": base + "/contact/", "telephone": o["phone"], "email": site["email"],
+            "image": base + "/images/hero-building.jpg", "logo": base + "/images/logo.png",
+            "address": {"@type": "PostalAddress", "streetAddress": o["address"].split(",")[0],
+                        "addressLocality": o["city"], "addressCountry": o["country_code"]},
+            "areaServed": o["country"],
+        })
+    return json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=1).replace("</", "<\\/")
+
+ld_json = build_ld()
+
 # Every page on the site: (output path, template, title, description, nav section)
 pages = [
     ("", "home.html", "Engineering & Technical Services in Rwanda and Uganda",
@@ -87,7 +121,7 @@ def render(path, template, title, description, section, service=None, story=None
     root = rel_root(path)
     html = env.get_template(template).render(
         site=site, services=services, categories=categories, service=service,
-        stories=stories, articles=articles, story=story, article=article,
+        stories=stories, articles=articles, story=story, article=article, ld_json=ld_json,
         title=title, description=description, section=section, root=root,
         path=path, canonical=f"{site['base_url']}/{path}",
         year=datetime.date.today().year,
@@ -105,7 +139,7 @@ if not site.get("maintenance_clients"):
 
 # 404 page (GitHub Pages serves /404.html for missing pages; links use absolute site root)
 html = env.get_template("404.html").render(
-    site=site, services=services, categories=categories, stories=stories, articles=articles, title="Page not found",
+    site=site, services=services, categories=categories, stories=stories, articles=articles, ld_json=ld_json, title="Page not found",
     description="The page you are looking for could not be found.", section="",
     root=site.get("pages_root", "/"), path="404", canonical=site["base_url"] + "/404.html",
     year=datetime.date.today().year, service=None,

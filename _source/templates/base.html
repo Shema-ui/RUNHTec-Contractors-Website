@@ -20,30 +20,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ root }}css/style.css">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "{{ site.name }}",
-    "url": "{{ site.base_url }}/",
-    "logo": "{{ site.base_url }}/images/logo.png",
-    "email": "{{ site.email }}",
-    "slogan": "{{ site.tagline }}",
-    "areaServed": ["Rwanda", "Uganda"],
-    "location": [
-      {% for o in site.offices %}
-      {
-        "@type": "LocalBusiness",
-        "name": "{{ site.name }} — {{ o.role }} ({{ o.country }})",
-        "telephone": "{{ o.phone }}",
-        "image": "{{ site.base_url }}/images/hero-building.jpg",
-        "address": { "@type": "PostalAddress", "streetAddress": "{{ o.address.split(',')[0] }}", "addressLocality": "{{ o.city }}", "addressCountry": "{{ o.country_code }}" }
-      }{% if not loop.last %},{% endif %}
-
-      {% endfor %}
-    ]
-  }
-  </script>
+  <script type="application/ld+json">{{ ld_json|safe }}</script>
+  {% if site.google_site_verification %}<meta name="google-site-verification" content="{{ site.google_site_verification }}">{% endif %}
   {% block head %}{% endblock %}
 </head>
 <body class="page-{{ section or 'other' }}">

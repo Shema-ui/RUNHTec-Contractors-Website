@@ -19,34 +19,122 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
-  <script type="application/ld+json">
+  <script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
   {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "RUNHTec Contractors Ltd",
-    "url": "https://runhteccontractors.si/",
-    "logo": "https://runhteccontractors.si/images/logo.png",
-    "email": "contact@runhteccontractors.si",
-    "slogan": "Engineering Power Into Every Structure",
-    "areaServed": ["Rwanda", "Uganda"],
-    "location": [
-      {
-        "@type": "LocalBusiness",
-        "name": "RUNHTec Contractors Ltd — Branch (Rwanda)",
-        "telephone": "+250793229790",
-        "image": "https://runhteccontractors.si/images/hero-building.jpg",
-        "address": { "@type": "PostalAddress", "streetAddress": "Gikondo Sector", "addressLocality": "Kigali", "addressCountry": "RW" }
-      },
-      {
-        "@type": "LocalBusiness",
-        "name": "RUNHTec Contractors Ltd — Branch (Uganda)",
-        "telephone": "+256754625168",
-        "image": "https://runhteccontractors.si/images/hero-building.jpg",
-        "address": { "@type": "PostalAddress", "streetAddress": "Industrial Area", "addressLocality": "Kampala", "addressCountry": "UG" }
-      }
-    ]
+   "@type": "Organization",
+   "@id": "https://runhteccontractors.si/#organization",
+   "name": "RUNHTec Contractors Ltd",
+   "alternateName": [
+    "RUNHTec",
+    "Runhtec",
+    "RUNHTec Contractors",
+    "Runhtec Contractors Ltd",
+    "RUNHTec Ltd"
+   ],
+   "url": "https://runhteccontractors.si/",
+   "logo": "https://runhteccontractors.si/images/logo.png",
+   "image": "https://runhteccontractors.si/images/hero-building.jpg",
+   "email": "contact@runhteccontractors.si",
+   "slogan": "Engineering Power Into Every Structure",
+   "description": "Engineering and technical services company in Rwanda and Uganda: construction, electrical, standby generators, solar, HVAC, cold rooms, CCTV, networking, boreholes and maintenance contracts.",
+   "areaServed": [
+    {
+     "@type": "Country",
+     "name": "Rwanda"
+    },
+    {
+     "@type": "Country",
+     "name": "Uganda"
+    }
+   ],
+   "sameAs": [],
+   "contactPoint": [
+    {
+     "@type": "ContactPoint",
+     "contactType": "customer service",
+     "telephone": "+250793229790",
+     "areaServed": "RW"
+    },
+    {
+     "@type": "ContactPoint",
+     "contactType": "customer service",
+     "telephone": "+256754625168",
+     "areaServed": "UG"
+    }
+   ],
+   "knowsAbout": [
+    "Construction & Civil Works",
+    "Electrical Installations",
+    "Standby Generators & Backup Power",
+    "Solar PV & Hybrid Solar Systems",
+    "HVAC, Air Conditioning & Chillers",
+    "Cold Rooms & Refrigeration",
+    "CCTV & Security Systems",
+    "Internet & Network Solutions",
+    "Borehole Drilling & Water",
+    "Maintenance Contracts"
+   ]
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://runhteccontractors.si/#website",
+   "url": "https://runhteccontractors.si/",
+   "name": "RUNHTec Contractors Ltd",
+   "alternateName": [
+    "RUNHTec",
+    "Runhtec",
+    "RUNHTec Contractors",
+    "Runhtec Contractors Ltd",
+    "RUNHTec Ltd"
+   ],
+   "publisher": {
+    "@id": "https://runhteccontractors.si/#organization"
+   }
+  },
+  {
+   "@type": "LocalBusiness",
+   "@id": "https://runhteccontractors.si/#branch-rwanda",
+   "name": "RUNHTec Contractors Ltd – Kigali branch",
+   "parentOrganization": {
+    "@id": "https://runhteccontractors.si/#organization"
+   },
+   "url": "https://runhteccontractors.si/contact/",
+   "telephone": "+250793229790",
+   "email": "contact@runhteccontractors.si",
+   "image": "https://runhteccontractors.si/images/hero-building.jpg",
+   "logo": "https://runhteccontractors.si/images/logo.png",
+   "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Gikondo Sector",
+    "addressLocality": "Kigali",
+    "addressCountry": "RW"
+   },
+   "areaServed": "Rwanda"
+  },
+  {
+   "@type": "LocalBusiness",
+   "@id": "https://runhteccontractors.si/#branch-uganda",
+   "name": "RUNHTec Contractors Ltd – Kampala branch",
+   "parentOrganization": {
+    "@id": "https://runhteccontractors.si/#organization"
+   },
+   "url": "https://runhteccontractors.si/contact/",
+   "telephone": "+256754625168",
+   "email": "contact@runhteccontractors.si",
+   "image": "https://runhteccontractors.si/images/hero-building.jpg",
+   "logo": "https://runhteccontractors.si/images/logo.png",
+   "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Industrial Area",
+    "addressLocality": "Kampala",
+    "addressCountry": "UG"
+   },
+   "areaServed": "Uganda"
   }
-  </script>
+ ]
+}</script>
 </head>
 <body class="page-about">
   <a class="skip-link" href="#main">Skip to content</a>

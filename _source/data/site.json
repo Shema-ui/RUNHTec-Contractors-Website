@@ -361,5 +361,15 @@
       "url": "https://universalevents.rw"
     }
   ],
-  "_maintenance_clients_help": "One entry per client shown on /clients/: {\"name\": \"...\", \"logo\": \"clients/file.png\" (or a full https:// link, or \"\" to show the name only), \"url\": \"https://...\" (optional)}. Put logo files in images/clients/."
+  "_maintenance_clients_help": "One entry per client shown on /clients/: {\"name\": \"...\", \"logo\": \"clients/file.png\" (or a full https:// link, or \"\" to show the name only), \"url\": \"https://...\" (optional)}. Put logo files in images/clients/.",
+  "alternate_names": [
+    "RUNHTec",
+    "Runhtec",
+    "RUNHTec Contractors",
+    "Runhtec Contractors Ltd",
+    "RUNHTec Ltd"
+  ],
+  "social_profiles": [],
+  "_social_profiles_help": "Add full links to official profiles (LinkedIn, Facebook, Instagram, Google Business Profile) so Google links them to this site.",
+  "google_site_verification": ""
 }
