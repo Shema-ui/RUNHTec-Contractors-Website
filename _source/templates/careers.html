@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+{% from "_macros.html" import banner %}
+{% from "_icons.html" import icon %}
+{% block cta %}{% endblock %}
+{% block content %}
+{{ banner(root, "Work with us", "Join our network of contractors.", "Skilled technicians, engineers, inspectors and support professionals: apply once, and we contact you when a project matches your skills.", None, [("Work with us", None)]) }}
+
+{% set departments = [
+  ("technical", "Technical & Field Services"),
+  ("projects", "Projects & Engineering"),
+  ("inspection", "Inspection, Quality & HSE"),
+  ("procurement", "Procurement & Stores"),
+  ("sales", "Sales & Business Development"),
+  ("finance", "Finance & Accounts"),
+  ("administration", "Administration & Management"),
+  ("hr", "Human Resources"),
+  ("ict", "ICT & Systems"),
+] %}
+{% set trades = [
+  ("technical", "construction", "Construction & Civil Works"),
+  ("technical", "mason", "Masonry & Finishing"),
+  ("technical", "electrical", "Electrical Installation"),
+  ("technical", "solar", "Solar PV & Hybrid Systems"),
+  ("technical", "generator", "Generators & Backup Power"),
+  ("technical", "hvac", "HVAC, Air Conditioning & Chillers"),
+  ("technical", "refrigeration", "Cold Rooms & Refrigeration"),
+  ("technical", "borehole", "Borehole Drilling & Water"),
+  ("technical", "plumbing", "Plumbing"),
+  ("technical", "cctv", "CCTV & Security Systems"),
+  ("technical", "networking", "Networking & Internet"),
+  ("technical", "welding", "Welding & Metal Fabrication"),
+  ("technical", "carpentry", "Carpentry & Joinery"),
+  ("technical", "painting", "Painting & Decoration"),
+  ("technical", "driver", "Driver / Machine Operator"),
+  ("technical", "labour", "General Labour / Helper"),
+  ("projects", "site_engineer", "Site Engineer / Supervisor"),
+  ("projects", "project_manager", "Project Manager"),
+  ("projects", "quantity_surveyor", "Quantity Surveyor"),
+  ("projects", "draughtsman", "Designer / Draughtsman (CAD)"),
+  ("inspection", "inspector", "Inspector / QA-QC"),
+  ("inspection", "hse", "Health, Safety & Environment Officer"),
+  ("finance", "accountant", "Accountant / Finance"),
+  ("sales", "sales", "Sales / Business Development"),
+  ("procurement", "procurement", "Procurement / Storekeeper"),
+  ("administration", "admin", "Administration / Secretary"),
+  ("hr", "hr", "Human Resources"),
+  ("ict", "ict", "ICT / Systems Support"),
+] %}
+
+<section class="section">
+  <div class="container">
+    <div class="model-note">
+      <h2>How we work: contract per project</h2>
+      <p>RUNHTec engages professionals as <strong>independent contractors for each project</strong>, not as salaried employees. When a project matches your skills, we offer you a written engagement for that project, with the scope of work, your fee and the dates agreed before you start. You are paid for that project, and each new project is agreed separately.</p>
+      <ol class="mini-process">
+        <li><strong>Apply</strong> once with your skills and experience.</li>
+        <li><strong>We review</strong> and may call you for a short interview or practical test.</li>
+        <li><strong>Join our register</strong> of approved contractors.</li>
+        <li><strong>Get project offers</strong> with a clear scope, fee and dates.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="section section-tint">
+  <div class="container form-layout">
+    <form class="rt-form" id="careers-form" data-form="careers" novalidate enctype="multipart/form-data">
+      <fieldset class="field-group">
+        <legend>About you</legend>
+        <div class="field-row">
+          <div class="field"><label for="a-name">Full name <span class="req">*</span></label><input id="a-name" name="full_name" type="text" autocomplete="name" required></div>
+          <div class="field"><label for="a-phone">Phone <span class="req">*</span></label><input id="a-phone" name="phone" type="tel" autocomplete="tel" required placeholder="+250 7XX XXX XXX" pattern="[+0-9 ()-]{9,20}"></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="a-wa">WhatsApp (if different)</label><input id="a-wa" name="whatsapp" type="tel" pattern="[+0-9 ()-]{9,20}"></div>
+          <div class="field"><label for="a-email">Email</label><input id="a-email" name="email" type="email" autocomplete="email"></div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="a-country">Country <span class="req">*</span></label>
+            <select id="a-country" name="country" required>
+              {% for c in ["Rwanda", "Uganda", "Kenya", "Tanzania", "Burundi", "DR Congo", "Other"] %}<option>{{ c }}</option>{% endfor %}
+            </select>
+          </div>
+          <div class="field"><label for="a-city">City / district <span class="req">*</span></label><input id="a-city" name="city" type="text" required></div>
+        </div>
+      </fieldset>
+
+      <fieldset class="field-group">
+        <legend>Your skills</legend>
+        <div class="field-row">
+          <div class="field">
+            <label for="a-dept">Department <span class="req">*</span></label>
+            <select id="a-dept" name="department" required>
+              {% for v, label in departments %}<option value="{{ v }}">{{ label }}</option>{% endfor %}
+            </select>
+          </div>
+          <div class="field">
+            <label for="a-trade">Main skill <span class="req">*</span></label>
+            <select id="a-trade" name="trade" required>
+              <option value="">Choose your main skill</option>
+              {% for d, v, label in trades %}<option value="{{ v }}" data-dept="{{ d }}">{{ label }}</option>{% endfor %}
+              <option value="other" data-dept="all">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="a-exp">Years of experience <span class="req">*</span></label><input id="a-exp" name="experience_years" type="number" min="0" max="60" required></div>
+          <div class="field">
+            <label for="a-avail">Availability</label>
+            <select id="a-avail" name="availability">
+              <option>Available now</option>
+              <option>Within 2 weeks</option>
+              <option>Within a month</option>
+              <option>Weekends / part-time only</option>
+            </select>
+          </div>
+        </div>
+        <div class="field"><label for="a-skills">Other skills</label><input id="a-skills" name="other_skills" type="text" placeholder="e.g. 3-phase wiring, inverter setup, reading drawings"></div>
+        <div class="field-row">
+          <div class="field"><label for="a-qual">Qualifications</label><input id="a-qual" name="qualifications" type="text" placeholder="e.g. A2 Electricity, TVET certificate, BSc Civil Engineering"></div>
+          <div class="field"><label for="a-cert">Certifications / licences</label><input id="a-cert" name="certifications" type="text" placeholder="e.g. electrician licence, working at heights"></div>
+        </div>
+        <div class="field"><label for="a-prev">Projects you have worked on <span class="req">*</span></label><textarea id="a-prev" name="previous_projects" rows="5" required minlength="20" placeholder="Two or three recent jobs: what you did, where, and for whom."></textarea></div>
+      </fieldset>
+
+      <fieldset class="field-group">
+        <legend>Rate & equipment</legend>
+        <div class="field-row">
+          <div class="field"><label for="a-rate">Your usual rate (RWF)</label><input id="a-rate" name="expected_rate" type="text" inputmode="numeric" placeholder="e.g. 25,000"></div>
+          <div class="field">
+            <label for="a-unit">Rate basis</label>
+            <select id="a-unit" name="rate_unit">
+              <option value="per_day">per day</option>
+              <option value="per_hour">per hour</option>
+              <option value="per_project">per project</option>
+              <option value="per_month">per month</option>
+            </select>
+          </div>
+        </div>
+        <div class="choice-row">
+          <label class="check"><input type="checkbox" name="has_tools" value="yes"><span>I have my own tools</span></label>
+          <label class="check"><input type="checkbox" name="has_transport" value="yes"><span>I have my own transport</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="field-group">
+        <legend>Documents</legend>
+        <div class="field-row">
+          <div class="field"><label for="a-cv">CV</label><input id="a-cv" name="cv" type="file" accept=".pdf,.doc,.docx,image/jpeg,image/png"></div>
+          <div class="field"><label for="a-certfile">Certificate or licence</label><input id="a-certfile" name="certificate" type="file" accept=".pdf,.doc,.docx,image/jpeg,image/png"></div>
+        </div>
+        <p class="form-hint">PDF, Word or photo, up to 5 MB each. Not required, but it helps us review faster.</p>
+      </fieldset>
+
+      <div class="field consent">
+        <label class="check"><input type="checkbox" name="consent" value="yes" required><span>I understand that RUNHTec engages contractors per project, not as employees, and I agree that RUNHTec may keep these details to contact me about projects, as described in the <a href="{{ root }}privacy-policy/">privacy policy</a>. <span class="req">*</span></span></label>
+      </div>
+      <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <div class="form-status" role="status" aria-live="polite"></div>
+      <button type="submit" class="btn btn-primary btn-lg">Send application</button>
+    </form>
+
+    <aside class="side-card">
+      <h2>Who we work with</h2>
+      <p>Our projects cover construction, electrical, solar, generators, HVAC, cold rooms, boreholes, CCTV and networking across Rwanda and Uganda.</p>
+      <ul class="check-list small">
+        <li>Qualified technicians in every trade</li>
+        <li>Site engineers and supervisors</li>
+        <li>Inspectors, QA/QC and HSE officers</li>
+        <li>Support roles: procurement, finance and administration</li>
+      </ul>
+      <p class="small">Questions? <a href="https://wa.me/{{ site.offices[0].whatsapp }}" target="_blank" rel="noopener">{{ icon("whatsapp") }}WhatsApp us</a></p>
+    </aside>
+  </div>
+</section>
+{% endblock %}

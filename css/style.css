@@ -756,3 +756,8 @@ ul, ol { padding-left: 1.2em; }
   .lightbox button { width: 40px; height: 40px; font-size: 24px; }
 }
 .form-status.is-info { display: block; background: #f3f4f6; color: #374151; border-left: 4px solid #9ca3af; }
+.model-note { max-width: 860px; border-left: 4px solid var(--brand); background: #fff; padding: 22px 26px; border-radius: var(--radius); box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+.model-note h2 { margin-top: 0; }
+.model-note .mini-process { margin-bottom: 0; }
+.careers-success { border-left: 4px solid #2e7d32; background: #edf7ee; color: #1e5b24; padding: 18px 20px; border-radius: var(--radius); }
+.careers-success strong { color: #14401a; }

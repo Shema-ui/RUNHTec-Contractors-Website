@@ -96,6 +96,8 @@ pages = [
      "Request a quotation or book a site visit with RUNHTec Contractors in Rwanda or Uganda.", "quote"),
     ("contact/", "contact.html", "Contact Us",
      "Contact RUNHTec Contractors: Kigali head office and Kampala branch. Call, WhatsApp or email us.", "contact"),
+    ("work-with-us/", "careers.html", "Work With Us",
+     "Join RUNHTec's network of contractors: technicians, engineers, inspectors and support roles engaged per project in Rwanda and Uganda.", "careers"),
     ("privacy-policy/", "privacy.html", "Privacy Policy",
      "How RUNHTec Contractors Ltd handles information submitted through this website.", "privacy"),
 ]

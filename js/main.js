@@ -156,6 +156,7 @@
 
   document.querySelectorAll(".rt-form").forEach(function (form) {
     var kind = form.getAttribute("data-form");
+    if (kind === "careers") return; /* handled separately below: sent to the ERP, not WhatsApp */
 
     /* Quote form: pre-fill from link, e.g. ?service=solar-pv-hybrid-systems&type=site-visit */
     if (kind === "quote") {
@@ -258,6 +259,104 @@
         showStatus(form, "success", "WhatsApp has opened with your " + (kind === "quote" ? "request" : "message") + " to our " + office.country + " office. Tap send in WhatsApp to deliver it.");
       }
     });
+  });
+})();
+
+/* ===== Work with us: contractor applications go straight into the ERP ===== */
+(function () {
+  "use strict";
+  var cfg = window.RUNHTEC || {};
+  var form = document.getElementById("careers-form");
+  if (!form) return;
+  var dept = form.querySelector("#a-dept");
+  var trade = form.querySelector("#a-trade");
+  var status = form.querySelector(".form-status");
+  var MAX = 5 * 1024 * 1024;
+  var TYPES = /\.(pdf|docx?|jpe?g|png)$/i;
+
+  /* Show only the skills that belong to the chosen department */
+  function syncTrades() {
+    var d = dept.value;
+    Array.prototype.forEach.call(trade.options, function (o) {
+      var od = o.getAttribute("data-dept");
+      var show = !od || od === "all" || od === d;
+      o.hidden = !show;
+      o.disabled = !show;
+    });
+    if (trade.selectedOptions[0] && trade.selectedOptions[0].disabled) trade.value = "";
+  }
+  dept.addEventListener("change", syncTrades);
+  syncTrades();
+
+  function say(type, text) {
+    status.className = "form-status is-" + type;
+    status.textContent = text;
+    status.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  function fieldError(input, text) {
+    var field = input.closest(".field");
+    if (!field) return;
+    field.classList.add("has-error");
+    var msg = document.createElement("span");
+    msg.className = "field-error";
+    msg.textContent = text;
+    field.appendChild(msg);
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (form.querySelector(".hp").value) return;
+    form.querySelectorAll(".field.has-error").forEach(function (f) { f.classList.remove("has-error"); });
+    form.querySelectorAll(".field-error").forEach(function (x) { x.remove(); });
+
+    var bad = null;
+    form.querySelectorAll("input, select, textarea").forEach(function (el) {
+      if (el.classList.contains("hp") || el.type === "file") return;
+      if (el.type !== "checkbox") el.value = el.value.trim();
+      if (!el.checkValidity()) {
+        var v = el.validity;
+        fieldError(el, v.valueMissing ? (el.type === "checkbox" ? "Please tick this box to continue." : "This field is required.")
+          : v.typeMismatch ? "Please enter a valid email address."
+          : v.patternMismatch ? "Please enter a valid phone number, e.g. +250 7XX XXX XXX."
+          : v.tooShort ? "Please add a little more detail." : "Please check this field.");
+        if (!bad) bad = el;
+      }
+    });
+    form.querySelectorAll('input[type="file"]').forEach(function (el) {
+      var f = el.files && el.files[0];
+      if (!f) return;
+      if (f.size > MAX) { fieldError(el, "This file is larger than 5 MB."); if (!bad) bad = el; }
+      else if (!TYPES.test(f.name)) { fieldError(el, "Please upload a PDF, Word document or photo."); if (!bad) bad = el; }
+    });
+    if (bad) { bad.focus(); say("error", "Please correct the highlighted fields and try again."); return; }
+
+    if (!cfg.careersEndpoint) { say("error", "Applications are not open online yet. Please contact us on WhatsApp."); return; }
+    var btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    say("info", "Sending your application… This can take up to a minute.");
+    var body = new FormData(form);
+    body.delete("_honey");
+    fetch(cfg.careersEndpoint, { method: "POST", body: body })
+      .then(function (res) { return res.json().catch(function () { return {}; }).then(function (j) { return { ok: res.ok, j: j }; }); })
+      .then(function (r) {
+        btn.disabled = false;
+        if (!r.ok) { say("error", (r.j && r.j.message) || "Sorry, your application could not be sent. Please try again."); return; }
+        var first = (form.querySelector("#a-name").value || "").split(" ")[0];
+        var box = document.createElement("div");
+        box.className = "careers-success";
+        box.setAttribute("role", "status");
+        var strong = document.createElement("strong");
+        strong.textContent = "Thank you, " + first + ". ";
+        box.appendChild(strong);
+        box.appendChild(document.createTextNode((r.j.updated ? "We have updated your application" : "Your application has been received") + " (reference " + (r.j.ref || "") + "). Our team will review it and contact you when a project matches your skills."));
+        form.replaceWith(box);
+        box.scrollIntoView({ behavior: "smooth", block: "center" });
+      })
+      .catch(function () {
+        btn.disabled = false;
+        say("error", "We could not reach our system. Please check your connection and try again, or contact us on WhatsApp.");
+      });
   });
 })();
 
