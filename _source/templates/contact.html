@@ -49,8 +49,8 @@
       </div>
       <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="form-status" role="status" aria-live="polite"></div>
-      <button type="submit" class="btn btn-primary btn-lg">{% if site.form_endpoint %}{{ icon("whatsapp") }}Send message{% else %}{{ icon("whatsapp") }}Send via WhatsApp{% endif %}</button>
-      <p class="form-hint">{% if site.form_endpoint %}Your message is emailed to our team and opens in WhatsApp, addressed to the office in the country you select.{% else %}Your message opens in WhatsApp, ready to send to the office in the country you select.{% endif %}</p>
+      <button type="submit" class="btn btn-primary btn-lg">{% if site.form_endpoint or site.erp_intake %}Send message{% else %}{{ icon("whatsapp") }}Send via WhatsApp{% endif %}</button>
+      <p class="form-hint">{% if site.erp_intake %}Your message goes straight to our team, and WhatsApp opens so you can also message the office in the country you select.{% elif site.form_endpoint %}Your message is emailed to our team and opens in WhatsApp, addressed to the office in the country you select.{% else %}Your message opens in WhatsApp, ready to send to the office in the country you select.{% endif %}</p>
     </form>
     <figure class="stack-photo">
       <img src="{{ root }}images/borehole-drilling.jpg" alt="RUNHTec crew on a project site" loading="lazy" width="933" height="810">

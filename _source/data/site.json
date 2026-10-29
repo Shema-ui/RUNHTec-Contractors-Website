@@ -6,6 +6,8 @@
   "pages_root": "/",
   "_pages_root_help": "Folder the site lives in. Change to \"/\" once runhteccontractors.com is connected.",
   "email": "contact@runhteccontractors.si",
+  "erp_intake": "https://api.runhteccontractors.si/api/website-intake",
+  "_erp_intake_help": "Quote and contact forms are saved into the RUNHTec ERP (Request for Quotations) at this address. Leave empty to turn this off.",
   "form_endpoint": "",
   "_form_endpoint_help": "Leave empty to send form requests through WhatsApp. To receive them by email instead, paste a form-service address here (e.g. https://formsubmit.co/ajax/you@example.com) and rebuild.",
   "offices": [

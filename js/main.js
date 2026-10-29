@@ -115,6 +115,45 @@
     return lines.join("\n");
   }
 
+  /* Save a website request into the RUNHTec ERP (Request for Quotations).
+     Started on the click, with keepalive, so it still completes if the page
+     navigates away to WhatsApp. Resolves true/false and never throws. */
+  var URGENCY = { "Urgent: system down": "high", "Within a week": "high", "Within a month": "medium", "Planning / no fixed date": "low" };
+  function sendToErp(data, kind) {
+    if (!cfg.erpIntake || !window.fetch) return Promise.resolve(false);
+    var details = [];
+    if (kind === "quote") {
+      details.push("Request: " + (data.request_type || "Quotation"));
+      if (data.property_type) details.push("Property type: " + data.property_type);
+      if (data.timeline) details.push("Timeline: " + data.timeline);
+      if (data.preferred_date && data.request_type === "Site visit") details.push("Preferred site-visit date: " + data.preferred_date);
+      details.push("Location: " + [data.location, data.country].filter(Boolean).join(", "));
+      details.push("");
+    }
+    details.push(data.message || "");
+    var payload = {
+      source: "website",
+      type: kind === "quote" ? (data.request_type === "Site visit" ? "service" : "quote") : "contact",
+      name: data.name || "",
+      email: data.email || "",
+      phone: data.phone || "",
+      company: data.company || "",
+      serviceType: kind === "quote" ? (data.service || "") : "General enquiry",
+      urgency: kind === "quote" ? (URGENCY[data.timeline] || "medium") : "",
+      address: [data.location, data.country].filter(Boolean).join(", "),
+      city: data.location || "",
+      country: data.country || "",
+      message: details.join("\n").trim()
+    };
+    return fetch(cfg.erpIntake, {
+      method: "POST",
+      mode: "cors",
+      keepalive: true,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    }).then(function (res) { return res.ok; }).catch(function () { return false; });
+  }
+
   document.querySelectorAll(".rt-form").forEach(function (form) {
     var kind = form.getAttribute("data-form");
 
@@ -163,6 +202,34 @@
 
       var office = officeFor(data.country);
       var waUrl = "https://wa.me/" + office.whatsapp + "?text=" + encodeURIComponent(summary(data, kind));
+      var first = (data.name || "").split(" ")[0];
+      var what = kind === "quote" ? "request" : "message";
+
+      if (cfg.erpIntake && !cfg.formEndpoint) {
+        /* Save to the ERP and open WhatsApp on the same click (opening it later gets blocked). */
+        var saving = sendToErp(data, kind);
+        var wa = window.open(waUrl, "_blank");
+        if (wa) wa.opener = null;
+        btn.disabled = true;
+        showStatus(form, "info", "Sending your " + what + "…");
+        saving.then(function (ok) {
+          btn.disabled = false;
+          if (ok) {
+            form.reset();
+            if (kind === "quote") form.classList.remove("is-site-visit");
+            showStatus(form, "success", "Thank you, " + first + ". Your " + what + " has been received by our team and we will contact you shortly." + (wa ? " WhatsApp has also opened if you would like to message our " + office.country + " office directly." : ""));
+          } else if (wa) {
+            showStatus(form, "success", "WhatsApp has opened with your " + what + " to our " + office.country + " office. Tap send in WhatsApp to deliver it.");
+          } else {
+            window.location.href = waUrl;
+          }
+        });
+        if (!wa) {
+          /* Pop-up blocked: give the save a moment, then go to WhatsApp in this tab. */
+          setTimeout(function () { window.location.href = waUrl; }, 2500);
+        }
+        return;
+      }
 
       if (cfg.formEndpoint) {
         /* Both: open WhatsApp now (must happen on the click, or browsers block it),
