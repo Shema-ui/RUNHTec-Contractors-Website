@@ -29,7 +29,7 @@
   }
   document.querySelectorAll(".submenu-toggle").forEach(function (btn) {
     btn.addEventListener("click", function () {
-      var li = btn.closest(".has-mega");
+      var li = btn.closest(".has-mega, .has-drop");
       var open = li.classList.toggle("is-open");
       btn.setAttribute("aria-expanded", String(open));
     });

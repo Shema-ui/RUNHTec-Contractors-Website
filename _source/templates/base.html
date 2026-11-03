@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ root }}css/style.css?v=20261104">
+  <link rel="stylesheet" href="{{ root }}css/style.css?v=20261104b">
   <script type="application/ld+json">{{ ld_json|safe }}</script>
   {% if site.google_site_verification %}<meta name="google-site-verification" content="{{ site.google_site_verification }}">{% endif %}
   {% block head %}{% endblock %}
@@ -67,13 +67,24 @@
               </div>
             </div>
           </li>
-          <li><a href="{{ root }}projects/" class="nav-link{% if section == 'projects' %} is-active{% endif %}">Project Stories</a></li>
-          <li><a href="{{ root }}maintenance-contracts/" class="nav-link{% if section == 'maintenance' %} is-active{% endif %}">Maintenance</a></li>
-          <li><a href="{{ root }}power-planner/" class="nav-link{% if section == 'planner' %} is-active{% endif %}">Power Planner</a></li>
-          <li><a href="{{ root }}insights/" class="nav-link{% if section == 'insights' %} is-active{% endif %}">Insights</a></li>
-          <li><a href="{{ root }}about/" class="nav-link{% if section == 'about' %} is-active{% endif %}">About</a></li>
-          <li><a href="{{ root }}work-with-us/" class="nav-link{% if section == 'careers' %} is-active{% endif %}">Careers</a></li>
-          <li><a href="{{ root }}contact/" class="nav-link{% if section == 'contact' %} is-active{% endif %}">Contact</a></li>
+{%- set nav_groups = [
+            ("Projects", "projects/", ["projects", "industries"], [("Project stories", "projects/"), ("Industries we serve", "industries/")]),
+            ("Maintenance", "maintenance-contracts/", ["maintenance", "clients"], [("Maintenance contracts", "maintenance-contracts/"), ("Our maintenance clients", "clients/")]),
+            ("Resources", "insights/", ["planner", "insights"], [("Power Planner", "power-planner/"), ("Insights & guides", "insights/")]),
+            ("About", "about/", ["about", "contact"], [("About RUNHTec", "about/"), ("Contact us", "contact/")]),
+          ] %}
+          {%- for label, href, sections, links in nav_groups %}
+          <li class="has-drop">
+            <a href="{{ root }}{{ href }}" class="nav-link{% if section in sections %} is-active{% endif %}" aria-haspopup="true">{{ label }}<span class="drop-caret">{{ icon("chevron") }}</span></a>
+            <button class="submenu-toggle" type="button" aria-expanded="false" aria-label="Show {{ label|lower }} pages">{{ icon("chevron") }}</button>
+            <ul class="drop">
+              {%- for text, link in links %}
+              <li><a href="{{ root }}{{ link }}">{{ text }}</a></li>
+              {%- endfor %}
+            </ul>
+          </li>
+          {%- endfor %}
+          <li><a href="{{ root }}work-with-us/" class="nav-link nav-apply{% if section == 'careers' %} is-active{% endif %}">Apply to work with us</a></li>
         </ul>
         <a href="{{ root }}request-a-quote/" class="btn btn-primary nav-cta">Request a Quote</a>
       </nav>
@@ -126,7 +137,7 @@
           <li><a href="{{ root }}insights/">Insights</a></li>
           <li><a href="{{ root }}request-a-quote/">Request a quote</a></li>
           <li><a href="{{ root }}contact/">Contact</a></li>
-          <li><a href="{{ root }}work-with-us/">Work with us</a></li>
+          <li><a href="{{ root }}work-with-us/">Apply to work with us</a></li>
           <li><a href="{{ root }}privacy-policy/">Privacy policy</a></li>
         </ul>
       </div>
@@ -151,6 +162,6 @@
   </div>
 
   <script>window.RUNHTEC = {{ {"offices": site.offices, "email": site.email, "formEndpoint": site.form_endpoint, "erpIntake": site.erp_intake, "careersEndpoint": site.careers_endpoint, "root": root, "services": services|map(attribute="slug")|list, "serviceNames": services|map(attribute="name")|list, "servicePages": services|map(attribute="page")|list} | tojson }};</script>
-  <script src="{{ root }}js/main.js?v=20261030" defer></script>
+  <script src="{{ root }}js/main.js?v=20261104" defer></script>
 </body>
 </html>

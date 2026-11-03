@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./css/style.css?v=20261104">
+  <link rel="stylesheet" href="./css/style.css?v=20261104b">
   <script type="application/ld+json">{
  "@context": "https://schema.org",
  "@graph": [
@@ -202,14 +202,23 @@
                 </div>
               </div>
             </div>
-          </li>
-          <li><a href="./projects/" class="nav-link">Project Stories</a></li>
-          <li><a href="./maintenance-contracts/" class="nav-link">Maintenance</a></li>
-          <li><a href="./power-planner/" class="nav-link">Power Planner</a></li>
-          <li><a href="./insights/" class="nav-link">Insights</a></li>
-          <li><a href="./about/" class="nav-link">About</a></li>
-          <li><a href="./work-with-us/" class="nav-link">Careers</a></li>
-          <li><a href="./contact/" class="nav-link">Contact</a></li>
+          </li>          <li class="has-drop">
+            <a href="./projects/" class="nav-link" aria-haspopup="true">Projects<span class="drop-caret"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></span></a>
+            <button class="submenu-toggle" type="button" aria-expanded="false" aria-label="Show projects pages"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button>
+            <ul class="drop">              <li><a href="./projects/">Project stories</a></li>              <li><a href="./industries/">Industries we serve</a></li>            </ul>
+          </li>          <li class="has-drop">
+            <a href="./maintenance-contracts/" class="nav-link" aria-haspopup="true">Maintenance<span class="drop-caret"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></span></a>
+            <button class="submenu-toggle" type="button" aria-expanded="false" aria-label="Show maintenance pages"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button>
+            <ul class="drop">              <li><a href="./maintenance-contracts/">Maintenance contracts</a></li>              <li><a href="./clients/">Our maintenance clients</a></li>            </ul>
+          </li>          <li class="has-drop">
+            <a href="./insights/" class="nav-link" aria-haspopup="true">Resources<span class="drop-caret"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></span></a>
+            <button class="submenu-toggle" type="button" aria-expanded="false" aria-label="Show resources pages"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button>
+            <ul class="drop">              <li><a href="./power-planner/">Power Planner</a></li>              <li><a href="./insights/">Insights &amp; guides</a></li>            </ul>
+          </li>          <li class="has-drop">
+            <a href="./about/" class="nav-link" aria-haspopup="true">About<span class="drop-caret"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></span></a>
+            <button class="submenu-toggle" type="button" aria-expanded="false" aria-label="Show about pages"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></button>
+            <ul class="drop">              <li><a href="./about/">About RUNHTec</a></li>              <li><a href="./contact/">Contact us</a></li>            </ul>
+          </li>          <li><a href="./work-with-us/" class="nav-link nav-apply">Apply to work with us</a></li>
         </ul>
         <a href="./request-a-quote/" class="btn btn-primary nav-cta">Request a Quote</a>
       </nav>
@@ -606,7 +615,7 @@
           <li><a href="./insights/">Insights</a></li>
           <li><a href="./request-a-quote/">Request a quote</a></li>
           <li><a href="./contact/">Contact</a></li>
-          <li><a href="./work-with-us/">Work with us</a></li>
+          <li><a href="./work-with-us/">Apply to work with us</a></li>
           <li><a href="./privacy-policy/">Privacy policy</a></li>
         </ul>
       </div>
@@ -630,6 +639,6 @@
   </div>
 
   <script>window.RUNHTEC = {"careersEndpoint": "https://api.runhteccontractors.si/api/careers/apply", "email": "contact@runhteccontractors.si", "erpIntake": "https://api.runhteccontractors.si/api/website-intake", "formEndpoint": "", "offices": [{"address": "Gikondo Sector, Kigali, Rwanda", "city": "Kigali", "country": "Rwanda", "country_code": "RW", "id": "rwanda", "phone": "+250793229790", "phone_display": "+250 793 229 790", "role": "Branch", "whatsapp": "250793229790"}, {"address": "Industrial Area, Kampala, Uganda", "city": "Kampala", "country": "Uganda", "country_code": "UG", "id": "uganda", "phone": "+256754625168", "phone_display": "+256 754 625 168", "role": "Branch", "whatsapp": "256754625168"}], "root": "./", "serviceNames": ["Construction \u0026 Civil Works", "Electrical Installations", "Standby Generators \u0026 Backup Power", "Solar PV \u0026 Hybrid Solar Systems", "HVAC, Air Conditioning \u0026 Chillers", "Cold Rooms \u0026 Refrigeration", "CCTV \u0026 Security Systems", "Internet \u0026 Network Solutions", "Borehole Drilling \u0026 Water", "Maintenance Contracts"], "servicePages": ["services/construction-civil-works/", "services/electrical-installations/", "services/standby-generators-backup-power/", "services/solar-pv-hybrid-systems/", "services/hvac-air-conditioning-chillers/", "services/cold-rooms-refrigeration/", "services/cctv-security-systems/", "services/networking-internet/", "services/borehole-drilling-water/", "maintenance-contracts/"], "services": ["construction-civil-works", "electrical-installations", "standby-generators-backup-power", "solar-pv-hybrid-systems", "hvac-air-conditioning-chillers", "cold-rooms-refrigeration", "cctv-security-systems", "networking-internet", "borehole-drilling-water", "maintenance-contracts"]};</script>
-  <script src="./js/main.js?v=20261030" defer></script>
+  <script src="./js/main.js?v=20261104" defer></script>
 </body>
 </html>
