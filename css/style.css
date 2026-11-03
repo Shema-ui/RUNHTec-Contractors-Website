@@ -613,6 +613,7 @@ ul, ol { padding-left: 1.2em; }
 .planner-band { background: var(--brand); color: #f6dbe5; padding: clamp(44px, 6vw, 72px) 0; }
 .planner-band-inner { display: flex; justify-content: space-between; align-items: center; gap: 28px; flex-wrap: wrap; }
 .planner-band h2 { color: #fff; margin-bottom: 8px; }
+.careers-band { background: var(--dark); color: #cfc8cb; }
 .planner-band p { margin: 0; max-width: 620px; }
 
 /* Articles */
