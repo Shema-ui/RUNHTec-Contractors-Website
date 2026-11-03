@@ -17,8 +17,8 @@
     },
     {
       "id": "security",
-      "name": "Security & Networks",
-      "text": "Surveillance and data connectivity for modern buildings."
+      "name": "Fire, Security & Networks",
+      "text": "Fire detection and alarms, surveillance and data connectivity for modern buildings."
     },
     {
       "id": "maintenance",
@@ -203,6 +203,59 @@
         "cold-room-controller.jpg",
         "cold-room-panels.jpg"
       ]
+    },
+    {
+      "slug": "fire-detection-alarm-systems",
+      "category": "security",
+      "icon": "flame",
+      "name": "Fire Detection & Alarm Systems",
+      "short": "Conventional and addressable fire alarm systems: detectors, call points, sounders and control panels, installed, tested and maintained.",
+      "image": "fire-detection-alarm.jpg",
+      "image_alt": "Illustration of a fire alarm system: control panel, smoke detectors, manual call point and sounder",
+      "intro": "RUNHTec installs fire detection and alarm systems, both conventional and addressable. We plan the detector layout for the building, run the fire-alarm cabling, install and program the control panel, connect detectors, call points and sounders, and test the complete system before handover. We also service and repair existing systems.",
+      "scope": [
+        "Conventional (zoned) fire alarm systems",
+        "Addressable fire alarm systems",
+        "Smoke, heat and multi-sensor detectors",
+        "Manual call points, sounders and strobe beacons",
+        "Fire alarm control panels, cabling and battery backup",
+        "Testing, commissioning and handover",
+        "Servicing, fault-finding and upgrades of existing systems"
+      ],
+      "applications": [
+        "Hotels",
+        "Hospitals & clinics",
+        "Offices",
+        "Schools",
+        "Warehouses & factories",
+        "Apartment blocks",
+        "Shops & shopping centres"
+      ],
+      "compare": {
+        "title": "Conventional or addressable?",
+        "columns": [
+          {
+            "name": "Conventional",
+            "points": [
+              "Detectors are grouped into zones (areas)",
+              "The panel shows which zone raised the alarm",
+              "Lower cost for equipment and installation",
+              "Best for smaller buildings: homes, small offices and shops"
+            ]
+          },
+          {
+            "name": "Addressable",
+            "points": [
+              "Every detector and call point has its own address",
+              "The panel shows the exact device and room",
+              "Faster response and easier fault-finding",
+              "Best for larger or multi-storey buildings: hotels, hospitals, schools and factories"
+            ]
+          }
+        ],
+        "note": "Not sure which one you need? We'll recommend the right system after a site visit."
+      },
+      "gallery": []
     },
     {
       "slug": "cctv-security-systems",

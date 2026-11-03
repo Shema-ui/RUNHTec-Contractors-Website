@@ -23,6 +23,19 @@
       </ul>
       {% endif %}
 
+      {% if s.compare %}
+      <h3>{{ s.compare.title }}</h3>
+      <div class="compare-grid">
+        {% for col in s.compare.columns %}
+        <div class="compare-col">
+          <p class="compare-name">{{ col.name }}</p>
+          <ul class="check-list">{% for pt in col.points %}<li>{{ icon("check") }}<span>{{ pt }}</span></li>{% endfor %}</ul>
+        </div>
+        {% endfor %}
+      </div>
+      {% if s.compare.note %}<p>{{ s.compare.note }}</p>{% endif %}
+      {% endif %}
+
       <h3>How we deliver it</h3>
       <ol class="mini-process">
         {% for p in site.process %}<li><strong>{{ p.title }}</strong> {{ p.text }}</li>{% endfor %}

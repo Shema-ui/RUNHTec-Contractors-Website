@@ -777,3 +777,9 @@ ul, ol { padding-left: 1.2em; }
 .model-note .mini-process { margin-bottom: 0; }
 .careers-success { border-left: 4px solid #2e7d32; background: #edf7ee; color: #1e5b24; padding: 18px 20px; border-radius: var(--radius); }
 .careers-success strong { color: #14401a; }
+
+/* Side-by-side comparison on a service page (e.g. conventional vs addressable) */
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 8px 0 12px; }
+.compare-col { border: 1px solid var(--line); border-radius: 14px; padding: 18px 18px 6px; background: #fff; }
+.compare-name { font-family: var(--font-head); font-weight: 600; font-size: 18px; color: var(--brand); margin: 0 0 8px; }
+@media (max-width: 640px) { .compare-grid { grid-template-columns: 1fr; } }

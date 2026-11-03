@@ -439,6 +439,7 @@
       power: { home: ["electrical-installations"], office: ["electrical-installations"], hospitality: ["electrical-installations", "standby-generators-backup-power"], industrial: ["electrical-installations", "standby-generators-backup-power"] },
       backup: { home: ["solar-pv-hybrid-systems", "standby-generators-backup-power"], office: ["solar-pv-hybrid-systems", "standby-generators-backup-power"], hospitality: ["standby-generators-backup-power", "solar-pv-hybrid-systems"], industrial: ["standby-generators-backup-power", "solar-pv-hybrid-systems"] },
       cooling: { home: ["hvac-air-conditioning-chillers"], office: ["hvac-air-conditioning-chillers"], hospitality: ["hvac-air-conditioning-chillers", "cold-rooms-refrigeration"], industrial: ["cold-rooms-refrigeration", "hvac-air-conditioning-chillers"] },
+      fire: { home: ["fire-detection-alarm-systems", "electrical-installations"], office: ["fire-detection-alarm-systems", "cctv-security-systems"], hospitality: ["fire-detection-alarm-systems", "cctv-security-systems"], industrial: ["fire-detection-alarm-systems", "electrical-installations"] },
       security: { home: ["cctv-security-systems", "networking-internet"], office: ["networking-internet", "cctv-security-systems"], hospitality: ["networking-internet", "cctv-security-systems"], industrial: ["cctv-security-systems", "networking-internet"] }
     };
     var TEXT = {

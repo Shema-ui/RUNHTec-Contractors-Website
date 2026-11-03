@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ root }}css/style.css?v=20261104b">
+  <link rel="stylesheet" href="{{ root }}css/style.css?v=20261104c">
   <script type="application/ld+json">{{ ld_json|safe }}</script>
   {% if site.google_site_verification %}<meta name="google-site-verification" content="{{ site.google_site_verification }}">{% endif %}
   {% block head %}{% endblock %}
@@ -162,6 +162,6 @@
   </div>
 
   <script>window.RUNHTEC = {{ {"offices": site.offices, "email": site.email, "formEndpoint": site.form_endpoint, "erpIntake": site.erp_intake, "careersEndpoint": site.careers_endpoint, "root": root, "services": services|map(attribute="slug")|list, "serviceNames": services|map(attribute="name")|list, "servicePages": services|map(attribute="page")|list} | tojson }};</script>
-  <script src="{{ root }}js/main.js?v=20261104" defer></script>
+  <script src="{{ root }}js/main.js?v=20261104b" defer></script>
 </body>
 </html>

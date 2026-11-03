@@ -53,7 +53,8 @@
         "Electrical",
         "HVAC",
         "Generators",
-        "Networking"
+        "Networking",
+        "Fire alarms"
       ]
     },
     {
@@ -63,7 +64,8 @@
         "Electrical",
         "Generators",
         "HVAC",
-        "Cold rooms"
+        "Cold rooms",
+        "Fire alarms"
       ]
     },
     {
@@ -73,7 +75,8 @@
         "HVAC",
         "Electrical",
         "Solar PV",
-        "Cold rooms"
+        "Cold rooms",
+        "Fire alarms"
       ]
     },
     {
@@ -83,7 +86,8 @@
         "Electrical",
         "HVAC",
         "CCTV",
-        "Networking"
+        "Networking",
+        "Fire alarms"
       ]
     },
     {
@@ -93,7 +97,8 @@
         "Electrical",
         "HVAC",
         "Generators",
-        "Maintenance"
+        "Maintenance",
+        "Fire alarms"
       ]
     },
     {

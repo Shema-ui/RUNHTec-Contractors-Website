@@ -50,7 +50,7 @@ def build_ld():
         "logo": base + "/images/logo.png", "image": base + "/images/hero-building.jpg",
         "email": site["email"], "slogan": site["tagline"],
         "description": "Engineering and technical services company in Rwanda and Uganda: construction, electrical, "
-                       "standby generators, solar, HVAC, cold rooms, CCTV, networking, boreholes and maintenance contracts.",
+                       "standby generators, solar, HVAC, cold rooms, fire detection and alarm systems, CCTV, networking, boreholes and maintenance contracts.",
         "areaServed": [{"@type": "Country", "name": "Rwanda"}, {"@type": "Country", "name": "Uganda"}],
         "sameAs": site.get("social_profiles", []),
         "contactPoint": [{"@type": "ContactPoint", "contactType": "customer service", "telephone": o["phone"],
@@ -81,7 +81,7 @@ pages = [
     ("about/", "about.html", "About Us",
      "RUNHTec Contractors Ltd is an engineering and technical services company working across Rwanda and Uganda.", "about"),
     ("services/", "services.html", "Our Services",
-     "Electrical, standby power, solar, HVAC, chillers, cold rooms, CCTV, networking, construction, borehole drilling and maintenance contracts.", "services"),
+     "Electrical, standby power, solar, HVAC, chillers, cold rooms, fire alarms, CCTV, networking, construction, borehole drilling and maintenance contracts.", "services"),
     ("maintenance-contracts/", "maintenance.html", "Maintenance Contracts",
      "Preventive and corrective maintenance contracts for electrical, HVAC, generator, solar and refrigeration systems.", "maintenance"),
     ("industries/", "industries.html", "Industries We Serve",
