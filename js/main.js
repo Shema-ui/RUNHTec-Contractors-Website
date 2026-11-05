@@ -145,6 +145,11 @@
       country: data.country || "",
       message: details.join("\n").trim()
     };
+    /* Power Planner numbers (watts, watt-hours, hours), when the visitor came from the planner. */
+    var pl = kind === "quote" ? (new URLSearchParams(window.location.search).get("planner") || "").split(",").map(Number) : [];
+    if (pl.length === 6 && pl.every(function (v) { return isFinite(v) && v >= 0; }) && pl[0] > 0) {
+      payload.planner = { peakW: pl[0], dailyWh: pl[1], backupWh: pl[2], hours: pl[3], maxMotorW: pl[4], solar: pl[5] === 1 };
+    }
     return fetch(cfg.erpIntake, {
       method: "POST",
       mode: "cors",
@@ -591,9 +596,12 @@
 
       var details = "Power Planner estimate:\n" + items.join("\n") +
         "\n\nPeak load " + fmt(peak / 1000, 2) + " kW, daily energy " + fmt(daily / 1000, 1) + " kWh, backup " + H + " h." +
+        "\nBackup energy " + fmt(backupWh / 1000, 1) + " kWh" + (maxMotor ? ", largest motor " + fmt(maxMotor) + " W" : "") + "." +
         "\nSuggested: " + invKva + " kVA inverter, " + fmt(nominal / 1000, 1) + " kWh battery" + (solarOn ? ", " + fmt(kwp, 1) + " kWp solar" : "") + "; generator option " + genKva + " kVA.";
       var service = solarOn ? "solar-pv-hybrid-systems" : "standby-generators-backup-power";
-      document.getElementById("planner-quote").href = (cfg.root || "../") + "request-a-quote/?service=" + service + "&details=" + encodeURIComponent(details);
+      /* The exact numbers travel with the request so the ERP can prepare a draft quotation. */
+      var planner = [Math.round(peak), Math.round(daily), Math.round(backupWh), H, Math.round(maxMotor), solarOn ? 1 : 0].join(",");
+      document.getElementById("planner-quote").href = (cfg.root || "../") + "request-a-quote/?service=" + service + "&planner=" + planner + "&details=" + encodeURIComponent(details);
     }
     loadPreset("home");
   }
