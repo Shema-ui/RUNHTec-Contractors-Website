@@ -273,6 +273,13 @@
   var cfg = window.RUNHTEC || {};
   var form = document.getElementById("careers-form");
   if (!form) return;
+  /* Remember which advert brought the candidate here (UTM tags from the ad link) */
+  try {
+    var qs = new URLSearchParams(window.location.search);
+    var parts = ["utm_source", "utm_campaign", "utm_content", "utm_term"].map(function (k) { return qs.get(k) || ""; });
+    var camp = form.querySelector("#a-campaign");
+    if (camp && parts.join("")) camp.value = parts.join(" / ").slice(0, 250);
+  } catch (e) { /* older browsers: skip tracking, form still works */ }
   var dept = form.querySelector("#a-dept");
   var trade = form.querySelector("#a-trade");
   var status = form.querySelector(".form-status");
