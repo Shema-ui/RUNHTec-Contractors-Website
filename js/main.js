@@ -286,6 +286,57 @@
   var MAX = 5 * 1024 * 1024;
   var TYPES = /\.(pdf|docx?|jpe?g|png)$/i;
 
+  /* Split the long form into steps: one section at a time, with Back and Next */
+  (function () {
+    var groups = Array.prototype.slice.call(form.querySelectorAll("fieldset.field-group"));
+    if (groups.length < 2) return;
+    var last = groups.length - 1;
+    var lastGroup = groups[last];
+    var tail = [];
+    for (var n = lastGroup.nextElementSibling; n; n = n.nextElementSibling) tail.push(n);
+    var submit = form.querySelector('button[type="submit"]');
+    var nav = document.createElement("div");
+    nav.className = "form-steps";
+    nav.style.cssText = "display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;margin:18px 0";
+    var label = document.createElement("p");
+    label.className = "small";
+    var back = document.createElement("button");
+    back.type = "button"; back.className = "btn btn-ghost"; back.textContent = "Back";
+    var next = document.createElement("button");
+    next.type = "button"; next.className = "btn btn-primary"; next.textContent = "Next";
+    var row = document.createElement("div");
+    row.style.cssText = "display:flex;gap:8px";
+    row.appendChild(back); row.appendChild(next);
+    nav.appendChild(label); nav.appendChild(row);
+    lastGroup.parentNode.insertBefore(nav, tail[0] || null);
+    var current = 0;
+    function legendOf(g) { var l = g.querySelector("legend"); return l ? l.textContent.trim() : ""; }
+    function show(i) {
+      current = i;
+      groups.forEach(function (g, k) { g.hidden = k !== i; });
+      tail.forEach(function (el) {
+        if (el.classList && el.classList.contains("hp")) return;
+        el.hidden = i !== last;
+      });
+      if (submit) submit.hidden = i !== last;
+      back.hidden = i === 0;
+      next.hidden = i === last;
+      nav.hidden = i === last;
+      label.textContent = "Step " + (i + 1) + " of " + groups.length + ": " + legendOf(groups[i]);
+      window.scrollTo({ top: form.getBoundingClientRect().top + window.pageYOffset - 90, behavior: "smooth" });
+    }
+    function stepIsValid(g) {
+      var fields = Array.prototype.slice.call(g.querySelectorAll("input, select, textarea")).filter(function (f) { return f.required && !f.disabled; });
+      for (var j = 0; j < fields.length; j++) {
+        if (!fields[j].checkValidity()) { fields[j].reportValidity(); return false; }
+      }
+      return true;
+    }
+    next.addEventListener("click", function () { if (stepIsValid(groups[current])) show(current + 1); });
+    back.addEventListener("click", function () { show(Math.max(0, current - 1)); });
+    show(0);
+  })();
+
   /* Show only the skills that belong to the chosen department */
   function syncTrades() {
     var d = dept.value;
